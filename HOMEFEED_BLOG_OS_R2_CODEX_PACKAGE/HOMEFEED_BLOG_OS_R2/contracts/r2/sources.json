@@ -1,0 +1,86 @@
+{
+  "as_of": "2026-09-16",
+  "sources": [
+    {
+      "id": "NV-CONTENT",
+      "publisher": "NAVER SearchAdvisor",
+      "title": "콘텐츠 작성시 권장 사항",
+      "url": "https://searchadvisor.naver.com/guide/content-basic",
+      "scope": "웹 검색 품질 안내. 홈피드 비공개 랭킹 공식 아님.",
+      "verified_on": "2026-09-16"
+    },
+    {
+      "id": "NV-SPAM",
+      "publisher": "NAVER SearchAdvisor",
+      "title": "웹 콘텐츠 스팸사례",
+      "url": "https://searchadvisor.naver.com/guide/content-abusing",
+      "scope": "저품질 대량 생성은 특정 기술의 활용 여부만으로 판단하지 않는다고 명시. 홈판의 개별 글 노출 보장 아님.",
+      "verified_on": "2026-09-16"
+    },
+    {
+      "id": "NV-FEED",
+      "publisher": "NAVER 고객센터",
+      "title": "홈피드 소개",
+      "url": "https://help.naver.com/service/5630/contents/23396?lang=ko",
+      "scope": "인기·개인화 피드의 구분. 모든 독자에게 같은 노출이라는 가정 배제.",
+      "verified_on": "2026-09-16"
+    },
+    {
+      "id": "NV-DATA",
+      "publisher": "NAVER Developers",
+      "title": "통합 검색어 트렌드 API",
+      "url": "https://developers.naver.com/docs/serviceapi/datalab/search/search.md",
+      "scope": "ratio 상대값, 공통 요청 조건, 일·주·월 시간 단위. 예제 산식은 저자의 가상 설명이며 실제 검색량 아님.",
+      "verified_on": "2026-09-16"
+    },
+    {
+      "id": "GP-FREE",
+      "publisher": "Google 포토 고객센터",
+      "title": "Free up space on your device — Android",
+      "url": "https://support.google.com/photos/answer/6128843?hl=en",
+      "scope": "안전하게 백업된 기기 사본 제거, 이후 기본 갤러리/오프라인 접근 제한.",
+      "verified_on": "2026-09-16"
+    },
+    {
+      "id": "GP-BACKUP",
+      "publisher": "Google 포토 고객센터",
+      "title": "Back up photos & videos — Android",
+      "url": "https://support.google.com/photos/answer/6193313?hl=en",
+      "scope": "앱에 기기 사진이 보여도 백업됐다는 뜻은 아님. 계정·사진 백업 상태 확인.",
+      "verified_on": "2026-09-16"
+    },
+    {
+      "id": "GP-DELETE",
+      "publisher": "Google 포토 고객센터",
+      "title": "Delete photos and videos — Android",
+      "url": "https://support.google.com/photos/answer/6128858?co=GENIE.Platform%3DAndroid&hl=en-GB",
+      "scope": "검색 도구에서 발췌 확인했으나 전체 본문 재열기 실패. R2 원고 핵심 근거로 사용하지 않음.",
+      "verified_on": "2026-09-16",
+      "status": "PARTIAL_NOT_USED"
+    },
+    {
+      "id": "MS-USBC",
+      "publisher": "Microsoft Support",
+      "title": "Windows에서 USB-C 문제 해결",
+      "url": "https://support.microsoft.com/ko-kr/windows/hardware/fix-usb-c-problems-in-windows",
+      "scope": "DisplayPort 대체 모드 연결의 PC 포트·디바이스·케이블 호환성 및 직접 연결 점검. 모든 USB 영상 방식에 일반화하지 않음.",
+      "verified_on": "2026-09-16"
+    },
+    {
+      "id": "VESA-FAQ",
+      "publisher": "VESA / DisplayPort",
+      "title": "DisplayPort FAQ",
+      "url": "https://www.displayport.org/faq/",
+      "scope": "DisplayPort over USB-C를 지원하지 않는 포트와 디스플레이 연결을 구분. 최신 표준의 속도/해상도 수치 주장에는 사용하지 않음.",
+      "verified_on": "2026-09-16"
+    },
+    {
+      "id": "USB-PD",
+      "publisher": "USB-IF",
+      "title": "USB Charger (USB Power Delivery)",
+      "url": "https://www.usb.org/usb-charger-pd",
+      "scope": "Power Delivery는 전력 전달에 관한 기능. 충전 전력 수치가 영상 출력 보장이 아님을 구분하는 배경 자료.",
+      "verified_on": "2026-09-16"
+    }
+  ]
+}

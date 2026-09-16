@@ -1,0 +1,27 @@
+{
+  "before": "별도의 동일 조건 기준선 없음",
+  "after": "충전 성공과 영상 지원의 차이를 원인 확인 순서로 바꿈",
+  "payoff_blocks": [
+    "U02",
+    "U04",
+    "U05",
+    "U06"
+  ],
+  "kept": [
+    "DisplayPort 대체 모드 범위",
+    "정확한 모델과 포트",
+    "고장 위치를 확정하지 않음"
+  ],
+  "risks": [
+    "모든 USB 그래픽 방식에 적용되는 결론 아님",
+    "실물/특정 모델 시험 없음"
+  ],
+  "article_id": "ebf70151-f639-59a2-8971-374ac7858fd7",
+  "revision_id": "8c93aaf6-a614-5056-bc66-e7920ee08b58",
+  "content_hash": "4dee0b8243d1471b866200ff1d6bee7bae060801d92c0a79cffbd1ec0003d4b9",
+  "assessment_origin": "ASSISTANT_EDITORIAL_COMMENTARY_NOT_HUMAN_BLIND_REVIEW",
+  "numeric_quality_score": null,
+  "viral_probability": null,
+  "body_characters_excluding_references": 990,
+  "notes_not_a_production_gate": true
+}

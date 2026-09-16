@@ -1,0 +1,439 @@
+{
+  "artifact": "HOMEFEED BLOG OS final design package",
+  "validation_kind": "OFFLINE_DOCUMENT_AND_SCHEMA_CHECKS_ONLY",
+  "executed_at": "2026-09-15T12:50:51.161231+00:00",
+  "passed": 70,
+  "failed": 0,
+  "checks": [
+    {
+      "id": "DOC-001",
+      "name": "Domain Draft 2020-12 syntax",
+      "status": "PASS",
+      "detail": "OK"
+    },
+    {
+      "id": "DOC-002",
+      "name": "Domain refs resolve locally",
+      "status": "PASS",
+      "detail": "[None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None]"
+    },
+    {
+      "id": "DOC-003",
+      "name": "Example blog_profile.json",
+      "status": "PASS",
+      "detail": "OK"
+    },
+    {
+      "id": "DOC-004",
+      "name": "Example blog_profile_living.json",
+      "status": "PASS",
+      "detail": "OK"
+    },
+    {
+      "id": "DOC-005",
+      "name": "Example source_registration.json",
+      "status": "PASS",
+      "detail": "OK"
+    },
+    {
+      "id": "DOC-006",
+      "name": "Example source_snapshot.json",
+      "status": "PASS",
+      "detail": "OK"
+    },
+    {
+      "id": "DOC-007",
+      "name": "Example observation.json",
+      "status": "PASS",
+      "detail": "OK"
+    },
+    {
+      "id": "DOC-008",
+      "name": "Example opportunity.json",
+      "status": "PASS",
+      "detail": "OK"
+    },
+    {
+      "id": "DOC-009",
+      "name": "Example evidence_item.json",
+      "status": "PASS",
+      "detail": "OK"
+    },
+    {
+      "id": "DOC-010",
+      "name": "Example content_brief.json",
+      "status": "PASS",
+      "detail": "OK"
+    },
+    {
+      "id": "DOC-011",
+      "name": "Example article_ir.json",
+      "status": "PASS",
+      "detail": "OK"
+    },
+    {
+      "id": "DOC-012",
+      "name": "Example review_findings.json",
+      "status": "PASS",
+      "detail": "OK"
+    },
+    {
+      "id": "DOC-013",
+      "name": "Example publication_receipt.json",
+      "status": "PASS",
+      "detail": "OK"
+    },
+    {
+      "id": "DOC-014",
+      "name": "Example metric_row.json",
+      "status": "PASS",
+      "detail": "OK"
+    },
+    {
+      "id": "DOC-015",
+      "name": "Example export/manifest.json",
+      "status": "PASS",
+      "detail": "OK"
+    },
+    {
+      "id": "DOC-016",
+      "name": "Array example claims.json",
+      "status": "PASS",
+      "detail": "[None, None, None]"
+    },
+    {
+      "id": "DOC-017",
+      "name": "Schema wrapper AgentEnvelope.schema.json",
+      "status": "PASS",
+      "detail": "OK"
+    },
+    {
+      "id": "DOC-018",
+      "name": "Schema wrapper ArticleIR.schema.json",
+      "status": "PASS",
+      "detail": "OK"
+    },
+    {
+      "id": "DOC-019",
+      "name": "Schema wrapper AssetPlan.schema.json",
+      "status": "PASS",
+      "detail": "OK"
+    },
+    {
+      "id": "DOC-020",
+      "name": "Schema wrapper BlogProfile.schema.json",
+      "status": "PASS",
+      "detail": "OK"
+    },
+    {
+      "id": "DOC-021",
+      "name": "Schema wrapper CardPlan.schema.json",
+      "status": "PASS",
+      "detail": "OK"
+    },
+    {
+      "id": "DOC-022",
+      "name": "Schema wrapper ContentBrief.schema.json",
+      "status": "PASS",
+      "detail": "OK"
+    },
+    {
+      "id": "DOC-023",
+      "name": "Schema wrapper ExportManifest.schema.json",
+      "status": "PASS",
+      "detail": "OK"
+    },
+    {
+      "id": "DOC-024",
+      "name": "Schema wrapper GateReport.schema.json",
+      "status": "PASS",
+      "detail": "OK"
+    },
+    {
+      "id": "DOC-025",
+      "name": "Schema wrapper MetricRow.schema.json",
+      "status": "PASS",
+      "detail": "OK"
+    },
+    {
+      "id": "DOC-026",
+      "name": "Schema wrapper Observation.schema.json",
+      "status": "PASS",
+      "detail": "OK"
+    },
+    {
+      "id": "DOC-027",
+      "name": "Schema wrapper PublicationReceipt.schema.json",
+      "status": "PASS",
+      "detail": "OK"
+    },
+    {
+      "id": "DOC-028",
+      "name": "Schema wrapper ResearchPack.schema.json",
+      "status": "PASS",
+      "detail": "OK"
+    },
+    {
+      "id": "DOC-029",
+      "name": "Schema wrapper ReviewFindings.schema.json",
+      "status": "PASS",
+      "detail": "OK"
+    },
+    {
+      "id": "DOC-030",
+      "name": "Schema wrapper RoutingDecision.schema.json",
+      "status": "PASS",
+      "detail": "OK"
+    },
+    {
+      "id": "DOC-031",
+      "name": "Schema wrapper SourceRegistration.schema.json",
+      "status": "PASS",
+      "detail": "OK"
+    },
+    {
+      "id": "DOC-032",
+      "name": "Unique task IDs",
+      "status": "PASS",
+      "detail": "50"
+    },
+    {
+      "id": "DOC-033",
+      "name": "Unique requirement IDs",
+      "status": "PASS",
+      "detail": "50"
+    },
+    {
+      "id": "DOC-034",
+      "name": "Unique acceptance IDs",
+      "status": "PASS",
+      "detail": "100"
+    },
+    {
+      "id": "DOC-035",
+      "name": "Task, requirement, acceptance traceability",
+      "status": "PASS",
+      "detail": "50 tasks / 50 requirements / 100 planned acceptance cases"
+    },
+    {
+      "id": "DOC-036",
+      "name": "Topological task order",
+      "status": "PASS",
+      "detail": "50"
+    },
+    {
+      "id": "DOC-037",
+      "name": "Acceptance specs explicitly NOT_RUN",
+      "status": "PASS",
+      "detail": "[None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None]"
+    },
+    {
+      "id": "DOC-038",
+      "name": "All state transitions are defined",
+      "status": "PASS",
+      "detail": "[None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None]"
+    },
+    {
+      "id": "DOC-039",
+      "name": "HANDOFF_READY not a publication state",
+      "status": "PASS",
+      "detail": "OK"
+    },
+    {
+      "id": "DOC-040",
+      "name": "Manual-only and replay defaults",
+      "status": "PASS",
+      "detail": "OK"
+    },
+    {
+      "id": "DOC-041",
+      "name": "Single primary-blog calendar-month target",
+      "status": "PASS",
+      "detail": "OK"
+    },
+    {
+      "id": "DOC-042",
+      "name": "Paid access disabled without approved budget",
+      "status": "PASS",
+      "detail": "OK"
+    },
+    {
+      "id": "DOC-043",
+      "name": "Ranking weights sum to one, not a probability",
+      "status": "PASS",
+      "detail": "OK"
+    },
+    {
+      "id": "DOC-044",
+      "name": "Bounded lease heartbeat",
+      "status": "PASS",
+      "detail": "OK"
+    },
+    {
+      "id": "DOC-045",
+      "name": "OpenAPI version and unique operation IDs",
+      "status": "PASS",
+      "detail": "(None, 43)"
+    },
+    {
+      "id": "DOC-046",
+      "name": "OpenAPI schema references resolve",
+      "status": "PASS",
+      "detail": "[None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None]"
+    },
+    {
+      "id": "DOC-047",
+      "name": "API path params and write idempotency headers",
+      "status": "PASS",
+      "detail": "43"
+    },
+    {
+      "id": "DOC-048",
+      "name": "No platform publisher routes",
+      "status": "PASS",
+      "detail": "[None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None]"
+    },
+    {
+      "id": "DOC-049",
+      "name": "Writer contract cannot carry a server gate",
+      "status": "PASS",
+      "detail": "OK"
+    },
+    {
+      "id": "DOC-050",
+      "name": "Example scope isolation and brief link",
+      "status": "PASS",
+      "detail": "(None, [None, None, None])"
+    },
+    {
+      "id": "DOC-051",
+      "name": "All article claim/citation refs exist",
+      "status": "PASS",
+      "detail": "[None, None, None, None, None, None, None, None, None, None, None, None, None, None]"
+    },
+    {
+      "id": "DOC-052",
+      "name": "Unique article blocks",
+      "status": "PASS",
+      "detail": "14"
+    },
+    {
+      "id": "DOC-053",
+      "name": "Table rows match headers",
+      "status": "PASS",
+      "detail": "OK"
+    },
+    {
+      "id": "DOC-054",
+      "name": "Reference text-only example not fake image-ready",
+      "status": "PASS",
+      "detail": "OK"
+    },
+    {
+      "id": "DOC-055",
+      "name": "Public reference has no working placeholders or tool tokens",
+      "status": "PASS",
+      "detail": "OK"
+    },
+    {
+      "id": "DOC-056",
+      "name": "Immutable IR hash matches manifest and review",
+      "status": "PASS",
+      "detail": "OK"
+    },
+    {
+      "id": "DOC-057",
+      "name": "Export reference file sizes, hashes, scope",
+      "status": "PASS",
+      "detail": "4"
+    },
+    {
+      "id": "DOC-058",
+      "name": "Source register IDs unique",
+      "status": "PASS",
+      "detail": "16"
+    },
+    {
+      "id": "DOC-059",
+      "name": "Source provenance and limitation fields",
+      "status": "PASS",
+      "detail": "16"
+    },
+    {
+      "id": "DOC-060",
+      "name": "SQL table names unique (text structure only)",
+      "status": "PASS",
+      "detail": "34"
+    },
+    {
+      "id": "DOC-061",
+      "name": "Reference DDL clearly unapplied",
+      "status": "PASS",
+      "detail": "OK"
+    },
+    {
+      "id": "DOC-062",
+      "name": "Each reference table enables and forces RLS (text only)",
+      "status": "PASS",
+      "detail": "[None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None]"
+    },
+    {
+      "id": "DOC-063",
+      "name": "Durable job/budget/fencing fields exist (text only)",
+      "status": "PASS",
+      "detail": "[None, None, None, None, None, None]"
+    },
+    {
+      "id": "DOC-064",
+      "name": "Negative schema: writer cannot add gate_report",
+      "status": "PASS",
+      "detail": "invalid fixture rejected"
+    },
+    {
+      "id": "DOC-065",
+      "name": "Negative schema: invalid blog UUID",
+      "status": "PASS",
+      "detail": "invalid fixture rejected"
+    },
+    {
+      "id": "DOC-066",
+      "name": "Negative schema: export cannot claim public posting",
+      "status": "PASS",
+      "detail": "invalid fixture rejected"
+    },
+    {
+      "id": "DOC-067",
+      "name": "Negative schema: opportunity not a calibrated probability",
+      "status": "PASS",
+      "detail": "invalid fixture rejected"
+    },
+    {
+      "id": "DOC-068",
+      "name": "Required implementation handoff files exist",
+      "status": "PASS",
+      "detail": "[None, None, None, None, None, None, None]"
+    },
+    {
+      "id": "DOC-069",
+      "name": "Documentation sequence 00 through 24 exists",
+      "status": "PASS",
+      "detail": "OK"
+    },
+    {
+      "id": "DOC-070",
+      "name": "No private credentials or artifact tool citation tokens in authored docs",
+      "status": "PASS",
+      "detail": "[None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None]"
+    }
+  ],
+  "not_run": [
+    "application implementation",
+    "PostgreSQL parse/migration/RLS/concurrency",
+    "LIVE source/model pipeline",
+    "image-generation/asset-render pipeline",
+    "Naver/Tistory editor UAT",
+    "human naturalness blind study",
+    "homefeed exposure/growth validation"
+  ],
+  "planned_product_acceptance_cases": 100
+}

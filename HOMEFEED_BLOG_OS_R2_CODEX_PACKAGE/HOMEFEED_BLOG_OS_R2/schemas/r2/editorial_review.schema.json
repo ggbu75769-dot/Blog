@@ -1,0 +1,243 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "r2.editorial.1"
+    },
+    "article_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "revision_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "blog_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "content_hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "reviewer_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "review_kind": {
+      "enum": [
+        "MODEL_SEMANTIC_REVIEW",
+        "OWNER_EDITORIAL_REVIEW",
+        "BLIND_READER_REVIEW",
+        "REFERENCE_ANNOTATION"
+      ]
+    },
+    "verdict": {
+      "enum": [
+        "PASS",
+        "FAIL",
+        "UNKNOWN"
+      ]
+    },
+    "dimensions": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "payoff": {
+          "enum": [
+            "PASS",
+            "FAIL",
+            "UNKNOWN"
+          ]
+        },
+        "promise": {
+          "enum": [
+            "PASS",
+            "FAIL",
+            "UNKNOWN"
+          ]
+        },
+        "coherence": {
+          "enum": [
+            "PASS",
+            "FAIL",
+            "UNKNOWN"
+          ]
+        },
+        "voice": {
+          "enum": [
+            "PASS",
+            "FAIL",
+            "UNKNOWN"
+          ]
+        },
+        "specificity": {
+          "enum": [
+            "PASS",
+            "FAIL",
+            "UNKNOWN"
+          ]
+        }
+      },
+      "required": [
+        "payoff",
+        "promise",
+        "coherence",
+        "voice",
+        "specificity"
+      ]
+    },
+    "payoffs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "kind": {
+            "enum": [
+              "grounded_comparison",
+              "worked_example",
+              "interpretation",
+              "editorial_judgment",
+              "original_observation",
+              "decision_rule"
+            ]
+          },
+          "reader_change": {
+            "type": "string",
+            "minLength": 1
+          },
+          "anchors": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "block_id": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "quote": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "required": [
+                "block_id",
+                "quote"
+              ]
+            },
+            "minItems": 1
+          },
+          "source_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "uniqueItems": true
+          },
+          "comparison_scope": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "required": [
+          "id",
+          "kind",
+          "reader_change",
+          "anchors",
+          "source_ids",
+          "comparison_scope"
+        ]
+      }
+    },
+    "findings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "code": {
+            "type": "string",
+            "minLength": 1
+          },
+          "severity": {
+            "enum": [
+              "minor",
+              "major",
+              "critical"
+            ]
+          },
+          "anchors": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "block_id": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "quote": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "required": [
+                "block_id",
+                "quote"
+              ]
+            },
+            "minItems": 1
+          },
+          "reason": {
+            "type": "string",
+            "minLength": 1
+          },
+          "repair": {
+            "enum": [
+              "RESEARCH",
+              "REFRAME",
+              "LOCAL_EDIT",
+              "DELETE",
+              "REVIEW"
+            ]
+          }
+        },
+        "required": [
+          "code",
+          "severity",
+          "anchors",
+          "reason",
+          "repair"
+        ]
+      }
+    },
+    "scope_note": {
+      "type": "string",
+      "minLength": 1
+    }
+  },
+  "required": [
+    "schema_version",
+    "article_id",
+    "revision_id",
+    "blog_id",
+    "content_hash",
+    "reviewer_id",
+    "review_kind",
+    "verdict",
+    "dimensions",
+    "payoffs",
+    "findings",
+    "scope_note"
+  ],
+  "description": "R2 sidecar. Exact-anchor/reference validation only; scoring prose is not factual or popularity validation. Server authorization required."
+}

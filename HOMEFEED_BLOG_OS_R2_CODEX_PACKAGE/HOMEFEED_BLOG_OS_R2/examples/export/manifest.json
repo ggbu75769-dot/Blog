@@ -1,0 +1,45 @@
+{
+  "id": "94b65971-0596-594b-8d34-e5e4a47ef951",
+  "tenant_id": "dbfb664f-c890-5171-914a-23b67f3e0767",
+  "blog_id": "4662b729-4a37-5271-8147-9fe8e02e260b",
+  "article_id": "a4b0f758-8313-5d94-98e6-e3af7c8f85d7",
+  "revision_id": "86dab9fa-30c8-57fe-8274-a62c3cdd51d5",
+  "content_hash": "28bfbffc1487bf8bd399118bcf6b3bf006af25316f444e786ef1313bd8ec9a41",
+  "review_bundle_hash": "0000000000000000000000000000000000000000000000000000000000000000",
+  "policy_version": "4.0.0-reference",
+  "generated_at": "2026-09-15T00:00:00Z",
+  "valid_until": "2026-09-16T00:00:00Z",
+  "status": "REFERENCE_EXAMPLE",
+  "target_platform": "naver_manual",
+  "public_posting_performed": false,
+  "files": [
+    {
+      "path": "article.md",
+      "sha256": "ef1e0dffbdb100a49f8818d6cf9a19754c9e72b34511657be772bef4111a43d6",
+      "mime": "text/plain",
+      "size_bytes": 2807,
+      "visibility": "public"
+    },
+    {
+      "path": "article.txt",
+      "sha256": "4ee87c8f800d80fc8806f61da5d4a08e91792a806dc5dbae83e02f05b785bb98",
+      "mime": "text/plain",
+      "size_bytes": 2797,
+      "visibility": "public"
+    },
+    {
+      "path": "naver_handoff.md",
+      "sha256": "8aac42d65676c763b8e7e48f7c35bc6b17e979b8290fb29d981963b9039b2171",
+      "mime": "text/plain",
+      "size_bytes": 496,
+      "visibility": "guide"
+    },
+    {
+      "path": "preview.html",
+      "sha256": "510ef623c6d0403ee6ae4095b43d031e5cef904e436c7da339f7f0d508388cab",
+      "mime": "text/html",
+      "size_bytes": 3950,
+      "visibility": "guide"
+    }
+  ]
+}

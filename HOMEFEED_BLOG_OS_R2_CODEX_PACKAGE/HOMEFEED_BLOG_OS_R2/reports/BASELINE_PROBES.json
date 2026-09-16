@@ -1,0 +1,130 @@
+{
+  "baseline_package": "4.0.0-final.1",
+  "executed_at": "2026-09-15T12:54:41.486497+00:00",
+  "baseline_document_checks": "70 PASS 0 FAIL",
+  "scope": "schema negatives, cross-language bytes, static DDL; NOT production vulnerability test",
+  "probes": [
+    {
+      "id": "B01",
+      "kind": "NEGATIVE_SCHEMA_PROBE",
+      "finding": "미갱신과 숫자0의 모순",
+      "legacy_result": "ACCEPTED",
+      "production_exploit_proven": false
+    },
+    {
+      "id": "B02",
+      "kind": "NEGATIVE_SCHEMA_PROBE",
+      "finding": "정의되지 않은 글 형식",
+      "legacy_result": "ACCEPTED",
+      "production_exploit_proven": false
+    },
+    {
+      "id": "B03",
+      "kind": "NEGATIVE_SCHEMA_PROBE",
+      "finding": "타입 라벨과 실제 payload 불일치",
+      "legacy_result": "ACCEPTED",
+      "production_exploit_proven": false
+    },
+    {
+      "id": "B04",
+      "kind": "NEGATIVE_SCHEMA_PROBE",
+      "finding": "검증보다 먼저 만료되는 근거",
+      "legacy_result": "ACCEPTED",
+      "production_exploit_proven": false
+    },
+    {
+      "id": "B05",
+      "kind": "NEGATIVE_SCHEMA_PROBE",
+      "finding": "상위 경로로 탈출하는 파일명",
+      "legacy_result": "ACCEPTED",
+      "production_exploit_proven": false
+    },
+    {
+      "id": "B06",
+      "kind": "NEGATIVE_SCHEMA_PROBE",
+      "finding": "실행 가능한 비HTTP 출처 URL",
+      "legacy_result": "ACCEPTED",
+      "production_exploit_proven": false
+    },
+    {
+      "id": "B07",
+      "kind": "NEGATIVE_SCHEMA_PROBE",
+      "finding": "근거·경험기록 없는 SUPPORTED 체험",
+      "legacy_result": "ACCEPTED",
+      "production_exploit_proven": false
+    },
+    {
+      "id": "B08",
+      "kind": "NEGATIVE_SCHEMA_PROBE",
+      "finding": "관측 구간 상하한 역전",
+      "legacy_result": "ACCEPTED",
+      "production_exploit_proven": false
+    },
+    {
+      "id": "B09",
+      "kind": "STATIC_DDL_INSPECTION",
+      "finding": "근거 RLS가 블로그 allowlist를 검사하지 않음",
+      "legacy_result": "MISSING",
+      "excerpt": "CREATE POLICY tenant_blog_scope ON evidence_items USING (tenant_id = NULLIF(current_setting('app.tenant_id',true),'')::uuid AND current_setting('app.allow_shared',true)='on') WITH CHECK (tenant_id = NULLIF(current_setting('app.tenant_id',true),'')::uuid AND current_setting('app.allow_shared',true)='on');",
+      "database_executed": false
+    },
+    {
+      "id": "B10",
+      "kind": "STATIC_DDL_INSPECTION",
+      "finding": "공유 원문에 블로그별 범위가 없음",
+      "legacy_result": "MISSING",
+      "excerpt": "CREATE POLICY tenant_blog_scope ON source_snapshots USING (tenant_id = NULLIF(current_setting('app.tenant_id',true),'')::uuid AND current_setting('app.allow_shared',true)='on') WITH CHECK (tenant_id = NULLIF(current_setting('app.tenant_id',true),'')::uuid AND current_setting('app.allow_shared',true)='on');",
+      "database_executed": false
+    },
+    {
+      "id": "B11",
+      "kind": "STATIC_DDL_INSPECTION",
+      "finding": "부모 버전 FK가 같은 article을 강제하지 않음",
+      "legacy_result": "MISSING",
+      "database_executed": false
+    },
+    {
+      "id": "B12",
+      "kind": "STATIC_DDL_INSPECTION",
+      "finding": "출력의 article과 revision을 별도 FK로만 검사함",
+      "legacy_result": "MISSING",
+      "database_executed": false
+    },
+    {
+      "id": "B13",
+      "kind": "STATIC_DDL_INSPECTION",
+      "finding": "출력의 검수보고서와 revision 결속이 없음",
+      "legacy_result": "MISSING",
+      "database_executed": false
+    },
+    {
+      "id": "B14",
+      "kind": "CROSS_LANGUAGE_EXECUTED",
+      "finding": "정수값을 가진 float의 Python/JS 직렬화 차이",
+      "legacy_result": "MISMATCH",
+      "python_bytes": "{\"value\":1.0}",
+      "javascript_bytes": "{\"value\":1}"
+    },
+    {
+      "id": "B15",
+      "kind": "STATIC_CONTRACT_INSPECTION",
+      "finding": "articles.brief_id NOT NULL인데 사전 조사 상태도 Article에 포함됨",
+      "legacy_result": "INCONSISTENT_LIFECYCLE",
+      "database_executed": false
+    },
+    {
+      "id": "B16",
+      "kind": "STATIC_DDL_INSPECTION",
+      "finding": "동기 API의 idempotency 저장 계약은 있으나 전용 DDL 없음",
+      "legacy_result": "MISSING",
+      "database_executed": false
+    },
+    {
+      "id": "B17",
+      "kind": "STATIC_DDL_INSPECTION",
+      "finding": "같은 metric 논리키의 current가 두 개일 수 있는 DDL",
+      "legacy_result": "MISSING",
+      "database_executed": false
+    }
+  ]
+}

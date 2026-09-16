@@ -1,0 +1,20 @@
+{
+  "purpose": "EDITORIAL_REFERENCE_PREVIEW_NOT_PRODUCTION_APPROVAL",
+  "article_id": "c56af4b9-ea13-5099-b65a-c59c6f8161d7",
+  "revision_id": "defb1a39-ccaa-58a1-80cf-9745f7a4c365",
+  "content_hash": "907f09100fb7a3fe6b171960bdb66c45cca009b9d38395a2f9b6d925e973e2d2",
+  "files": {
+    "article.txt": {
+      "sha256": "e67fa41c31119add98dfc7134ef4ce55afa75354bd317319e8898c5626d4e2a0",
+      "bytes": 2612
+    },
+    "preview.html": {
+      "sha256": "52a821d983e2328e5baa64485cbe491eefb953c1f99b99be568c6b26a4d3cc88",
+      "bytes": 4923
+    }
+  },
+  "claims_verified_by_code": false,
+  "naturalness_verified_by_code": false,
+  "viral_probability": null,
+  "findings": []
+}

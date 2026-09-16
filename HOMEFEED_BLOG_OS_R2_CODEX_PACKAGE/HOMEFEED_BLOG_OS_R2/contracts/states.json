@@ -1,0 +1,130 @@
+{
+  "schema_version": "4.1.0",
+  "article_states": [
+    "DISCOVERED",
+    "ASSIGNED",
+    "RESEARCHING",
+    "BRIEF_READY",
+    "DRAFTED",
+    "EDITING",
+    "VERIFYING",
+    "ASSET_READY",
+    "RENDERING",
+    "HANDOFF_READY",
+    "NEEDS_SOURCE",
+    "NEEDS_ASSET",
+    "NEEDS_EXPERIENCE",
+    "NEEDS_REVIEW",
+    "REVALIDATION_REQUIRED",
+    "DEFERRED",
+    "REJECTED"
+  ],
+  "transitions": {
+    "DISCOVERED": [
+      "ASSIGNED",
+      "DEFERRED",
+      "REJECTED"
+    ],
+    "ASSIGNED": [
+      "RESEARCHING",
+      "DEFERRED"
+    ],
+    "RESEARCHING": [
+      "BRIEF_READY",
+      "NEEDS_SOURCE",
+      "NEEDS_EXPERIENCE",
+      "DEFERRED",
+      "REJECTED"
+    ],
+    "BRIEF_READY": [
+      "DRAFTED",
+      "NEEDS_SOURCE",
+      "DEFERRED"
+    ],
+    "DRAFTED": [
+      "EDITING",
+      "NEEDS_REVIEW"
+    ],
+    "EDITING": [
+      "VERIFYING",
+      "NEEDS_SOURCE",
+      "NEEDS_REVIEW"
+    ],
+    "VERIFYING": [
+      "ASSET_READY",
+      "NEEDS_SOURCE",
+      "NEEDS_ASSET",
+      "NEEDS_EXPERIENCE",
+      "NEEDS_REVIEW",
+      "REJECTED"
+    ],
+    "ASSET_READY": [
+      "RENDERING",
+      "REVALIDATION_REQUIRED"
+    ],
+    "RENDERING": [
+      "HANDOFF_READY",
+      "NEEDS_ASSET",
+      "NEEDS_REVIEW"
+    ],
+    "HANDOFF_READY": [
+      "REVALIDATION_REQUIRED",
+      "EDITING"
+    ],
+    "NEEDS_SOURCE": [
+      "RESEARCHING",
+      "DEFERRED",
+      "REJECTED"
+    ],
+    "NEEDS_ASSET": [
+      "VERIFYING",
+      "DEFERRED",
+      "REJECTED"
+    ],
+    "NEEDS_EXPERIENCE": [
+      "RESEARCHING",
+      "DEFERRED",
+      "REJECTED"
+    ],
+    "NEEDS_REVIEW": [
+      "EDITING",
+      "RESEARCHING",
+      "DEFERRED",
+      "REJECTED"
+    ],
+    "REVALIDATION_REQUIRED": [
+      "RESEARCHING",
+      "VERIFYING",
+      "DEFERRED",
+      "REJECTED"
+    ],
+    "DEFERRED": [
+      "DISCOVERED",
+      "REJECTED"
+    ],
+    "REJECTED": []
+  },
+  "job_states": [
+    "QUEUED",
+    "RUNNING",
+    "WAITING",
+    "COMPLETED",
+    "FAILED",
+    "CANCELLED"
+  ],
+  "receipt_states": [
+    "USER_RECORDED",
+    "USER_CORRECTED",
+    "RETRACTED"
+  ],
+  "terminal_article_states": [
+    "REJECTED"
+  ],
+  "invariant": "HANDOFF_READY is not publicly posted; receipts are separate.",
+  "invariants": [
+    "articles.opportunity_id is required from DISCOVERED; brief_id may be null before BRIEF_READY",
+    "Production states require a brief from the same opportunity and blog",
+    "A server-stored hash-bound review binds exactly one immutable revision and context bundle",
+    "HANDOFF_READY is not publicly posted; receipts are separate"
+  ]
+}

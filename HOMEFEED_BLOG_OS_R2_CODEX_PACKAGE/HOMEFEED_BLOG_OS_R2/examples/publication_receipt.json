@@ -1,0 +1,12 @@
+{
+  "id": "6a6d7472-8a66-5ad5-b1b2-3921830195cc",
+  "tenant_id": "dbfb664f-c890-5171-914a-23b67f3e0767",
+  "blog_id": "4662b729-4a37-5271-8147-9fe8e02e260b",
+  "article_revision_id": "86dab9fa-30c8-57fe-8274-a62c3cdd51d5",
+  "url": "https://example.invalid/not-a-real-post",
+  "posted_at": "2026-09-15T00:00:00Z",
+  "recorded_at": "2026-09-15T00:00:00Z",
+  "status": "USER_RECORDED",
+  "final_content_hash": null,
+  "user_note": "계약예제. 실제 게시한 기록이 아니다."
+}

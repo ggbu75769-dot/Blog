@@ -1,0 +1,47 @@
+[
+  {
+    "id": "50d6ce94-07f0-544d-80b6-7a0de1413069",
+    "tenant_id": "dbfb664f-c890-5171-914a-23b67f3e0767",
+    "blog_id": "4662b729-4a37-5271-8147-9fe8e02e260b",
+    "statement": "Datalab 통합 검색어 트렌드 API는 구간별 최대값을 100으로 둔 상대 비율을 제공한다.",
+    "kind": "fact",
+    "evidence_ids": [
+      "7487474d-c6de-5b10-9790-dc68a71f4e4e"
+    ],
+    "author_record_id": null,
+    "support_status": "SUPPORTED",
+    "scope_notes": "NAVER 공식 API 문서의 데이터 정의를 설명한다. UI 전반이나 분단위 검색량을 주장하지 않는다.",
+    "verified_at": "2026-09-15T00:00:00Z",
+    "valid_until": "2026-09-16T00:00:00Z"
+  },
+  {
+    "id": "424f9a96-deb7-526f-9bfb-302856b8670d",
+    "tenant_id": "dbfb664f-c890-5171-914a-23b67f3e0767",
+    "blog_id": "4662b729-4a37-5271-8147-9fe8e02e260b",
+    "statement": "API의 시간 구간 단위는 일·주·월이다.",
+    "kind": "fact",
+    "evidence_ids": [
+      "7487474d-c6de-5b10-9790-dc68a71f4e4e"
+    ],
+    "author_record_id": null,
+    "support_status": "SUPPORTED",
+    "scope_notes": "NAVER 공식 API 문서의 데이터 정의를 설명한다. UI 전반이나 분단위 검색량을 주장하지 않는다.",
+    "verified_at": "2026-09-15T00:00:00Z",
+    "valid_until": "2026-09-16T00:00:00Z"
+  },
+  {
+    "id": "c6e17213-13b7-5507-9197-73b2e6f2e3cd",
+    "tenant_id": "dbfb664f-c890-5171-914a-23b67f3e0767",
+    "blog_id": "4662b729-4a37-5271-8147-9fe8e02e260b",
+    "statement": "예시로 같은 요청 안에서 100과 50을 비교하더라도 100명과 50명이라는 뜻은 아니다.",
+    "kind": "analysis",
+    "evidence_ids": [
+      "7487474d-c6de-5b10-9790-dc68a71f4e4e"
+    ],
+    "author_record_id": null,
+    "support_status": "SUPPORTED",
+    "scope_notes": "NAVER 공식 API 문서의 데이터 정의를 설명한다. UI 전반이나 분단위 검색량을 주장하지 않는다.",
+    "verified_at": "2026-09-15T00:00:00Z",
+    "valid_until": "2026-09-16T00:00:00Z"
+  }
+]

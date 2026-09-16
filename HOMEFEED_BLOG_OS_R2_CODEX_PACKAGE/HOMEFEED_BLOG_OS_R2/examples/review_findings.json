@@ -1,0 +1,11 @@
+{
+  "revision_id": "86dab9fa-30c8-57fe-8274-a62c3cdd51d5",
+  "input_content_hash": "28bfbffc1487bf8bd399118bcf6b3bf006af25316f444e786ef1313bd8ec9a41",
+  "findings": [],
+  "verdict_recommendation": "hold",
+  "unverified_scope": [
+    "실제 급상승 수요 미확인",
+    "인간 블라인드 평가 미실행",
+    "실제 에디터 전송 미실행"
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "executed_at": "2026-09-15T13:29:45.713166+00:00",
+  "zip_integrity": "PASS",
+  "fresh_extraction_runs": [
+    {
+      "command": "python tools/verify_checksums.py",
+      "exit_code": 0,
+      "stdout": "Package files verified: 121; errors: 0",
+      "working_directory": "outside package; extraction path contains spaces"
+    },
+    {
+      "command": "python tools/validate_bundle.py",
+      "exit_code": 0,
+      "stdout": "PASS 73 / FAIL 0 / planned product AT 140 NOT_RUN",
+      "working_directory": "outside package; extraction path contains spaces"
+    },
+    {
+      "command": "python tools/run_r1_checks.py",
+      "exit_code": 0,
+      "stdout": "R1 PASS 112 / FAIL 0",
+      "working_directory": "outside package; extraction path contains spaces"
+    }
+  ],
+  "checked_shipped_files_before_packaging_report": 122,
+  "note": "Checksum verified before rerunning tests, because generated reports change on rerun. Final archive adds this report then regenerates checksums."
+}

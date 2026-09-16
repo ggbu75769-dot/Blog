@@ -1,0 +1,630 @@
+{
+  "release": "4.1.0-r1",
+  "executed_at": "2026-09-15T13:05:07.827574+00:00",
+  "passed": 101,
+  "failed": 1,
+  "checks": [
+    {
+      "name": "B01 missing metric is not zero",
+      "layer": "OFFLINE_REFERENCE",
+      "status": "PASS",
+      "detail": "SCHEMA_MetricRow: 0 is not of type 'null'"
+    },
+    {
+      "name": "B02 unknown article type rejected",
+      "layer": "OFFLINE_REFERENCE",
+      "status": "PASS",
+      "detail": "SCHEMA_ArticleIR: 'anything_at_all' is not one of ['change_explainer', 'comparison', 'interpretation', 'how_to', 'experience', 'decision_guide']"
+    },
+    {
+      "name": "B03 discriminator binds payload",
+      "layer": "OFFLINE_REFERENCE",
+      "status": "PASS",
+      "detail": "SCHEMA_AgentEnvelope: Additional properties are not allowed ('article_type', 'blocks', 'brief_id', 'category_suggestion', 'created_at', 'id', 'is_reference_example', 'profile_version', 'public_citations"
+    },
+    {
+      "name": "B04 evidence reversed interval rejected",
+      "layer": "OFFLINE_REFERENCE",
+      "status": "PASS",
+      "detail": "EVIDENCE_INTERVAL"
+    },
+    {
+      "name": "B05 traversal filename rejected",
+      "layer": "OFFLINE_REFERENCE",
+      "status": "PASS",
+      "detail": "SCHEMA_ExportManifest: '../outside.txt' does not match '^(?!/)(?!.*\\\\\\\\)(?!.*:)(?!.*(?:^|/)\\\\.\\\\.?(?:/|$))(?!.*//)[^\\\\u0000-\\\\u001F]+$'"
+    },
+    {
+      "name": "B06 executable citation URL rejected",
+      "layer": "OFFLINE_REFERENCE",
+      "status": "PASS",
+      "detail": "SCHEMA_PublicCitation: 'javascript:alert(1)' does not match '^https?://'"
+    },
+    {
+      "name": "B07 unsupported first-person record rejected",
+      "layer": "OFFLINE_REFERENCE",
+      "status": "PASS",
+      "detail": "SCHEMA_Claim: None is not of type 'string'"
+    },
+    {
+      "name": "B08 reversed observation interval rejected",
+      "layer": "OFFLINE_REFERENCE",
+      "status": "PASS",
+      "detail": "OBS_INTERVAL"
+    },
+    {
+      "name": "Writer cannot forge gate field",
+      "layer": "OFFLINE_REFERENCE",
+      "status": "PASS",
+      "detail": "SCHEMA_ArticleIR: Additional properties are not allowed ('gate_report' was unexpected)"
+    },
+    {
+      "name": "Produced response cannot be null",
+      "layer": "OFFLINE_REFERENCE",
+      "status": "PASS",
+      "detail": "SCHEMA_AgentEnvelope: None should not be valid under {'type': 'null'}"
+    },
+    {
+      "name": "Correct discriminator accepted",
+      "layer": "OFFLINE_REFERENCE",
+      "status": "PASS",
+      "detail": "OK"
+    },
+    {
+      "name": "Blog assignment cannot be null",
+      "layer": "OFFLINE_REFERENCE",
+      "status": "PASS",
+      "detail": "SCHEMA_RoutingDecision: None is not of type 'string'"
+    },
+    {
+      "name": "PASS cannot contain critical finding",
+      "layer": "OFFLINE_REFERENCE",
+      "status": "PASS",
+      "detail": "SCHEMA_GateReport: 'minor' was expected"
+    },
+    {
+      "name": "Required human review cannot be missing",
+      "layer": "OFFLINE_REFERENCE",
+      "status": "PASS",
+      "detail": "SCHEMA_GateReport: None is not of type 'string'"
+    },
+    {
+      "name": "Title source hostname credentials rejected",
+      "layer": "OFFLINE_REFERENCE",
+      "status": "PASS",
+      "detail": "URL_INVALID"
+    },
+    {
+      "name": "Duplicate block id rejected",
+      "layer": "OFFLINE_REFERENCE",
+      "status": "PASS",
+      "detail": "BLOCK_DUPLICATE"
+    },
+    {
+      "name": "Orphan citation rejected",
+      "layer": "OFFLINE_REFERENCE",
+      "status": "PASS",
+      "detail": "CITATION_ORPHAN"
+    },
+    {
+      "name": "Visual required cannot be text-only",
+      "layer": "OFFLINE_REFERENCE",
+      "status": "PASS",
+      "detail": "VISUAL_TEXT_CONTRADICTION"
+    },
+    {
+      "name": "Unknown canonical card id rejected",
+      "layer": "OFFLINE_REFERENCE",
+      "status": "PASS",
+      "detail": "CARD_RECOMMENDATION_MISSING"
+    },
+    {
+      "name": "Source scope cannot be empty",
+      "layer": "OFFLINE_REFERENCE",
+      "status": "PASS",
+      "detail": "SCHEMA_SourceRegistration: [] should be non-empty"
+    },
+    {
+      "name": "Unupdated null metric is accepted",
+      "layer": "OFFLINE_REFERENCE",
+      "status": "PASS",
+      "detail": "OK"
+    },
+    {
+      "name": "Observed actual zero is accepted",
+      "layer": "OFFLINE_REFERENCE",
+      "status": "PASS",
+      "detail": "OK"
+    },
+    {
+      "name": "Negative pageviews rejected",
+      "layer": "OFFLINE_REFERENCE",
+      "status": "PASS",
+      "detail": "SCHEMA_MetricRow: -1 is not of type 'null'"
+    },
+    {
+      "name": "Percent is not normalized ratio",
+      "layer": "OFFLINE_REFERENCE",
+      "status": "PASS",
+      "detail": "SCHEMA_MetricRow: 30 is not of type 'null'"
+    },
+    {
+      "name": "Metric period cannot be reversed",
+      "layer": "OFFLINE_REFERENCE",
+      "status": "PASS",
+      "detail": "METRIC_INTERVAL"
+    },
+    {
+      "name": "Valid reference bundle passes only as REPLAY",
+      "layer": "OFFLINE_REFERENCE",
+      "status": "PASS",
+      "detail": "OK"
+    },
+    {
+      "name": "Replay cannot be labelled LIVE",
+      "layer": "OFFLINE_REFERENCE",
+      "status": "PASS",
+      "detail": "OK"
+    },
+    {
+      "name": "Expired at exact boundary",
+      "layer": "OFFLINE_REFERENCE",
+      "status": "PASS",
+      "detail": "STALE_AT_HANDOFF"
+    },
+    {
+      "name": "Article wording changed after review",
+      "layer": "OFFLINE_REFERENCE",
+      "status": "PASS",
+      "detail": "CONTENT_CHANGED"
+    },
+    {
+      "name": "Evidence summary changed after review",
+      "layer": "OFFLINE_REFERENCE",
+      "status": "PASS",
+      "detail": "REVIEW_CONTEXT_CHANGED"
+    },
+    {
+      "name": "Source permission change invalidates review",
+      "layer": "OFFLINE_REFERENCE",
+      "status": "PASS",
+      "detail": "REVIEW_CONTEXT_CHANGED"
+    },
+    {
+      "name": "New review still cannot allow denied transfer",
+      "layer": "OFFLINE_REFERENCE",
+      "status": "PASS",
+      "detail": "MODEL_TRANSFER_NOT_ALLOWED"
+    },
+    {
+      "name": "Other blog evidence denied",
+      "layer": "OFFLINE_REFERENCE",
+      "status": "PASS",
+      "detail": "EVIDENCE_SCOPE"
+    },
+    {
+      "name": "Other blog raw snapshot denied",
+      "layer": "OFFLINE_REFERENCE",
+      "status": "PASS",
+      "detail": "SNAPSHOT_SCOPE"
+    },
+    {
+      "name": "Other blog source registration denied",
+      "layer": "OFFLINE_REFERENCE",
+      "status": "PASS",
+      "detail": "SOURCE_SCOPE"
+    },
+    {
+      "name": "Other tenant evidence denied",
+      "layer": "OFFLINE_REFERENCE",
+      "status": "PASS",
+      "detail": "RESOURCE_TENANT"
+    },
+    {
+      "name": "Wrong revision report denied",
+      "layer": "OFFLINE_REFERENCE",
+      "status": "PASS",
+      "detail": "GATE_SCOPE"
+    },
+    {
+      "name": "Wrong blog profile denied",
+      "layer": "OFFLINE_REFERENCE",
+      "status": "PASS",
+      "detail": "PROFILE_SCOPE"
+    },
+    {
+      "name": "Profile version changed denied",
+      "layer": "OFFLINE_REFERENCE",
+      "status": "PASS",
+      "detail": "PROFILE_VERSION"
+    },
+    {
+      "name": "Brief from another opportunity denied",
+      "layer": "OFFLINE_REFERENCE",
+      "status": "PASS",
+      "detail": "OPPORTUNITY_SCOPE"
+    },
+    {
+      "name": "Orphan factual claim denied",
+      "layer": "OFFLINE_REFERENCE",
+      "status": "PASS",
+      "detail": "CLAIM_ORPHAN"
+    },
+    {
+      "name": "Conflict not treated as supported",
+      "layer": "OFFLINE_REFERENCE",
+      "status": "PASS",
+      "detail": "CLAIM_UNSUPPORTED"
+    },
+    {
+      "name": "Unavailable source not silently substituted",
+      "layer": "OFFLINE_REFERENCE",
+      "status": "PASS",
+      "detail": "SOURCE_UNAVAILABLE"
+    },
+    {
+      "name": "Future review cannot grant readiness",
+      "layer": "OFFLINE_REFERENCE",
+      "status": "PASS",
+      "detail": "REVIEW_IN_FUTURE"
+    },
+    {
+      "name": "Paused blog cannot keep producing",
+      "layer": "OFFLINE_REFERENCE",
+      "status": "PASS",
+      "detail": "BLOG_NOT_ACTIVE"
+    },
+    {
+      "name": "Expired source permission blocks download",
+      "layer": "OFFLINE_REFERENCE",
+      "status": "PASS",
+      "detail": "STALE_AT_HANDOFF"
+    },
+    {
+      "name": "Python/JS korean_nfc",
+      "layer": "CROSS_LANGUAGE_EXECUTED",
+      "status": "PASS",
+      "detail": "585dd9df9133e901a8ddf85263dbe3ec8f89d18d0243caa26ca9c4475f2f8e2c"
+    },
+    {
+      "name": "Python/JS integer_number",
+      "layer": "CROSS_LANGUAGE_EXECUTED",
+      "status": "PASS",
+      "detail": "1bcb227971bb71d12290c66996f6e3098c5af47f868d01ced1e09714bbbe965b"
+    },
+    {
+      "name": "Python/JS unicode_codepoint_keys",
+      "layer": "CROSS_LANGUAGE_EXECUTED",
+      "status": "PASS",
+      "detail": "245bb2fccd0620e9ae90ae77dc076029242092ddaede693485e457fb4776d1b4"
+    },
+    {
+      "name": "Python/JS escapes",
+      "layer": "CROSS_LANGUAGE_EXECUTED",
+      "status": "PASS",
+      "detail": "94fbc6d9e26a60c0e08e4a350a526fbf44d6062ec0113538a476a51afd605062"
+    },
+    {
+      "name": "Python/JS nested",
+      "layer": "CROSS_LANGUAGE_EXECUTED",
+      "status": "PASS",
+      "detail": "00d1122c3884ded6f7e8202481a70a1d1a2928c37ba30ebcd14d2f3aff264392"
+    },
+    {
+      "name": "Python/JS max_integer",
+      "layer": "CROSS_LANGUAGE_EXECUTED",
+      "status": "PASS",
+      "detail": "e1da48c6a6089f06ecb4e0a2259e658e3786b2420f52baccdf929ec6460d7b41"
+    },
+    {
+      "name": "NFC key collision rejected",
+      "layer": "OFFLINE_REFERENCE",
+      "status": "PASS",
+      "detail": "CANON_NORMALIZED_KEY_COLLISION"
+    },
+    {
+      "name": "Nonfinite value rejected",
+      "layer": "OFFLINE_REFERENCE",
+      "status": "PASS",
+      "detail": "CANON_NOT_SAFE_INTEGER"
+    },
+    {
+      "name": "Unsafe integer rejected",
+      "layer": "OFFLINE_REFERENCE",
+      "status": "PASS",
+      "detail": "CANON_NOT_SAFE_INTEGER"
+    },
+    {
+      "name": "Fraction requires decimal string",
+      "layer": "OFFLINE_REFERENCE",
+      "status": "PASS",
+      "detail": "CANON_NOT_SAFE_INTEGER"
+    },
+    {
+      "name": "Unpaired surrogate rejected",
+      "layer": "OFFLINE_REFERENCE",
+      "status": "PASS",
+      "detail": "CANON_INVALID_UNICODE"
+    },
+    {
+      "name": "Duplicate raw JSON key rejected",
+      "layer": "OFFLINE_REFERENCE",
+      "status": "PASS",
+      "detail": "JSON_DUPLICATE_KEY"
+    },
+    {
+      "name": "JSON infinity rejected",
+      "layer": "OFFLINE_REFERENCE",
+      "status": "PASS",
+      "detail": "JSON_NONFINITE"
+    },
+    {
+      "name": "Fetch guard redirect to localhost",
+      "layer": "OFFLINE_REFERENCE",
+      "status": "PASS",
+      "detail": "URL_NONPUBLIC_IP"
+    },
+    {
+      "name": "Fetch guard metadata IP",
+      "layer": "OFFLINE_REFERENCE",
+      "status": "PASS",
+      "detail": "URL_NONPUBLIC_IP"
+    },
+    {
+      "name": "Fetch guard host suffix attack",
+      "layer": "OFFLINE_REFERENCE",
+      "status": "PASS",
+      "detail": "HOST_NOT_ALLOWED"
+    },
+    {
+      "name": "Fetch guard mixed DNS answers",
+      "layer": "OFFLINE_REFERENCE",
+      "status": "PASS",
+      "detail": "DNS_NONPUBLIC"
+    },
+    {
+      "name": "Fetch guard IPv6 loopback",
+      "layer": "OFFLINE_REFERENCE",
+      "status": "PASS",
+      "detail": "URL_NONPUBLIC_IP"
+    },
+    {
+      "name": "Public allowlisted fetch plan accepted",
+      "layer": "OFFLINE_REFERENCE",
+      "status": "PASS",
+      "detail": "OK"
+    },
+    {
+      "name": "Portable path rejects '../a'",
+      "layer": "OFFLINE_REFERENCE",
+      "status": "PASS",
+      "detail": "FILE_PATH_TRAVERSAL"
+    },
+    {
+      "name": "Portable path rejects '/tmp/a'",
+      "layer": "OFFLINE_REFERENCE",
+      "status": "PASS",
+      "detail": "FILE_PATH_UNSAFE"
+    },
+    {
+      "name": "Portable path rejects 'a\\\\b'",
+      "layer": "OFFLINE_REFERENCE",
+      "status": "PASS",
+      "detail": "FILE_PATH_UNSAFE"
+    },
+    {
+      "name": "Portable path rejects 'a//b'",
+      "layer": "OFFLINE_REFERENCE",
+      "status": "PASS",
+      "detail": "FILE_PATH_TRAVERSAL"
+    },
+    {
+      "name": "Portable path rejects 'CON.txt'",
+      "layer": "OFFLINE_REFERENCE",
+      "status": "PASS",
+      "detail": "FILE_PATH_WINDOWS_RESERVED"
+    },
+    {
+      "name": "Portable path rejects 'a/../b'",
+      "layer": "OFFLINE_REFERENCE",
+      "status": "PASS",
+      "detail": "FILE_PATH_TRAVERSAL"
+    },
+    {
+      "name": "Portable path rejects 'A:drive'",
+      "layer": "OFFLINE_REFERENCE",
+      "status": "PASS",
+      "detail": "FILE_PATH_UNSAFE"
+    },
+    {
+      "name": "Portable path rejects 'name.'",
+      "layer": "OFFLINE_REFERENCE",
+      "status": "PASS",
+      "detail": "FILE_PATH_WINDOWS_ALIAS"
+    },
+    {
+      "name": "Portable path rejects 'a\\x00b'",
+      "layer": "OFFLINE_REFERENCE",
+      "status": "PASS",
+      "detail": "FILE_PATH_CONTROL"
+    },
+    {
+      "name": "Reference render conservation and escaping",
+      "layer": "LOCAL_FILE_EXECUTED",
+      "status": "PASS",
+      "detail": "IR → escaped HTML/TXT → on-disk digest check; not editor UAT"
+    },
+    {
+      "name": "Image without resolved file mapping rejected",
+      "layer": "OFFLINE_REFERENCE",
+      "status": "PASS",
+      "detail": "RENDER_ASSET_MISSING"
+    },
+    {
+      "name": "Unequal table columns rejected",
+      "layer": "OFFLINE_REFERENCE",
+      "status": "PASS",
+      "detail": "TABLE_WIDTH"
+    },
+    {
+      "name": "Post-render file corruption detected",
+      "layer": "LOCAL_FILE_EXECUTED",
+      "status": "PASS",
+      "detail": "FILE_HASH"
+    },
+    {
+      "name": "Symlink file is not exported",
+      "layer": "LOCAL_FILE_EXECUTED",
+      "status": "PASS",
+      "detail": "FILE_SYMLINK"
+    },
+    {
+      "name": "Rounded velocity remains an interval",
+      "layer": "OFFLINE_REFERENCE",
+      "status": "PASS",
+      "detail": "OK"
+    },
+    {
+      "name": "Different observer sessions not a trend",
+      "layer": "OFFLINE_REFERENCE",
+      "status": "PASS",
+      "detail": "OK"
+    },
+    {
+      "name": "Counter reset not negative momentum",
+      "layer": "OFFLINE_REFERENCE",
+      "status": "PASS",
+      "detail": "OK"
+    },
+    {
+      "name": "Unknown observations not zero momentum",
+      "layer": "OFFLINE_REFERENCE",
+      "status": "PASS",
+      "detail": "OK"
+    },
+    {
+      "name": "Planner ready candidate",
+      "layer": "OFFLINE_REFERENCE",
+      "status": "PASS",
+      "detail": "OK"
+    },
+    {
+      "name": "Planner no demand evidence",
+      "layer": "OFFLINE_REFERENCE",
+      "status": "PASS",
+      "detail": "OK"
+    },
+    {
+      "name": "Planner scheduled not happened",
+      "layer": "OFFLINE_REFERENCE",
+      "status": "PASS",
+      "detail": "OK"
+    },
+    {
+      "name": "Planner manual backlog full",
+      "layer": "OFFLINE_REFERENCE",
+      "status": "PASS",
+      "detail": "OK"
+    },
+    {
+      "name": "Planner no paid budget",
+      "layer": "OFFLINE_REFERENCE",
+      "status": "PASS",
+      "detail": "OK"
+    },
+    {
+      "name": "Planner user cannot post in time",
+      "layer": "OFFLINE_REFERENCE",
+      "status": "PASS",
+      "detail": "OK"
+    },
+    {
+      "name": "Planner global repair budget exhausted",
+      "layer": "OFFLINE_REFERENCE",
+      "status": "PASS",
+      "detail": "OK"
+    },
+    {
+      "name": "API/schema parity and pre-brief create",
+      "layer": "STATIC_CONTRACT",
+      "status": "PASS",
+      "detail": "30 embedded domain types identical; no public publisher"
+    },
+    {
+      "name": "Composite FK target declarations",
+      "layer": "STATIC_DDL_ONLY",
+      "status": "FAIL",
+      "detail": "AssertionError: missing table members"
+    },
+    {
+      "name": "B11 parent same article",
+      "layer": "STATIC_DDL_ONLY",
+      "status": "PASS",
+      "detail": "OK"
+    },
+    {
+      "name": "B12 export exact article and revision",
+      "layer": "STATIC_DDL_ONLY",
+      "status": "PASS",
+      "detail": "OK"
+    },
+    {
+      "name": "B13 export exact reviewed revision",
+      "layer": "STATIC_DDL_ONLY",
+      "status": "PASS",
+      "detail": "OK"
+    },
+    {
+      "name": "B15 opportunity before brief",
+      "layer": "STATIC_DDL_ONLY",
+      "status": "PASS",
+      "detail": "OK"
+    },
+    {
+      "name": "B16 synchronous idempotency",
+      "layer": "STATIC_DDL_ONLY",
+      "status": "PASS",
+      "detail": "OK"
+    },
+    {
+      "name": "B17 one current metric",
+      "layer": "STATIC_DDL_ONLY",
+      "status": "PASS",
+      "detail": "OK"
+    },
+    {
+      "name": "B09/B10 scoped RLS sources",
+      "layer": "STATIC_DDL_ONLY",
+      "status": "PASS",
+      "detail": "OK"
+    },
+    {
+      "name": "B09/B10 scoped RLS source_snapshots",
+      "layer": "STATIC_DDL_ONLY",
+      "status": "PASS",
+      "detail": "OK"
+    },
+    {
+      "name": "B09/B10 scoped RLS evidence_items",
+      "layer": "STATIC_DDL_ONLY",
+      "status": "PASS",
+      "detail": "OK"
+    },
+    {
+      "name": "RLS enabled for synchronous idempotency",
+      "layer": "STATIC_DDL_ONLY",
+      "status": "PASS",
+      "detail": "OK"
+    }
+  ],
+  "scope": "offline reference rules, actual Python/Node bytes, local render/files, static contract/DDL only",
+  "not_run": [
+    "PostgreSQL parse/migrations/RLS/transactions/concurrency",
+    "production HTTP auth and signed download integration",
+    "live source/model full pipeline",
+    "semantic factuality and image-rights human review",
+    "human naturalness and ready-to-post time study",
+    "Naver/Tistory editor UAT",
+    "homefeed and monthly-one-million efficacy"
+  ]
+}

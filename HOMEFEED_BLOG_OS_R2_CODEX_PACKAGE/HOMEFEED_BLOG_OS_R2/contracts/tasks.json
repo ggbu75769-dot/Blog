@@ -1,0 +1,1669 @@
+{
+  "version": "4.1.0-r1",
+  "tasks": [
+    {
+      "id": "T001",
+      "title": "저장소 기준선과 범위 동결",
+      "milestone": "M0",
+      "depends_on": [],
+      "module": "docs/baseline",
+      "input": "기존 저장소·최종 문서",
+      "implementation": "branch/status/변경파일과 기존 AGENTS를 확인하고 스택·경로·미입력을 분리해 기록",
+      "outputs": "REPO_BASELINE와 ADR",
+      "positive_acceptance": "사용자 변경이 보존되고 자동게시 제외가 확정됨",
+      "negative_acceptance": "기존 변경을 덮어쓰거나 새 게시기능을 포함하면 실패",
+      "requirements": [
+        "REQ-001"
+      ],
+      "acceptance_ids": [
+        "AT-001",
+        "AT-002"
+      ],
+      "spec": "docs/00_SCOPE_AND_DECISIONS.md",
+      "status": "NOT_STARTED",
+      "test_path": "tests/contract_or_unit/test_t001.py",
+      "risk": "계약·권한·결과 상태를 같은 PR에서 점검한다.",
+      "rollback": "새 기능 flag를 끄고 이전 코드/정책 버전으로 복귀한다. 원고·비용·감사 이력은 삭제하지 않는다."
+    },
+    {
+      "id": "T002",
+      "title": "계약 검증 도구 연결",
+      "milestone": "M0",
+      "depends_on": [
+        "T001"
+      ],
+      "module": "packages/domain",
+      "input": "schemas·states·OpenAPI·tasks",
+      "implementation": "스키마검사·참조해결·추적행렬·버전검사를 CI에 연결",
+      "outputs": "contract test suite",
+      "positive_acceptance": "정상 fixtures와 문서 참조가 검증됨",
+      "negative_acceptance": "미정의 상태·없는 AT·깨진 ref를 거부",
+      "requirements": [
+        "REQ-002"
+      ],
+      "acceptance_ids": [
+        "AT-003",
+        "AT-004"
+      ],
+      "spec": "docs/11_DATA_SPEC.md",
+      "status": "NOT_STARTED",
+      "test_path": "tests/contract_or_unit/test_t002.py",
+      "risk": "계약·권한·결과 상태를 같은 PR에서 점검한다.",
+      "rollback": "새 기능 flag를 끄고 이전 코드/정책 버전으로 복귀한다. 원고·비용·감사 이력은 삭제하지 않는다."
+    },
+    {
+      "id": "T003",
+      "title": "공급자·운영 입력 진단",
+      "milestone": "M0",
+      "depends_on": [
+        "T001"
+      ],
+      "module": "packages/adapters/capabilities",
+      "input": "source registry·키의 존재여부",
+      "implementation": "configured와 permitted와 actual_probe를 나누고 비용없는 사전검사부터 실행",
+      "outputs": "CAPABILITY_MATRIX",
+      "positive_acceptance": "미연결은 NOT_CONFIGURED로 나옴",
+      "negative_acceptance": "키 없이 LIVE 수집 성공을 표시하면 실패",
+      "requirements": [
+        "REQ-003"
+      ],
+      "acceptance_ids": [
+        "AT-005",
+        "AT-006"
+      ],
+      "spec": "docs/20_SETUP_AND_CAPABILITY_MATRIX.md",
+      "status": "NOT_STARTED",
+      "test_path": "tests/contract_or_unit/test_t003.py",
+      "risk": "계약·권한·결과 상태를 같은 PR에서 점검한다.",
+      "rollback": "새 기능 flag를 끄고 이전 코드/정책 버전으로 복귀한다. 원고·비용·감사 이력은 삭제하지 않는다."
+    },
+    {
+      "id": "T004",
+      "title": "DB·저장소 개발환경",
+      "milestone": "M1",
+      "depends_on": [
+        "T002",
+        "T051",
+        "T052"
+      ],
+      "module": "infra/database",
+      "input": "참조DDL·스택 ADR",
+      "implementation": "격리된 DB와 object store를 구성하고 migration apply/restore 시험",
+      "outputs": "migration·local runbook",
+      "positive_acceptance": "빈 DB에서 원고·작업 데이터를 저장함",
+      "negative_acceptance": "운영 DB에 무검증 참조DDL 실행을 거부",
+      "requirements": [
+        "REQ-004"
+      ],
+      "acceptance_ids": [
+        "AT-007",
+        "AT-008"
+      ],
+      "spec": "docs/10_ARCHITECTURE.md",
+      "status": "NOT_STARTED",
+      "test_path": "tests/integration/test_t004.py",
+      "risk": "계약·권한·결과 상태를 같은 PR에서 점검한다.",
+      "rollback": "새 기능 flag를 끄고 이전 코드/정책 버전으로 복귀한다. 원고·비용·감사 이력은 삭제하지 않는다."
+    },
+    {
+      "id": "T005",
+      "title": "인증·tenant/blog 격리",
+      "milestone": "M1",
+      "depends_on": [
+        "T004"
+      ],
+      "module": "apps/api/auth",
+      "input": "권한표·tenant context",
+      "implementation": "앱 role·RLS·복합FK·파일/캐시 scope를 구현",
+      "outputs": "scope middleware·policies",
+      "positive_acceptance": "자기 블로그 데이터만 조회됨",
+      "negative_acceptance": "다른 tenant ID와 개인기록 접근은404/403",
+      "requirements": [
+        "REQ-005"
+      ],
+      "acceptance_ids": [
+        "AT-009",
+        "AT-010"
+      ],
+      "spec": "docs/15_SECURITY_PERMISSIONS.md",
+      "status": "NOT_STARTED",
+      "test_path": "tests/integration/test_t005.py",
+      "risk": "계약·권한·결과 상태를 같은 PR에서 점검한다.",
+      "rollback": "새 기능 flag를 끄고 이전 코드/정책 버전으로 복귀한다. 원고·비용·감사 이력은 삭제하지 않는다."
+    },
+    {
+      "id": "T006",
+      "title": "블로그·문체 버전 관리",
+      "milestone": "M1",
+      "depends_on": [
+        "T005"
+      ],
+      "module": "packages/profiles",
+      "input": "승인 주제·문체 샘플",
+      "implementation": "초기 설정·프로필버전·활성/중지·core/adjacent/excluded 관리",
+      "outputs": "BlogProfile API/UI",
+      "positive_acceptance": "두 프로필의 편집 기준이 다르게 적용됨",
+      "negative_acceptance": "프로필 변경이 기존 원고를 무단 덮어쓰면 실패",
+      "requirements": [
+        "REQ-006"
+      ],
+      "acceptance_ids": [
+        "AT-011",
+        "AT-012"
+      ],
+      "spec": "docs/03_MULTIBLOG_EDITORIAL_STRATEGY.md",
+      "status": "NOT_STARTED",
+      "test_path": "tests/contract_or_unit/test_t006.py",
+      "risk": "계약·권한·결과 상태를 같은 PR에서 점검한다.",
+      "rollback": "새 기능 flag를 끄고 이전 코드/정책 버전으로 복귀한다. 원고·비용·감사 이력은 삭제하지 않는다."
+    },
+    {
+      "id": "T007",
+      "title": "실제 사실·경험 기억",
+      "milestone": "M1",
+      "depends_on": [
+        "T006"
+      ],
+      "module": "packages/evidence/author",
+      "input": "사용자 승인자료·경험",
+      "implementation": "경험의 대상·기간·blog scope·증빙과 문체예문을 분리",
+      "outputs": "AuthorRecord store",
+      "positive_acceptance": "승인한 실제 경험만 맞는 글에서 사용",
+      "negative_acceptance": "예문 속 여행을 실제 경험으로 등록하면 실패",
+      "requirements": [
+        "REQ-007"
+      ],
+      "acceptance_ids": [
+        "AT-013",
+        "AT-014"
+      ],
+      "spec": "docs/05_RESEARCH_AND_EVIDENCE_SPEC.md",
+      "status": "NOT_STARTED",
+      "test_path": "tests/contract_or_unit/test_t007.py",
+      "risk": "계약·권한·결과 상태를 같은 PR에서 점검한다.",
+      "rollback": "새 기능 flag를 끄고 이전 코드/정책 버전으로 복귀한다. 원고·비용·감사 이력은 삭제하지 않는다."
+    },
+    {
+      "id": "T008",
+      "title": "업로드·자산 권리",
+      "milestone": "M1",
+      "depends_on": [
+        "T005"
+      ],
+      "module": "packages/assets",
+      "input": "원본 파일·사용권",
+      "implementation": "quarantine·MIME/hash·scope·만료·caption을 구현",
+      "outputs": "Asset registry",
+      "positive_acceptance": "허가된 실파일만 READY",
+      "negative_acceptance": "MIME위장·누락파일·타블로그권리는 차단",
+      "requirements": [
+        "REQ-008"
+      ],
+      "acceptance_ids": [
+        "AT-015",
+        "AT-016"
+      ],
+      "spec": "docs/08_ASSETS_EXPORT_SPEC.md",
+      "status": "NOT_STARTED",
+      "test_path": "tests/contract_or_unit/test_t008.py",
+      "risk": "계약·권한·결과 상태를 같은 PR에서 점검한다.",
+      "rollback": "새 기능 flag를 끄고 이전 코드/정책 버전으로 복귀한다. 원고·비용·감사 이력은 삭제하지 않는다."
+    },
+    {
+      "id": "T009",
+      "title": "허용 원문 reader·SSRF 방어",
+      "milestone": "M2",
+      "depends_on": [
+        "T003",
+        "T005",
+        "T053"
+      ],
+      "module": "packages/adapters/web",
+      "input": "source permission·URL",
+      "implementation": "DNS/redirect/크기/시간제한·HTML정제·read_scope를 구현",
+      "outputs": "SourceSnapshot",
+      "positive_acceptance": "실제 읽은 구간과 hash 저장",
+      "negative_acceptance": "메타데이터IP·빈셸을 원문성공 처리하면 실패",
+      "requirements": [
+        "REQ-009"
+      ],
+      "acceptance_ids": [
+        "AT-017",
+        "AT-018"
+      ],
+      "spec": "docs/04_TREND_AND_HOMEFEED_SPEC.md",
+      "status": "NOT_STARTED",
+      "test_path": "tests/contract_or_unit/test_t009.py",
+      "risk": "계약·권한·결과 상태를 같은 PR에서 점검한다.",
+      "rollback": "새 기능 flag를 끄고 이전 코드/정책 버전으로 복귀한다. 원고·비용·감사 이력은 삭제하지 않는다."
+    },
+    {
+      "id": "T010",
+      "title": "Naver 검색 어댑터",
+      "milestone": "M2",
+      "depends_on": [
+        "T009"
+      ],
+      "module": "packages/adapters/naver_search",
+      "input": "앱자격·query·sort",
+      "implementation": "공식요청 validation·결과정제·쿼터·snapshot을 구현",
+      "outputs": "SearchObservation",
+      "positive_acceptance": "display/start/sort와 실제결과 저장",
+      "negative_acceptance": "total을 PV로 쓰거나 무한429재시도하면 실패",
+      "requirements": [
+        "REQ-010"
+      ],
+      "acceptance_ids": [
+        "AT-019",
+        "AT-020"
+      ],
+      "spec": "docs/04_TREND_AND_HOMEFEED_SPEC.md",
+      "status": "NOT_STARTED",
+      "test_path": "tests/contract_or_unit/test_t010.py",
+      "risk": "계약·권한·결과 상태를 같은 PR에서 점검한다.",
+      "rollback": "새 기능 flag를 끄고 이전 코드/정책 버전으로 복귀한다. 원고·비용·감사 이력은 삭제하지 않는다."
+    },
+    {
+      "id": "T011",
+      "title": "Datalab 어댑터",
+      "milestone": "M2",
+      "depends_on": [
+        "T009"
+      ],
+      "module": "packages/adapters/datalab",
+      "input": "keywordGroups·기간·필터",
+      "implementation": "요청fingerprint·date/week/month·ratio를 보존",
+      "outputs": "TrendObservation",
+      "positive_acceptance": "같은조건 상대추세만 비교",
+      "negative_acceptance": "다른요청 ratio병합·분단위 검색량 표시는 차단",
+      "requirements": [
+        "REQ-011"
+      ],
+      "acceptance_ids": [
+        "AT-021",
+        "AT-022"
+      ],
+      "spec": "docs/04_TREND_AND_HOMEFEED_SPEC.md",
+      "status": "NOT_STARTED",
+      "test_path": "tests/contract_or_unit/test_t011.py",
+      "risk": "계약·권한·결과 상태를 같은 PR에서 점검한다.",
+      "rollback": "새 기능 flag를 끄고 이전 코드/정책 버전으로 복귀한다. 원고·비용·감사 이력은 삭제하지 않는다."
+    },
+    {
+      "id": "T012",
+      "title": "선택형 유튜브·SNS 입력",
+      "milestone": "M2",
+      "depends_on": [
+        "T009"
+      ],
+      "module": "packages/adapters/social",
+      "input": "허가 provider 또는 import",
+      "implementation": "metadata/transcript/visual 범위를 분리하고 미연결을 표시",
+      "outputs": "SocialObservation",
+      "positive_acceptance": "자막자료는 자막분석 범위로 저장",
+      "negative_acceptance": "자막만으로 화면확인·유지율을 채우면 실패",
+      "requirements": [
+        "REQ-012"
+      ],
+      "acceptance_ids": [
+        "AT-023",
+        "AT-024"
+      ],
+      "spec": "docs/04_TREND_AND_HOMEFEED_SPEC.md",
+      "status": "NOT_STARTED",
+      "test_path": "tests/contract_or_unit/test_t012.py",
+      "risk": "계약·권한·결과 상태를 같은 PR에서 점검한다.",
+      "rollback": "새 기능 flag를 끄고 이전 코드/정책 버전으로 복귀한다. 원고·비용·감사 이력은 삭제하지 않는다."
+    },
+    {
+      "id": "T013",
+      "title": "홈피드 관측 import",
+      "milestone": "M2",
+      "depends_on": [
+        "T005"
+      ],
+      "module": "packages/observations",
+      "input": "surface/session/time/card 자료",
+      "implementation": "표면·개인화·세션·카드중복·반올림을 정규화",
+      "outputs": "HomefeedObservation",
+      "positive_acceptance": "실제 HOMEFEED 표본만 별도 집계",
+      "negative_acceptance": "검색결과나 일반모바일 ref를 홈판으로 변경 금지",
+      "requirements": [
+        "REQ-013"
+      ],
+      "acceptance_ids": [
+        "AT-025",
+        "AT-026"
+      ],
+      "spec": "docs/04_TREND_AND_HOMEFEED_SPEC.md",
+      "status": "NOT_STARTED",
+      "test_path": "tests/contract_or_unit/test_t013.py",
+      "risk": "계약·권한·결과 상태를 같은 PR에서 점검한다.",
+      "rollback": "새 기능 flag를 끄고 이전 코드/정책 버전으로 복귀한다. 원고·비용·감사 이력은 삭제하지 않는다."
+    },
+    {
+      "id": "T014",
+      "title": "사건 군집·원출처 계열",
+      "milestone": "M2",
+      "depends_on": [
+        "T010",
+        "T011",
+        "T012",
+        "T013"
+      ],
+      "module": "packages/events",
+      "input": "관측·원문메타",
+      "implementation": "occurred/published/seen 분리·독립원출처·동일사건 묶기",
+      "outputs": "EventCluster",
+      "positive_acceptance": "재인용5개가 같은 fact계열로 연결",
+      "negative_acceptance": "오래된사건 재게시를 신규사건으로 확정하면 실패",
+      "requirements": [
+        "REQ-014"
+      ],
+      "acceptance_ids": [
+        "AT-027",
+        "AT-028"
+      ],
+      "spec": "docs/04_TREND_AND_HOMEFEED_SPEC.md",
+      "status": "NOT_STARTED",
+      "test_path": "tests/contract_or_unit/test_t014.py",
+      "risk": "계약·권한·결과 상태를 같은 PR에서 점검한다.",
+      "rollback": "새 기능 flag를 끄고 이전 코드/정책 버전으로 복귀한다. 원고·비용·감사 이력은 삭제하지 않는다."
+    },
+    {
+      "id": "T015",
+      "title": "수요·편집 우선순위",
+      "milestone": "M2",
+      "depends_on": [
+        "T014"
+      ],
+      "module": "packages/opportunities/rank",
+      "input": "관측·가설가중치",
+      "implementation": "누락항0·coverage·표본한계·gate를 분리해 rank 계산",
+      "outputs": "Opportunity scorecard",
+      "positive_acceptance": "점수와 근거·누락이 같이 출력",
+      "negative_acceptance": "점수를 홈판확률로 표시하거나 누락 재정규화 금지",
+      "requirements": [
+        "REQ-015"
+      ],
+      "acceptance_ids": [
+        "AT-029",
+        "AT-030"
+      ],
+      "spec": "docs/04_TREND_AND_HOMEFEED_SPEC.md",
+      "status": "NOT_STARTED",
+      "test_path": "tests/contract_or_unit/test_t015.py",
+      "risk": "계약·권한·결과 상태를 같은 PR에서 점검한다.",
+      "rollback": "새 기능 flag를 끄고 이전 코드/정책 버전으로 복귀한다. 원고·비용·감사 이력은 삭제하지 않는다."
+    },
+    {
+      "id": "T016",
+      "title": "멀티블로그 배정·중복 예약",
+      "milestone": "M2",
+      "depends_on": [
+        "T006",
+        "T015"
+      ],
+      "module": "packages/opportunities/router",
+      "input": "질문·답·profile",
+      "implementation": "의미비교·scope·unique reservation을 transaction으로 구현",
+      "outputs": "AssignedOpportunity",
+      "positive_acceptance": "동시요청에도 동일기획1개 배정",
+      "negative_acceptance": "말투만바꾼 동일글 다중배정은 거부",
+      "requirements": [
+        "REQ-016"
+      ],
+      "acceptance_ids": [
+        "AT-031",
+        "AT-032"
+      ],
+      "spec": "docs/03_MULTIBLOG_EDITORIAL_STRATEGY.md",
+      "status": "NOT_STARTED",
+      "test_path": "tests/integration/test_t016.py",
+      "risk": "계약·권한·결과 상태를 같은 PR에서 점검한다.",
+      "rollback": "새 기능 flag를 끄고 이전 코드/정책 버전으로 복귀한다. 원고·비용·감사 이력은 삭제하지 않는다."
+    },
+    {
+      "id": "T017",
+      "title": "근거팩 조사 파이프라인",
+      "milestone": "M3",
+      "depends_on": [
+        "T009",
+        "T016",
+        "T021",
+        "T054"
+      ],
+      "module": "packages/research",
+      "input": "기획 질문·원문",
+      "implementation": "필요 claim·locator·독립근거·읽기범위·권한을 구성",
+      "outputs": "ResearchPack",
+      "positive_acceptance": "실제 근거가있는 주장만 SUPPORTED",
+      "negative_acceptance": "스니펫만으로 중요한 최신사실 검증완료 금지",
+      "requirements": [
+        "REQ-017"
+      ],
+      "acceptance_ids": [
+        "AT-033",
+        "AT-034"
+      ],
+      "spec": "docs/05_RESEARCH_AND_EVIDENCE_SPEC.md",
+      "status": "NOT_STARTED",
+      "test_path": "tests/contract_or_unit/test_t017.py",
+      "risk": "계약·권한·결과 상태를 같은 PR에서 점검한다.",
+      "rollback": "새 기능 flag를 끄고 이전 코드/정책 버전으로 복귀한다. 원고·비용·감사 이력은 삭제하지 않는다."
+    },
+    {
+      "id": "T018",
+      "title": "주장·상충·정정 연결",
+      "milestone": "M3",
+      "depends_on": [
+        "T017"
+      ],
+      "module": "packages/evidence/claims",
+      "input": "ResearchPack",
+      "implementation": "주장종류·scope·valid_until·conflict·영향원고 연결",
+      "outputs": "Claim graph",
+      "positive_acceptance": "상충·범위차이를 구분하고 보류",
+      "negative_acceptance": "모델다수결·최신날짜만으로 충돌해소 금지",
+      "requirements": [
+        "REQ-018"
+      ],
+      "acceptance_ids": [
+        "AT-035",
+        "AT-036"
+      ],
+      "spec": "docs/05_RESEARCH_AND_EVIDENCE_SPEC.md",
+      "status": "NOT_STARTED",
+      "test_path": "tests/contract_or_unit/test_t018.py",
+      "risk": "계약·권한·결과 상태를 같은 PR에서 점검한다.",
+      "rollback": "새 기능 flag를 끄고 이전 코드/정책 버전으로 복귀한다. 원고·비용·감사 이력은 삭제하지 않는다."
+    },
+    {
+      "id": "T019",
+      "title": "내용 기획·새 기여",
+      "milestone": "M3",
+      "depends_on": [
+        "T018",
+        "T056"
+      ],
+      "module": "packages/planning",
+      "input": "reader question·근거",
+      "implementation": "답·정보빈칸·논지·section목적·중단조건을 구조화",
+      "outputs": "ContentBrief",
+      "positive_acceptance": "기존글과 다른 비교/해석/절차가 지정됨",
+      "negative_acceptance": "키워드만 있고 새답이 없는 브리프 차단",
+      "requirements": [
+        "REQ-019"
+      ],
+      "acceptance_ids": [
+        "AT-037",
+        "AT-038"
+      ],
+      "spec": "docs/06_CONTENT_PLANNING_SPEC.md",
+      "status": "NOT_STARTED",
+      "test_path": "tests/contract_or_unit/test_t019.py",
+      "risk": "계약·권한·결과 상태를 같은 PR에서 점검한다.",
+      "rollback": "새 기능 flag를 끄고 이전 코드/정책 버전으로 복귀한다. 원고·비용·감사 이력은 삭제하지 않는다."
+    },
+    {
+      "id": "T020",
+      "title": "제목·이미지·첫문단 계획",
+      "milestone": "M3",
+      "depends_on": [
+        "T019"
+      ],
+      "module": "packages/planning/card",
+      "input": "최종답·근거·시각가능성",
+      "implementation": "제목8/이미지방향3/도입2를 만든 뒤 약속일치로 선별",
+      "outputs": "Card candidates",
+      "positive_acceptance": "제목의숫자와 비교가 본문답과 연결",
+      "negative_acceptance": "내용과무관한 부·몸무게·충격표현으로 후킹 금지",
+      "requirements": [
+        "REQ-020"
+      ],
+      "acceptance_ids": [
+        "AT-039",
+        "AT-040"
+      ],
+      "spec": "docs/06_CONTENT_PLANNING_SPEC.md",
+      "status": "NOT_STARTED",
+      "test_path": "tests/contract_or_unit/test_t020.py",
+      "risk": "계약·권한·결과 상태를 같은 PR에서 점검한다.",
+      "rollback": "새 기능 flag를 끄고 이전 코드/정책 버전으로 복귀한다. 원고·비용·감사 이력은 삭제하지 않는다."
+    },
+    {
+      "id": "T021",
+      "title": "모델 게이트웨이·계약",
+      "milestone": "M1",
+      "depends_on": [
+        "T003",
+        "T033",
+        "T034"
+      ],
+      "module": "packages/models",
+      "input": "model/key/pricing·schemas",
+      "implementation": "역할별입력·structured output·repair·토큰/비용·hash 기록",
+      "outputs": "ModelAdapter",
+      "positive_acceptance": "정상응답을 typed output으로 저장",
+      "negative_acceptance": "실패 JSON·미지원모델·예산없음은 fail closed",
+      "requirements": [
+        "REQ-021"
+      ],
+      "acceptance_ids": [
+        "AT-041",
+        "AT-042"
+      ],
+      "spec": "docs/10_ARCHITECTURE.md",
+      "status": "NOT_STARTED",
+      "test_path": "tests/contract_or_unit/test_t021.py",
+      "risk": "계약·권한·결과 상태를 같은 PR에서 점검한다.",
+      "rollback": "새 기능 flag를 끄고 이전 코드/정책 버전으로 복귀한다. 원고·비용·감사 이력은 삭제하지 않는다."
+    },
+    {
+      "id": "T022",
+      "title": "내용 중심 집필기",
+      "milestone": "M4",
+      "depends_on": [
+        "T019",
+        "T020",
+        "T021"
+      ],
+      "module": "packages/writing",
+      "input": "Brief·Evidence·Profile",
+      "implementation": "새사실 필요시 research request, claim별 논리초안 생성",
+      "outputs": "ArticleIR draft",
+      "positive_acceptance": "근거 범위 안에서 완결한 답 작성",
+      "negative_acceptance": "없는 1인칭·숫자·출처를 추가하면 실패",
+      "requirements": [
+        "REQ-022"
+      ],
+      "acceptance_ids": [
+        "AT-043",
+        "AT-044"
+      ],
+      "spec": "docs/07_WRITING_VOICE_SPEC.md",
+      "status": "NOT_STARTED",
+      "test_path": "tests/contract_or_unit/test_t022.py",
+      "risk": "계약·권한·결과 상태를 같은 PR에서 점검한다.",
+      "rollback": "새 기능 flag를 끄고 이전 코드/정책 버전으로 복귀한다. 원고·비용·감사 이력은 삭제하지 않는다."
+    },
+    {
+      "id": "T023",
+      "title": "반대 검토·논리 점검",
+      "milestone": "M4",
+      "depends_on": [
+        "T022"
+      ],
+      "module": "packages/review/critic",
+      "input": "초안·실제근거",
+      "implementation": "예외·인과비약·비교대상·상관·전문성오인 검사",
+      "outputs": "Critic findings",
+      "positive_acceptance": "조건다른비교와 과도단정을 발견",
+      "negative_acceptance": "작성자 자기점수만 신뢰하면 실패",
+      "requirements": [
+        "REQ-023"
+      ],
+      "acceptance_ids": [
+        "AT-045",
+        "AT-046"
+      ],
+      "spec": "docs/09_QA_EVALUATION_SPEC.md",
+      "status": "NOT_STARTED",
+      "test_path": "tests/contract_or_unit/test_t023.py",
+      "risk": "계약·권한·결과 상태를 같은 PR에서 점검한다.",
+      "rollback": "새 기능 flag를 끄고 이전 코드/정책 버전으로 복귀한다. 원고·비용·감사 이력은 삭제하지 않는다."
+    },
+    {
+      "id": "T024",
+      "title": "블로그별 문체 편집",
+      "milestone": "M4",
+      "depends_on": [
+        "T023",
+        "T007"
+      ],
+      "module": "packages/writing/voice",
+      "input": "검토초안·허가예문·profile",
+      "implementation": "추상반복·리듬·최근구조를 고치고 내용은 유지",
+      "outputs": "Edited revision",
+      "positive_acceptance": "같은자료도 적합한 관점·말투로 편집",
+      "negative_acceptance": "타블로그 경험·고의오타·상투패턴 반복 금지",
+      "requirements": [
+        "REQ-024"
+      ],
+      "acceptance_ids": [
+        "AT-047",
+        "AT-048"
+      ],
+      "spec": "docs/07_WRITING_VOICE_SPEC.md",
+      "status": "NOT_STARTED",
+      "test_path": "tests/contract_or_unit/test_t024.py",
+      "risk": "계약·권한·결과 상태를 같은 PR에서 점검한다.",
+      "rollback": "새 기능 flag를 끄고 이전 코드/정책 버전으로 복귀한다. 원고·비용·감사 이력은 삭제하지 않는다."
+    },
+    {
+      "id": "T025",
+      "title": "최종 본문 의미 재검수",
+      "milestone": "M4",
+      "depends_on": [
+        "T024",
+        "T018"
+      ],
+      "module": "packages/review/semantic",
+      "input": "편집후제목·본문·표·캡션",
+      "implementation": "주장 재추출·orphan·숫자/주체/범위·인용대조",
+      "outputs": "ReviewReport",
+      "positive_acceptance": "일부→전체 변경과 고아주장을 잡음",
+      "negative_acceptance": "초안만 검사하거나 모델발급 통과문구 수용 금지",
+      "requirements": [
+        "REQ-025"
+      ],
+      "acceptance_ids": [
+        "AT-049",
+        "AT-050"
+      ],
+      "spec": "docs/09_QA_EVALUATION_SPEC.md",
+      "status": "NOT_STARTED",
+      "test_path": "tests/contract_or_unit/test_t025.py",
+      "risk": "계약·권한·결과 상태를 같은 PR에서 점검한다.",
+      "rollback": "새 기능 flag를 끄고 이전 코드/정책 버전으로 복귀한다. 원고·비용·감사 이력은 삭제하지 않는다."
+    },
+    {
+      "id": "T026",
+      "title": "결정적 출고 게이트",
+      "milestone": "M4",
+      "depends_on": [
+        "T025",
+        "T008",
+        "T055"
+      ],
+      "module": "packages/policies",
+      "input": "revision·review·assets·policy",
+      "implementation": "스키마/hash/expiry/scope/marker/파일조건을 서버에서 검사",
+      "outputs": "Gate decision",
+      "positive_acceptance": "모두 유효한 원고만 출고후보",
+      "negative_acceptance": "stale review·다른버전·없는자산은 차단",
+      "requirements": [
+        "REQ-026"
+      ],
+      "acceptance_ids": [
+        "AT-051",
+        "AT-052"
+      ],
+      "spec": "docs/09_QA_EVALUATION_SPEC.md",
+      "status": "NOT_STARTED",
+      "test_path": "tests/contract_or_unit/test_t026.py",
+      "risk": "계약·권한·결과 상태를 같은 PR에서 점검한다.",
+      "rollback": "새 기능 flag를 끄고 이전 코드/정책 버전으로 복귀한다. 원고·비용·감사 이력은 삭제하지 않는다."
+    },
+    {
+      "id": "T027",
+      "title": "자산 Resolver·대안 처리",
+      "milestone": "M4",
+      "depends_on": [
+        "T008",
+        "T020"
+      ],
+      "module": "packages/assets/resolver",
+      "input": "visual need·rights·budget",
+      "implementation": "실제파일 확보·캡션·설명그림 구분·권리만료·대안기획",
+      "outputs": "Resolved assets",
+      "positive_acceptance": "필수이미지는 실제 파일로 존재",
+      "negative_acceptance": "프롬프트를 자산으로 세거나 가짜효과사진 대체 금지",
+      "requirements": [
+        "REQ-027"
+      ],
+      "acceptance_ids": [
+        "AT-053",
+        "AT-054"
+      ],
+      "spec": "docs/08_ASSETS_EXPORT_SPEC.md",
+      "status": "NOT_STARTED",
+      "test_path": "tests/contract_or_unit/test_t027.py",
+      "risk": "계약·권한·결과 상태를 같은 PR에서 점검한다.",
+      "rollback": "새 기능 flag를 끄고 이전 코드/정책 버전으로 복귀한다. 원고·비용·감사 이력은 삭제하지 않는다."
+    },
+    {
+      "id": "T028",
+      "title": "ArticleIR 렌더러",
+      "milestone": "M5",
+      "depends_on": [
+        "T026",
+        "T027"
+      ],
+      "module": "packages/renderers",
+      "input": "typed IR·assets",
+      "implementation": "TXT/HTML/MD·표·공개출처·escape·parity 생성",
+      "outputs": "Public article files",
+      "positive_acceptance": "모든공개 block과 출처가 보존됨",
+      "negative_acceptance": "script·내부 claimID·private메모 누출 차단",
+      "requirements": [
+        "REQ-028"
+      ],
+      "acceptance_ids": [
+        "AT-055",
+        "AT-056"
+      ],
+      "spec": "docs/08_ASSETS_EXPORT_SPEC.md",
+      "status": "NOT_STARTED",
+      "test_path": "tests/contract_or_unit/test_t028.py",
+      "risk": "계약·권한·결과 상태를 같은 PR에서 점검한다.",
+      "rollback": "새 기능 flag를 끄고 이전 코드/정책 버전으로 복귀한다. 원고·비용·감사 이력은 삭제하지 않는다."
+    },
+    {
+      "id": "T029",
+      "title": "네이버 수동 전송·복사",
+      "milestone": "M5",
+      "depends_on": [
+        "T028"
+      ],
+      "module": "apps/web/handoff",
+      "input": "IR·실제이미지·캡션",
+      "implementation": "제목/전체/블록복사·이미지순서·fallback·가이드",
+      "outputs": "Naver handoff UX",
+      "positive_acceptance": "클립보드실패도 TXT로 이어서 사용",
+      "negative_acceptance": "로컬이미지 자동전송·실에디터완벽보존 주장 금지",
+      "requirements": [
+        "REQ-029"
+      ],
+      "acceptance_ids": [
+        "AT-057",
+        "AT-058"
+      ],
+      "spec": "docs/02_UX_AND_SCREEN_SPEC.md",
+      "status": "NOT_STARTED",
+      "test_path": "tests/contract_or_unit/test_t029.py",
+      "risk": "계약·권한·결과 상태를 같은 PR에서 점검한다.",
+      "rollback": "새 기능 flag를 끄고 이전 코드/정책 버전으로 복귀한다. 원고·비용·감사 이력은 삭제하지 않는다."
+    },
+    {
+      "id": "T030",
+      "title": "티스토리·자체블로그 media-map",
+      "milestone": "M5",
+      "depends_on": [
+        "T028"
+      ],
+      "module": "packages/renderers/media_map",
+      "input": "수동업로드 image URL mapping",
+      "implementation": "local refs→검증URL 변환·새hash·누락검사",
+      "outputs": "HTML handoff variant",
+      "positive_acceptance": "모든필수이미지URL과 캡션이 일치",
+      "negative_acceptance": "깨진URL·외부스크립트·자동게시 옵션 차단",
+      "requirements": [
+        "REQ-030"
+      ],
+      "acceptance_ids": [
+        "AT-059",
+        "AT-060"
+      ],
+      "spec": "docs/08_ASSETS_EXPORT_SPEC.md",
+      "status": "NOT_STARTED",
+      "test_path": "tests/contract_or_unit/test_t030.py",
+      "risk": "계약·권한·결과 상태를 같은 PR에서 점검한다.",
+      "rollback": "새 기능 flag를 끄고 이전 코드/정책 버전으로 복귀한다. 원고·비용·감사 이력은 삭제하지 않는다."
+    },
+    {
+      "id": "T031",
+      "title": "Export manifest·다운로드",
+      "milestone": "M5",
+      "depends_on": [
+        "T028",
+        "T029",
+        "T030",
+        "T058"
+      ],
+      "module": "packages/exports",
+      "input": "revision·gate·자산",
+      "implementation": "public-only/전체분리·path/hash·zip·다운로드권한",
+      "outputs": "ExportManifest·ZIP",
+      "positive_acceptance": "manifest와 실제파일·scope가 일치",
+      "negative_acceptance": "../·절대경로·만료링크·private공개는 차단",
+      "requirements": [
+        "REQ-031"
+      ],
+      "acceptance_ids": [
+        "AT-061",
+        "AT-062"
+      ],
+      "spec": "docs/08_ASSETS_EXPORT_SPEC.md",
+      "status": "NOT_STARTED",
+      "test_path": "tests/contract_or_unit/test_t031.py",
+      "risk": "계약·권한·결과 상태를 같은 PR에서 점검한다.",
+      "rollback": "새 기능 flag를 끄고 이전 코드/정책 버전으로 복귀한다. 원고·비용·감사 이력은 삭제하지 않는다."
+    },
+    {
+      "id": "T032",
+      "title": "대기원고 신선도·정정",
+      "milestone": "M5",
+      "depends_on": [
+        "T031",
+        "T018"
+      ],
+      "module": "packages/freshness",
+      "input": "valid_until·sourcechange",
+      "implementation": "다운로드재검사·영향원고추적·재조사·정정안 생성",
+      "outputs": "REVALIDATION workflow",
+      "positive_acceptance": "만료시 READY해제와 재검토",
+      "negative_acceptance": "옛 export를 최신확인된것처럼 제공 금지",
+      "requirements": [
+        "REQ-032"
+      ],
+      "acceptance_ids": [
+        "AT-063",
+        "AT-064"
+      ],
+      "spec": "docs/13_WORKFLOW_AND_RECOVERY.md",
+      "status": "NOT_STARTED",
+      "test_path": "tests/contract_or_unit/test_t032.py",
+      "risk": "계약·권한·결과 상태를 같은 PR에서 점검한다.",
+      "rollback": "새 기능 flag를 끄고 이전 코드/정책 버전으로 복귀한다. 원고·비용·감사 이력은 삭제하지 않는다."
+    },
+    {
+      "id": "T033",
+      "title": "영속 큐·lease·fencing",
+      "milestone": "M1",
+      "depends_on": [
+        "T004",
+        "T005"
+      ],
+      "module": "workers/queue",
+      "input": "job state·DB",
+      "implementation": "잠금·짧은transaction·heartbeat·checkpoint·fencing",
+      "outputs": "Durable worker",
+      "positive_acceptance": "재시작해도 같은단계 중복commit 없음",
+      "negative_acceptance": "lease잃은worker 결과 채택 금지",
+      "requirements": [
+        "REQ-033"
+      ],
+      "acceptance_ids": [
+        "AT-065",
+        "AT-066"
+      ],
+      "spec": "docs/13_WORKFLOW_AND_RECOVERY.md",
+      "status": "NOT_STARTED",
+      "test_path": "tests/integration/test_t033.py",
+      "risk": "계약·권한·결과 상태를 같은 PR에서 점검한다.",
+      "rollback": "새 기능 flag를 끄고 이전 코드/정책 버전으로 복귀한다. 원고·비용·감사 이력은 삭제하지 않는다."
+    },
+    {
+      "id": "T034",
+      "title": "예산 예약·유료호출 intent",
+      "milestone": "M1",
+      "depends_on": [
+        "T033"
+      ],
+      "module": "packages/billing",
+      "input": "승인예산·가격버전",
+      "implementation": "tenant/blog 순서잠금·reserve·actual·unknown 대사",
+      "outputs": "Budget ledger",
+      "positive_acceptance": "동시요청도 spent+reserved≤cap",
+      "negative_acceptance": "timeout을0원처리·무제한재호출 금지",
+      "requirements": [
+        "REQ-034"
+      ],
+      "acceptance_ids": [
+        "AT-067",
+        "AT-068"
+      ],
+      "spec": "docs/13_WORKFLOW_AND_RECOVERY.md",
+      "status": "NOT_STARTED",
+      "test_path": "tests/integration/test_t034.py",
+      "risk": "계약·권한·결과 상태를 같은 PR에서 점검한다.",
+      "rollback": "새 기능 flag를 끄고 이전 코드/정책 버전으로 복귀한다. 원고·비용·감사 이력은 삭제하지 않는다."
+    },
+    {
+      "id": "T035",
+      "title": "예외함·제한재시도",
+      "milestone": "M6",
+      "depends_on": [
+        "T021",
+        "T032"
+      ],
+      "module": "packages/exceptions",
+      "input": "stage failure·대안",
+      "implementation": "재시도가능성·자료요청·대안·hold·cancel 구현",
+      "outputs": "Exception actions",
+      "positive_acceptance": "한원고예외여도 다른적격원고 계속",
+      "negative_acceptance": "force_pass·동일오류 무한재시도 차단",
+      "requirements": [
+        "REQ-035"
+      ],
+      "acceptance_ids": [
+        "AT-069",
+        "AT-070"
+      ],
+      "spec": "docs/13_WORKFLOW_AND_RECOVERY.md",
+      "status": "NOT_STARTED",
+      "test_path": "tests/contract_or_unit/test_t035.py",
+      "risk": "계약·권한·결과 상태를 같은 PR에서 점검한다.",
+      "rollback": "새 기능 flag를 끄고 이전 코드/정책 버전으로 복귀한다. 원고·비용·감사 이력은 삭제하지 않는다."
+    },
+    {
+      "id": "T036",
+      "title": "일정·대기열 자동운영",
+      "milestone": "M6",
+      "depends_on": [
+        "T015",
+        "T033",
+        "T034",
+        "T035"
+      ],
+      "module": "workers/scheduler",
+      "input": "프로필일정·상한·대기열",
+      "implementation": "cadence dedupe·늦은tick처리·queue cap·source watermark",
+      "outputs": "Autopilot run",
+      "positive_acceptance": "키워드수동입력없이 정상 파이프라인 시작",
+      "negative_acceptance": "적체중 계속집필·중복tick 과금 금지",
+      "requirements": [
+        "REQ-036"
+      ],
+      "acceptance_ids": [
+        "AT-071",
+        "AT-072"
+      ],
+      "spec": "docs/13_WORKFLOW_AND_RECOVERY.md",
+      "status": "NOT_STARTED",
+      "test_path": "tests/integration/test_t036.py",
+      "risk": "계약·권한·결과 상태를 같은 PR에서 점검한다.",
+      "rollback": "새 기능 flag를 끄고 이전 코드/정책 버전으로 복귀한다. 원고·비용·감사 이력은 삭제하지 않는다."
+    },
+    {
+      "id": "T037",
+      "title": "원고 편집·검수 UI",
+      "milestone": "M5",
+      "depends_on": [
+        "T025",
+        "T031"
+      ],
+      "module": "apps/web/articles",
+      "input": "IR·revision·gate",
+      "implementation": "읽기/검수탭·diff·IfMatch·부분수정·접근성",
+      "outputs": "Article workspace",
+      "positive_acceptance": "수정 후 새revision·검수대기 표시",
+      "negative_acceptance": "충돌저장·내부메모 공개탭 누출 차단",
+      "requirements": [
+        "REQ-037"
+      ],
+      "acceptance_ids": [
+        "AT-073",
+        "AT-074"
+      ],
+      "spec": "docs/02_UX_AND_SCREEN_SPEC.md",
+      "status": "NOT_STARTED",
+      "test_path": "tests/contract_or_unit/test_t037.py",
+      "risk": "계약·권한·결과 상태를 같은 PR에서 점검한다.",
+      "rollback": "새 기능 flag를 끄고 이전 코드/정책 버전으로 복귀한다. 원고·비용·감사 이력은 삭제하지 않는다."
+    },
+    {
+      "id": "T038",
+      "title": "기회·자료 연구 UI",
+      "milestone": "M5",
+      "depends_on": [
+        "T016",
+        "T019"
+      ],
+      "module": "apps/web/opportunities",
+      "input": "관측·기획·근거",
+      "implementation": "왜지금·새답·근거/누락·배정·보류이유",
+      "outputs": "Research workspace",
+      "positive_acceptance": "검색·홈판·SNS 증거 유형이 구분됨",
+      "negative_acceptance": "타인비공개통계나 예측확률 조작 금지",
+      "requirements": [
+        "REQ-038"
+      ],
+      "acceptance_ids": [
+        "AT-075",
+        "AT-076"
+      ],
+      "spec": "docs/02_UX_AND_SCREEN_SPEC.md",
+      "status": "NOT_STARTED",
+      "test_path": "tests/contract_or_unit/test_t038.py",
+      "risk": "계약·권한·결과 상태를 같은 PR에서 점검한다.",
+      "rollback": "새 기능 flag를 끄고 이전 코드/정책 버전으로 복귀한다. 원고·비용·감사 이력은 삭제하지 않는다."
+    },
+    {
+      "id": "T039",
+      "title": "오늘·온보딩 UI",
+      "milestone": "M5",
+      "depends_on": [
+        "T006",
+        "T036",
+        "T037",
+        "T038"
+      ],
+      "module": "apps/web/dashboard",
+      "input": "프로필·예외·ready·예산",
+      "implementation": "첫설정·상태/빈화면·모바일·stop/resume",
+      "outputs": "Daily workspace",
+      "positive_acceptance": "오늘완성원고와 다음행동이 명확함",
+      "negative_acceptance": "미설정/미갱신을 성공/0으로 표시 금지",
+      "requirements": [
+        "REQ-039"
+      ],
+      "acceptance_ids": [
+        "AT-077",
+        "AT-078"
+      ],
+      "spec": "docs/02_UX_AND_SCREEN_SPEC.md",
+      "status": "NOT_STARTED",
+      "test_path": "tests/contract_or_unit/test_t039.py",
+      "risk": "계약·권한·결과 상태를 같은 PR에서 점검한다.",
+      "rollback": "새 기능 flag를 끄고 이전 코드/정책 버전으로 복귀한다. 원고·비용·감사 이력은 삭제하지 않는다."
+    },
+    {
+      "id": "T040",
+      "title": "수동 게시 기록",
+      "milestone": "M6",
+      "depends_on": [
+        "T031",
+        "T005"
+      ],
+      "module": "packages/publication_receipts",
+      "input": "사용자 URL·시각·version",
+      "implementation": "로컬저장·scope·수정본차이·USER_RECORDED 상태",
+      "outputs": "PublicationReceipt",
+      "positive_acceptance": "원고와 게시기록이 별도 연결됨",
+      "negative_acceptance": "네트워크 write·URL만으로 VERIFIED 표시 금지",
+      "requirements": [
+        "REQ-040"
+      ],
+      "acceptance_ids": [
+        "AT-079",
+        "AT-080"
+      ],
+      "spec": "docs/12_API_SPEC.md",
+      "status": "NOT_STARTED",
+      "test_path": "tests/contract_or_unit/test_t040.py",
+      "risk": "계약·권한·결과 상태를 같은 PR에서 점검한다.",
+      "rollback": "새 기능 flag를 끄고 이전 코드/정책 버전으로 복귀한다. 원고·비용·감사 이력은 삭제하지 않는다."
+    },
+    {
+      "id": "T041",
+      "title": "성과 import·매핑·revision",
+      "milestone": "M6",
+      "depends_on": [
+        "T040"
+      ],
+      "module": "packages/metrics/import",
+      "input": "사용자 보고서 파일",
+      "implementation": "dry-run·분모/기간·중복·최신revision·unknown",
+      "outputs": "Metric import",
+      "positive_acceptance": "재업로드중복없고 미갱신이 구분됨",
+      "negative_acceptance": "ratio×PV·월누적+일별중복합산 차단",
+      "requirements": [
+        "REQ-041"
+      ],
+      "acceptance_ids": [
+        "AT-081",
+        "AT-082"
+      ],
+      "spec": "docs/14_METRICS_AND_GROWTH_PLAN.md",
+      "status": "NOT_STARTED",
+      "test_path": "tests/integration/test_t041.py",
+      "risk": "계약·권한·결과 상태를 같은 PR에서 점검한다.",
+      "rollback": "새 기능 flag를 끄고 이전 코드/정책 버전으로 복귀한다. 원고·비용·감사 이력은 삭제하지 않는다."
+    },
+    {
+      "id": "T042",
+      "title": "조회목표·품질·비용 보고서",
+      "milestone": "M6",
+      "depends_on": [
+        "T041",
+        "T034"
+      ],
+      "module": "packages/reports",
+      "input": "실제metrics·cost·edits",
+      "implementation": "주력/합계분리·월경계·창성숙도·지표정의",
+      "outputs": "Reports UI",
+      "positive_acceptance": "주력100만과 다른채널합계 별도",
+      "negative_acceptance": "미게시원고를0PV실패로 학습 금지",
+      "requirements": [
+        "REQ-042"
+      ],
+      "acceptance_ids": [
+        "AT-083",
+        "AT-084"
+      ],
+      "spec": "docs/14_METRICS_AND_GROWTH_PLAN.md",
+      "status": "NOT_STARTED",
+      "test_path": "tests/contract_or_unit/test_t042.py",
+      "risk": "계약·권한·결과 상태를 같은 PR에서 점검한다.",
+      "rollback": "새 기능 flag를 끄고 이전 코드/정책 버전으로 복귀한다. 원고·비용·감사 이력은 삭제하지 않는다."
+    },
+    {
+      "id": "T043",
+      "title": "실험·수정 학습",
+      "milestone": "M6",
+      "depends_on": [
+        "T042",
+        "T024",
+        "T059"
+      ],
+      "module": "packages/experiments",
+      "input": "실제결과·수정diff·버전",
+      "implementation": "사전가설·holdout·shadow·제한적용·rollback",
+      "outputs": "Experiment registry",
+      "positive_acceptance": "문체수정과 사실수정이 다르게 반영",
+      "negative_acceptance": "가상독자/자기점수/단일대박을실증으로 표시 금지",
+      "requirements": [
+        "REQ-043"
+      ],
+      "acceptance_ids": [
+        "AT-085",
+        "AT-086"
+      ],
+      "spec": "docs/14_METRICS_AND_GROWTH_PLAN.md",
+      "status": "NOT_STARTED",
+      "test_path": "tests/contract_or_unit/test_t043.py",
+      "risk": "계약·권한·결과 상태를 같은 PR에서 점검한다.",
+      "rollback": "새 기능 flag를 끄고 이전 코드/정책 버전으로 복귀한다. 원고·비용·감사 이력은 삭제하지 않는다."
+    },
+    {
+      "id": "T044",
+      "title": "공격·격리·공개패키지 검증",
+      "milestone": "M7",
+      "depends_on": [
+        "T031",
+        "T005",
+        "T035"
+      ],
+      "module": "tests/adversarial",
+      "input": "악성URL/HTML/파일/범위 fixture",
+      "implementation": "prompt injection·SSRF·XSS·scope·private export 시험",
+      "outputs": "Security evidence",
+      "positive_acceptance": "공격입력 차단과 감사가 확인됨",
+      "negative_acceptance": "문서만있고 실제 악성시험 skip은 미통과",
+      "requirements": [
+        "REQ-044"
+      ],
+      "acceptance_ids": [
+        "AT-087",
+        "AT-088"
+      ],
+      "spec": "docs/15_SECURITY_PERMISSIONS.md",
+      "status": "NOT_STARTED",
+      "test_path": "tests/integration/test_t044.py",
+      "risk": "계약·권한·결과 상태를 같은 PR에서 점검한다.",
+      "rollback": "새 기능 flag를 끄고 이전 코드/정책 버전으로 복귀한다. 원고·비용·감사 이력은 삭제하지 않는다."
+    },
+    {
+      "id": "T045",
+      "title": "두 블로그 replay E2E",
+      "milestone": "M7",
+      "depends_on": [
+        "T036",
+        "T039",
+        "T043"
+      ],
+      "module": "tests/e2e_replay",
+      "input": "고정 source·두profile",
+      "implementation": "기획부터원고·출력·restart까지 실제흐름 실행",
+      "outputs": "Replay artifacts",
+      "positive_acceptance": "각블로그 완성원고와 scope가 맞음",
+      "negative_acceptance": "fixture를 LIVE 관심/성과로 표시 금지",
+      "requirements": [
+        "REQ-045"
+      ],
+      "acceptance_ids": [
+        "AT-089",
+        "AT-090"
+      ],
+      "spec": "docs/18_ACCEPTANCE_TESTS.md",
+      "status": "NOT_STARTED",
+      "test_path": "tests/integration/test_t045.py",
+      "risk": "계약·권한·결과 상태를 같은 PR에서 점검한다.",
+      "rollback": "새 기능 flag를 끄고 이전 코드/정책 버전으로 복귀한다. 원고·비용·감사 이력은 삭제하지 않는다."
+    },
+    {
+      "id": "T046",
+      "title": "실제 소스·모델 E2E",
+      "milestone": "M7",
+      "depends_on": [
+        "T045",
+        "T044"
+      ],
+      "module": "tests/e2e_live",
+      "input": "승인된키·원문·예산",
+      "implementation": "실제요청·글생성·최종근거대조·비용기록",
+      "outputs": "Live article bundle",
+      "positive_acceptance": "source→HANDOFF_READY실경로 증거",
+      "negative_acceptance": "미입력시 BLOCKED를pass로 집계 금지",
+      "requirements": [
+        "REQ-046"
+      ],
+      "acceptance_ids": [
+        "AT-091",
+        "AT-092"
+      ],
+      "spec": "docs/18_ACCEPTANCE_TESTS.md",
+      "status": "NOT_STARTED",
+      "test_path": "tests/live/test_t046.py",
+      "risk": "계약·권한·결과 상태를 같은 PR에서 점검한다.",
+      "rollback": "새 기능 flag를 끄고 이전 코드/정책 버전으로 복귀한다. 원고·비용·감사 이력은 삭제하지 않는다."
+    },
+    {
+      "id": "T047",
+      "title": "실제 에디터 수동 호환성",
+      "milestone": "M7",
+      "depends_on": [
+        "T046",
+        "T029",
+        "T030"
+      ],
+      "module": "tests/manual_editor",
+      "input": "사용자 에디터·완성패키지",
+      "implementation": "텍스트/표/이미지형 각전송·모바일·출처 확인",
+      "outputs": "Editor matrix",
+      "positive_acceptance": "복사·삽입후 누락없이 보임",
+      "negative_acceptance": "로컬preview만으로 실에디터 통과 금지",
+      "requirements": [
+        "REQ-047"
+      ],
+      "acceptance_ids": [
+        "AT-093",
+        "AT-094"
+      ],
+      "spec": "docs/08_ASSETS_EXPORT_SPEC.md",
+      "status": "NOT_STARTED",
+      "test_path": "tests/manual/test_t047.py",
+      "risk": "계약·권한·결과 상태를 같은 PR에서 점검한다.",
+      "rollback": "새 기능 flag를 끄고 이전 코드/정책 버전으로 복귀한다. 원고·비용·감사 이력은 삭제하지 않는다."
+    },
+    {
+      "id": "T048",
+      "title": "30편 블라인드 품질 평가",
+      "milestone": "M7",
+      "depends_on": [
+        "T046",
+        "T025",
+        "T057"
+      ],
+      "module": "tests/editorial",
+      "input": "실제원고30·평가자2",
+      "implementation": "익명평가·수정시간·사실검사·점수불일치 보존",
+      "outputs": "Editorial evaluation",
+      "positive_acceptance": "중대오류0·목표점수 충족",
+      "negative_acceptance": "AI평가를 인간평가로 세거나 실패원고 제외 금지",
+      "requirements": [
+        "REQ-048"
+      ],
+      "acceptance_ids": [
+        "AT-095",
+        "AT-096"
+      ],
+      "spec": "docs/09_QA_EVALUATION_SPEC.md",
+      "status": "NOT_STARTED",
+      "test_path": "tests/manual/test_t048.py",
+      "risk": "계약·권한·결과 상태를 같은 PR에서 점검한다.",
+      "rollback": "새 기능 flag를 끄고 이전 코드/정책 버전으로 복귀한다. 원고·비용·감사 이력은 삭제하지 않는다."
+    },
+    {
+      "id": "T049",
+      "title": "부하·복구·관측·운영복귀",
+      "milestone": "M7",
+      "depends_on": [
+        "T045",
+        "T034"
+      ],
+      "module": "infra/operations",
+      "input": "job부하·backup·failures",
+      "implementation": "10profile격리·worker kill·복원·로그·rollback 시험",
+      "outputs": "Runbook evidence",
+      "positive_acceptance": "실제복구·hash·예약대사 확인",
+      "negative_acceptance": "미측정 SLO를달성실적으로 기재 금지",
+      "requirements": [
+        "REQ-049"
+      ],
+      "acceptance_ids": [
+        "AT-097",
+        "AT-098"
+      ],
+      "spec": "docs/19_OPERATIONS_RUNBOOK.md",
+      "status": "NOT_STARTED",
+      "test_path": "tests/integration/test_t049.py",
+      "risk": "계약·권한·결과 상태를 같은 PR에서 점검한다.",
+      "rollback": "새 기능 flag를 끄고 이전 코드/정책 버전으로 복귀한다. 원고·비용·감사 이력은 삭제하지 않는다."
+    },
+    {
+      "id": "T050",
+      "title": "릴리스 인수·실행문서",
+      "milestone": "M7",
+      "depends_on": [
+        "T047",
+        "T048",
+        "T049",
+        "T044",
+        "T060"
+      ],
+      "module": "docs/release",
+      "input": "전체AT·실행로그·배포계획",
+      "implementation": "완료/미실행·의존성·보안·설정·알려진한계 정리",
+      "outputs": "Release readiness report",
+      "positive_acceptance": "실행증거가있는범위만 완료기재",
+      "negative_acceptance": "자동게시 재도입·근거없는월100만보장 금지",
+      "requirements": [
+        "REQ-050"
+      ],
+      "acceptance_ids": [
+        "AT-099",
+        "AT-100"
+      ],
+      "spec": "docs/16_WORK_PLAN.md",
+      "status": "NOT_STARTED",
+      "test_path": "tests/contract_or_unit/test_t050.py",
+      "risk": "계약·권한·결과 상태를 같은 PR에서 점검한다.",
+      "rollback": "새 기능 flag를 끄고 이전 코드/정책 버전으로 복귀한다. 원고·비용·감사 이력은 삭제하지 않는다."
+    },
+    {
+      "id": "T051",
+      "title": "정규화·해시 계약과 Python/Node 동등성",
+      "milestone": "M0",
+      "depends_on": [
+        "T002"
+      ],
+      "module": "reference_core/canonical",
+      "input": "동일한 JSON 값·NFC 충돌키·정수값 실수·서로게이트·분수·범위초과 fixture",
+      "implementation": "HFBO-NFC-INT-1을 단일 구현으로 채택한다. 원본 HTTP bytes와 원고 정규화 해시를 분리하고 버전과 함께 저장한다. 분수는 이 계약에서 거절하고 데이터 전체에 임의 적용하지 않는다.",
+      "outputs": "두 런타임 검증·해시 버전 어댑터·기존 버전 전환 계획",
+      "positive_acceptance": "허용된 값에서 두 구현의 UTF-8 bytes와 SHA256이 일치한다.",
+      "negative_acceptance": "중복키·정규화 충돌·비정상 숫자·허용되지 않은 분수를 조용히 변형하면 실패한다.",
+      "requirements": [
+        "REQ-051"
+      ],
+      "acceptance_ids": [
+        "AT-101",
+        "AT-102",
+        "AT-103",
+        "AT-104"
+      ],
+      "spec": "docs/28_DETERMINISTIC_CONTRACTS_R1.md",
+      "status": "NOT_STARTED",
+      "test_path": "tests/r1/test_t051.py",
+      "risk": "참조 코드의 통과를 실제 서비스 검증으로 대체하지 않는다.",
+      "rollback": "새 경로를 비활성화하고 기존 이력은 보존한다. migration은 승인된 복구 절차로 수행한다.",
+      "reference_available": true
+    },
+    {
+      "id": "T052",
+      "title": "JSON Schema 조건·의미 검증·API 계약 일치",
+      "milestone": "M0",
+      "depends_on": [
+        "T002",
+        "T051"
+      ],
+      "module": "schemas/api/contract_validation",
+      "input": "도메인 스키마·OpenAPI·정상/모순 payload",
+      "implementation": "Metric status/value, AgentEnvelope discriminator, 글 형식, 출처 URL, 주장 종류 조건을 구현한다. 날짜 대소관계·참조·표 열수는 의미 검증기로 검사한다. API 복사본과 원본을 비교한다.",
+      "outputs": "공통 validator·API 연동·명확한 4xx 오류코드",
+      "positive_acceptance": "정상 null 통계와 정상 원고가 통과하고 원본/API 제약이 같다.",
+      "negative_acceptance": "미갱신 숫자0·wrong payload·잘못된 글 형식·역전 날짜를 저장하면 실패한다.",
+      "requirements": [
+        "REQ-052"
+      ],
+      "acceptance_ids": [
+        "AT-105",
+        "AT-106",
+        "AT-107",
+        "AT-108"
+      ],
+      "spec": "docs/28_DETERMINISTIC_CONTRACTS_R1.md",
+      "status": "NOT_STARTED",
+      "test_path": "tests/r1/test_t052.py",
+      "risk": "참조 코드의 통과를 실제 서비스 검증으로 대체하지 않는다.",
+      "rollback": "새 경로를 비활성화하고 기존 이력은 보존한다. migration은 승인된 복구 절차로 수행한다.",
+      "reference_available": true
+    },
+    {
+      "id": "T053",
+      "title": "PostgreSQL 연결 무결성과 실제 RLS·동시성",
+      "milestone": "M1",
+      "depends_on": [
+        "T004",
+        "T005"
+      ],
+      "module": "db/migrations",
+      "input": "참조 DDL·동일 블로그의 두 원고·서로 다른 블로그·앱 역할 DB 세션",
+      "implementation": "allowlist와 tenant를 함께 검증한다. parent/export/review를 같은 article/revision/hash에 연결한다. actor 단위 API idempotency와 단일 current metric을 강제한다. owner가 아닌 앱 역할로 실행한다.",
+      "outputs": "검증된 migration·RLS SQL 통합시험·동시 요청 재현 로그",
+      "positive_acceptance": "정상 연결과 허용된 공유 자료만 읽고 쓸 수 있다.",
+      "negative_acceptance": "교차 블로그·다른 원고 검수본·중복 current·동시 idempotency가 통과하면 실패한다.",
+      "requirements": [
+        "REQ-053"
+      ],
+      "acceptance_ids": [
+        "AT-109",
+        "AT-110",
+        "AT-111",
+        "AT-112"
+      ],
+      "spec": "docs/29_MIGRATION_AND_CODEX_R1.md",
+      "status": "NOT_STARTED",
+      "test_path": "tests/r1/test_t053.py",
+      "risk": "참조 코드의 통과를 실제 서비스 검증으로 대체하지 않는다.",
+      "rollback": "새 경로를 비활성화하고 기존 이력은 보존한다. migration은 승인된 복구 절차로 수행한다.",
+      "reference_available": true
+    },
+    {
+      "id": "T054",
+      "title": "기획 전 원고 생성·상태 전이·API 멱등성",
+      "milestone": "M1",
+      "depends_on": [
+        "T033",
+        "T051",
+        "T052"
+      ],
+      "module": "articles/api_idempotency",
+      "input": "opportunity만 있는 원고 생성 요청·재시도·같은 키 다른 body",
+      "implementation": "초기 상태에서는 brief null을 허용하고 집필 전 확정 brief를 요구한다. actor와 endpoint를 포함한 key에 원본 request bytes hash를 저장한다. 동일 재시도는 기존 응답으로 복귀한다.",
+      "outputs": "생성/상태 API·동기 요청 원장·race 재현 fixture",
+      "positive_acceptance": "조사→기획→집필 순서가 미확정 brief 때문에 막히지 않는다.",
+      "negative_acceptance": "brief 없이 집필하거나 같은 키 다른 요청을 실행하거나 중복 원고를 만들면 실패한다.",
+      "requirements": [
+        "REQ-054"
+      ],
+      "acceptance_ids": [
+        "AT-113",
+        "AT-114",
+        "AT-115",
+        "AT-116"
+      ],
+      "spec": "docs/28_DETERMINISTIC_CONTRACTS_R1.md",
+      "status": "NOT_STARTED",
+      "test_path": "tests/r1/test_t054.py",
+      "risk": "참조 코드의 통과를 실제 서비스 검증으로 대체하지 않는다.",
+      "rollback": "새 경로를 비활성화하고 기존 이력은 보존한다. migration은 승인된 복구 절차로 수행한다.",
+      "reference_available": true
+    },
+    {
+      "id": "T055",
+      "title": "서버 검수본 결속·만료·다운로드 직전 재검증",
+      "milestone": "M4",
+      "depends_on": [
+        "T025",
+        "T053",
+        "T052"
+      ],
+      "module": "reviews/handoff_gate",
+      "input": "같은 원고의 버전2개·자료 권리 변경·만료·클라이언트 위조 검수본",
+      "implementation": "검수본은 인증된 서버 저장소에서 조회한다. article/profile/brief/claims/evidence/sources/assets/policy의 해시에 결속하고 다운로드 때 현재 상태와 비교한다. issuer 문자열은 신원증명이 아니다.",
+      "outputs": "검수 저장소·재검수 트리거·signed URL 생성 전 가드",
+      "positive_acceptance": "일치하는 최신 검수·근거·권한의 원고만 파일 검증으로 넘어간다.",
+      "negative_acceptance": "구버전 검수 재사용·위조 보고서·만료·권리철회·REPLAY를 LIVE로 표시하면 실패한다.",
+      "requirements": [
+        "REQ-055"
+      ],
+      "acceptance_ids": [
+        "AT-117",
+        "AT-118",
+        "AT-119",
+        "AT-120"
+      ],
+      "spec": "docs/28_DETERMINISTIC_CONTRACTS_R1.md",
+      "status": "NOT_STARTED",
+      "test_path": "tests/r1/test_t055.py",
+      "risk": "참조 코드의 통과를 실제 서비스 검증으로 대체하지 않는다.",
+      "rollback": "새 경로를 비활성화하고 기존 이력은 보존한다. migration은 승인된 복구 절차로 수행한다.",
+      "reference_available": true
+    },
+    {
+      "id": "T056",
+      "title": "기획 후보 비교·발행 준비시간·관측 편향 처리",
+      "milestone": "M3",
+      "depends_on": [
+        "T014",
+        "T016",
+        "T034"
+      ],
+      "module": "editorial/decision",
+      "input": "동일 사건 후보3개·다른 관측조건·반올림 수치·미입력 게시 가능시간",
+      "implementation": "관심/사실 근거를 분리하고 새 답·첫 화면·차별점·필요한 자료를 비교한다. 동일 조건 관측만 속도를 비교한다. 사용자 게시 가능시간이 없으면 immediate 유효성을 보장하지 않는다.",
+      "outputs": "기획 비교표·결정사유·PREPARE/RESEARCH/WRITE/REFRESH/HOLD 출력",
+      "positive_acceptance": "근거와 새 답이 준비된 후보가 실제 비용·대기열 제약 안에서 선택된다.",
+      "negative_acceptance": "누적조회만으로 급상승 단정·다른 계정 관측 속도 혼합·막힌 기획 강제 집필은 실패한다.",
+      "requirements": [
+        "REQ-056"
+      ],
+      "acceptance_ids": [
+        "AT-121",
+        "AT-122",
+        "AT-123",
+        "AT-124"
+      ],
+      "spec": "docs/26_EDITORIAL_DECISION_ENGINE_R1.md",
+      "status": "NOT_STARTED",
+      "test_path": "tests/r1/test_t056.py",
+      "risk": "참조 코드의 통과를 실제 서비스 검증으로 대체하지 않는다.",
+      "rollback": "새 경로를 비활성화하고 기존 이력은 보존한다. migration은 승인된 복구 절차로 수행한다.",
+      "reference_available": true
+    },
+    {
+      "id": "T057",
+      "title": "기획·원고 분리 블라인드 벤치마크",
+      "milestone": "M7",
+      "depends_on": [
+        "T019",
+        "T020",
+        "T024"
+      ],
+      "module": "evaluation/editorial",
+      "input": "24개 설계 시나리오·새로 수집할 실제 자료·B0/B1/B2의 동일 비용 조건",
+      "implementation": "기획품질과 집필품질을 분리한다. 독립적인 실제 평가자2명이 익명화 결과와 근거를 평가한다. 실패/보류와 수정시간을 포함하고 사후 좋은 사례만 제거하지 않는다.",
+      "outputs": "동결된 평가셋·평가표·익명화/분쟁조정·수정시간 기록",
+      "positive_acceptance": "첫 화면·새 정보·문체·완결성·정확성이 독립적으로 보고된다.",
+      "negative_acceptance": "가상 독자를 실제 사람으로 표시·경험 조작·실패원고 제외·AI 점수로 출시 승인은 실패한다.",
+      "requirements": [
+        "REQ-057"
+      ],
+      "acceptance_ids": [
+        "AT-125",
+        "AT-126",
+        "AT-127",
+        "AT-128"
+      ],
+      "spec": "docs/27_WRITING_BENCHMARK_R1.md",
+      "status": "NOT_STARTED",
+      "test_path": "tests/r1/test_t057.py",
+      "risk": "참조 코드의 통과를 실제 서비스 검증으로 대체하지 않는다.",
+      "rollback": "새 경로를 비활성화하고 기존 이력은 보존한다. migration은 승인된 복구 절차로 수행한다.",
+      "reference_available": true
+    },
+    {
+      "id": "T058",
+      "title": "렌더 의미 보존·자산 파일·전송 완성도",
+      "milestone": "M5",
+      "depends_on": [
+        "T028",
+        "T029",
+        "T030"
+      ],
+      "module": "exports/render_verification",
+      "input": "모든 block type·표·인용·이미지·유니코드 경로·tamper·symlink fixture",
+      "implementation": "공개문장·표 값·출처·캡션이 출력에서 사라지지 않게 비교한다. root 탈출과 경로 충돌을 막고 실제 bytes/hash/size를 확인한다. 필요 이미지는 디코딩·권리·출고 검사를 추가한다.",
+      "outputs": "블록별 렌더 회귀시험·파일 검증·전송 체크리스트",
+      "positive_acceptance": "필수 답과 출처, 필요한 이미지가 실제 산출물에 남아 있다.",
+      "negative_acceptance": "원고 PASS만으로 파일 없음·이미지 프롬프트만 있음·경로탈출·내용 누락을 통과시키면 실패한다.",
+      "requirements": [
+        "REQ-058"
+      ],
+      "acceptance_ids": [
+        "AT-129",
+        "AT-130",
+        "AT-131",
+        "AT-132"
+      ],
+      "spec": "docs/28_DETERMINISTIC_CONTRACTS_R1.md",
+      "status": "NOT_STARTED",
+      "test_path": "tests/r1/test_t058.py",
+      "risk": "참조 코드의 통과를 실제 서비스 검증으로 대체하지 않는다.",
+      "rollback": "새 경로를 비활성화하고 기존 이력은 보존한다. migration은 승인된 복구 절차로 수행한다.",
+      "reference_available": true
+    },
+    {
+      "id": "T059",
+      "title": "미갱신 통계·정정 이력·미래정보 누출 없는 학습",
+      "milestone": "M6",
+      "depends_on": [
+        "T041",
+        "T042"
+      ],
+      "module": "metrics/learning",
+      "input": "기간별 실제 import·누락·정정·중복·발행 후 성과가 포함된 후보",
+      "implementation": "NULL 상태를 보존하고 논리키별 current 하나만 유지한다. 데이터 정정은 이력을 남긴다. 의사결정 시점 이후 성과를 학습 특성에서 제외한다. 선택하지 않은 후보도 기록한다.",
+      "outputs": "as-of dataset·정정 원장·중복 방지·분리된 보고서",
+      "positive_acceptance": "달력 월 실적과 발행후 코호트 성과를 독립 집계한다.",
+      "negative_acceptance": "미갱신0 학습·중복합산·전체계정수익을 글별 확정수익으로 표기·미래조회수로 과거선택 학습은 실패한다.",
+      "requirements": [
+        "REQ-059"
+      ],
+      "acceptance_ids": [
+        "AT-133",
+        "AT-134",
+        "AT-135",
+        "AT-136"
+      ],
+      "spec": "docs/14_METRICS_AND_GROWTH_PLAN.md",
+      "status": "NOT_STARTED",
+      "test_path": "tests/r1/test_t059.py",
+      "risk": "참조 코드의 통과를 실제 서비스 검증으로 대체하지 않는다.",
+      "rollback": "새 경로를 비활성화하고 기존 이력은 보존한다. migration은 승인된 복구 절차로 수행한다.",
+      "reference_available": true
+    },
+    {
+      "id": "T060",
+      "title": "R1 회귀시험·실제 운영 단계별 출시 판정",
+      "milestone": "M7",
+      "depends_on": [
+        "T045",
+        "T051",
+        "T052",
+        "T053",
+        "T054",
+        "T055",
+        "T056",
+        "T057",
+        "T058",
+        "T059"
+      ],
+      "module": "release/regression",
+      "input": "오프라인 검사·실제 DB/HTTP/모델/사람/에디터 결과 또는 미실행 사유",
+      "implementation": "재현→수정→회귀→문서 동기화 루프를 실행한다. R0~R5를 별도로 판정한다. 구현하지 않은 통합시험은 NOT_RUN으로 남기고 자동 게시 기능을 추가하지 않는다.",
+      "outputs": "증거별 출시 보고서·중단 조건·rollback·현재 blocker",
+      "positive_acceptance": "실제 실행한 범위와 미실행 영역을 구분한 보고서가 재현된다.",
+      "negative_acceptance": "정적검사를 DB 시험으로·예제출력을 LIVE 집필로·합성 점수를 바이럴 검증으로 표시하면 실패한다.",
+      "requirements": [
+        "REQ-060"
+      ],
+      "acceptance_ids": [
+        "AT-137",
+        "AT-138",
+        "AT-139",
+        "AT-140"
+      ],
+      "spec": "docs/30_RELEASE_GATES_AND_STOP_RULES_R1.md",
+      "status": "NOT_STARTED",
+      "test_path": "tests/r1/test_t060.py",
+      "risk": "참조 코드의 통과를 실제 서비스 검증으로 대체하지 않는다.",
+      "rollback": "새 경로를 비활성화하고 기존 이력은 보존한다. migration은 승인된 복구 절차로 수행한다.",
+      "reference_available": true
+    }
+  ]
+}

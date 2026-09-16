@@ -1,0 +1,805 @@
+{
+  "version": "4.1.0-r1",
+  "requirements": [
+    {
+      "id": "REQ-001",
+      "statement": "저장소 기준선과 범위 동결: 사용자 변경이 보존되고 자동게시 제외가 확정됨",
+      "priority": "P0",
+      "task_ids": [
+        "T001"
+      ],
+      "acceptance_ids": [
+        "AT-001",
+        "AT-002"
+      ],
+      "spec": "docs/00_SCOPE_AND_DECISIONS.md"
+    },
+    {
+      "id": "REQ-002",
+      "statement": "계약 검증 도구 연결: 정상 fixtures와 문서 참조가 검증됨",
+      "priority": "P0",
+      "task_ids": [
+        "T002"
+      ],
+      "acceptance_ids": [
+        "AT-003",
+        "AT-004"
+      ],
+      "spec": "docs/11_DATA_SPEC.md"
+    },
+    {
+      "id": "REQ-003",
+      "statement": "공급자·운영 입력 진단: 미연결은 NOT_CONFIGURED로 나옴",
+      "priority": "P0",
+      "task_ids": [
+        "T003"
+      ],
+      "acceptance_ids": [
+        "AT-005",
+        "AT-006"
+      ],
+      "spec": "docs/20_SETUP_AND_CAPABILITY_MATRIX.md"
+    },
+    {
+      "id": "REQ-004",
+      "statement": "DB·저장소 개발환경: 빈 DB에서 원고·작업 데이터를 저장함",
+      "priority": "P0",
+      "task_ids": [
+        "T004"
+      ],
+      "acceptance_ids": [
+        "AT-007",
+        "AT-008"
+      ],
+      "spec": "docs/10_ARCHITECTURE.md"
+    },
+    {
+      "id": "REQ-005",
+      "statement": "인증·tenant/blog 격리: 자기 블로그 데이터만 조회됨",
+      "priority": "P0",
+      "task_ids": [
+        "T005"
+      ],
+      "acceptance_ids": [
+        "AT-009",
+        "AT-010"
+      ],
+      "spec": "docs/15_SECURITY_PERMISSIONS.md"
+    },
+    {
+      "id": "REQ-006",
+      "statement": "블로그·문체 버전 관리: 두 프로필의 편집 기준이 다르게 적용됨",
+      "priority": "P0",
+      "task_ids": [
+        "T006"
+      ],
+      "acceptance_ids": [
+        "AT-011",
+        "AT-012"
+      ],
+      "spec": "docs/03_MULTIBLOG_EDITORIAL_STRATEGY.md"
+    },
+    {
+      "id": "REQ-007",
+      "statement": "실제 사실·경험 기억: 승인한 실제 경험만 맞는 글에서 사용",
+      "priority": "P0",
+      "task_ids": [
+        "T007"
+      ],
+      "acceptance_ids": [
+        "AT-013",
+        "AT-014"
+      ],
+      "spec": "docs/05_RESEARCH_AND_EVIDENCE_SPEC.md"
+    },
+    {
+      "id": "REQ-008",
+      "statement": "업로드·자산 권리: 허가된 실파일만 READY",
+      "priority": "P0",
+      "task_ids": [
+        "T008"
+      ],
+      "acceptance_ids": [
+        "AT-015",
+        "AT-016"
+      ],
+      "spec": "docs/08_ASSETS_EXPORT_SPEC.md"
+    },
+    {
+      "id": "REQ-009",
+      "statement": "허용 원문 reader·SSRF 방어: 실제 읽은 구간과 hash 저장",
+      "priority": "P0",
+      "task_ids": [
+        "T009"
+      ],
+      "acceptance_ids": [
+        "AT-017",
+        "AT-018"
+      ],
+      "spec": "docs/04_TREND_AND_HOMEFEED_SPEC.md"
+    },
+    {
+      "id": "REQ-010",
+      "statement": "Naver 검색 어댑터: display/start/sort와 실제결과 저장",
+      "priority": "P0",
+      "task_ids": [
+        "T010"
+      ],
+      "acceptance_ids": [
+        "AT-019",
+        "AT-020"
+      ],
+      "spec": "docs/04_TREND_AND_HOMEFEED_SPEC.md"
+    },
+    {
+      "id": "REQ-011",
+      "statement": "Datalab 어댑터: 같은조건 상대추세만 비교",
+      "priority": "P0",
+      "task_ids": [
+        "T011"
+      ],
+      "acceptance_ids": [
+        "AT-021",
+        "AT-022"
+      ],
+      "spec": "docs/04_TREND_AND_HOMEFEED_SPEC.md"
+    },
+    {
+      "id": "REQ-012",
+      "statement": "선택형 유튜브·SNS 입력: 자막자료는 자막분석 범위로 저장",
+      "priority": "P1",
+      "task_ids": [
+        "T012"
+      ],
+      "acceptance_ids": [
+        "AT-023",
+        "AT-024"
+      ],
+      "spec": "docs/04_TREND_AND_HOMEFEED_SPEC.md"
+    },
+    {
+      "id": "REQ-013",
+      "statement": "홈피드 관측 import: 실제 HOMEFEED 표본만 별도 집계",
+      "priority": "P0",
+      "task_ids": [
+        "T013"
+      ],
+      "acceptance_ids": [
+        "AT-025",
+        "AT-026"
+      ],
+      "spec": "docs/04_TREND_AND_HOMEFEED_SPEC.md"
+    },
+    {
+      "id": "REQ-014",
+      "statement": "사건 군집·원출처 계열: 재인용5개가 같은 fact계열로 연결",
+      "priority": "P0",
+      "task_ids": [
+        "T014"
+      ],
+      "acceptance_ids": [
+        "AT-027",
+        "AT-028"
+      ],
+      "spec": "docs/04_TREND_AND_HOMEFEED_SPEC.md"
+    },
+    {
+      "id": "REQ-015",
+      "statement": "수요·편집 우선순위: 점수와 근거·누락이 같이 출력",
+      "priority": "P0",
+      "task_ids": [
+        "T015"
+      ],
+      "acceptance_ids": [
+        "AT-029",
+        "AT-030"
+      ],
+      "spec": "docs/04_TREND_AND_HOMEFEED_SPEC.md"
+    },
+    {
+      "id": "REQ-016",
+      "statement": "멀티블로그 배정·중복 예약: 동시요청에도 동일기획1개 배정",
+      "priority": "P0",
+      "task_ids": [
+        "T016"
+      ],
+      "acceptance_ids": [
+        "AT-031",
+        "AT-032"
+      ],
+      "spec": "docs/03_MULTIBLOG_EDITORIAL_STRATEGY.md"
+    },
+    {
+      "id": "REQ-017",
+      "statement": "근거팩 조사 파이프라인: 실제 근거가있는 주장만 SUPPORTED",
+      "priority": "P0",
+      "task_ids": [
+        "T017"
+      ],
+      "acceptance_ids": [
+        "AT-033",
+        "AT-034"
+      ],
+      "spec": "docs/05_RESEARCH_AND_EVIDENCE_SPEC.md"
+    },
+    {
+      "id": "REQ-018",
+      "statement": "주장·상충·정정 연결: 상충·범위차이를 구분하고 보류",
+      "priority": "P0",
+      "task_ids": [
+        "T018"
+      ],
+      "acceptance_ids": [
+        "AT-035",
+        "AT-036"
+      ],
+      "spec": "docs/05_RESEARCH_AND_EVIDENCE_SPEC.md"
+    },
+    {
+      "id": "REQ-019",
+      "statement": "내용 기획·새 기여: 기존글과 다른 비교/해석/절차가 지정됨",
+      "priority": "P0",
+      "task_ids": [
+        "T019"
+      ],
+      "acceptance_ids": [
+        "AT-037",
+        "AT-038"
+      ],
+      "spec": "docs/06_CONTENT_PLANNING_SPEC.md"
+    },
+    {
+      "id": "REQ-020",
+      "statement": "제목·이미지·첫문단 계획: 제목의숫자와 비교가 본문답과 연결",
+      "priority": "P0",
+      "task_ids": [
+        "T020"
+      ],
+      "acceptance_ids": [
+        "AT-039",
+        "AT-040"
+      ],
+      "spec": "docs/06_CONTENT_PLANNING_SPEC.md"
+    },
+    {
+      "id": "REQ-021",
+      "statement": "모델 게이트웨이·계약: 정상응답을 typed output으로 저장",
+      "priority": "P0",
+      "task_ids": [
+        "T021"
+      ],
+      "acceptance_ids": [
+        "AT-041",
+        "AT-042"
+      ],
+      "spec": "docs/10_ARCHITECTURE.md"
+    },
+    {
+      "id": "REQ-022",
+      "statement": "내용 중심 집필기: 근거 범위 안에서 완결한 답 작성",
+      "priority": "P0",
+      "task_ids": [
+        "T022"
+      ],
+      "acceptance_ids": [
+        "AT-043",
+        "AT-044"
+      ],
+      "spec": "docs/07_WRITING_VOICE_SPEC.md"
+    },
+    {
+      "id": "REQ-023",
+      "statement": "반대 검토·논리 점검: 조건다른비교와 과도단정을 발견",
+      "priority": "P0",
+      "task_ids": [
+        "T023"
+      ],
+      "acceptance_ids": [
+        "AT-045",
+        "AT-046"
+      ],
+      "spec": "docs/09_QA_EVALUATION_SPEC.md"
+    },
+    {
+      "id": "REQ-024",
+      "statement": "블로그별 문체 편집: 같은자료도 적합한 관점·말투로 편집",
+      "priority": "P0",
+      "task_ids": [
+        "T024"
+      ],
+      "acceptance_ids": [
+        "AT-047",
+        "AT-048"
+      ],
+      "spec": "docs/07_WRITING_VOICE_SPEC.md"
+    },
+    {
+      "id": "REQ-025",
+      "statement": "최종 본문 의미 재검수: 일부→전체 변경과 고아주장을 잡음",
+      "priority": "P0",
+      "task_ids": [
+        "T025"
+      ],
+      "acceptance_ids": [
+        "AT-049",
+        "AT-050"
+      ],
+      "spec": "docs/09_QA_EVALUATION_SPEC.md"
+    },
+    {
+      "id": "REQ-026",
+      "statement": "결정적 출고 게이트: 모두 유효한 원고만 출고후보",
+      "priority": "P0",
+      "task_ids": [
+        "T026"
+      ],
+      "acceptance_ids": [
+        "AT-051",
+        "AT-052"
+      ],
+      "spec": "docs/09_QA_EVALUATION_SPEC.md"
+    },
+    {
+      "id": "REQ-027",
+      "statement": "자산 Resolver·대안 처리: 필수이미지는 실제 파일로 존재",
+      "priority": "P0",
+      "task_ids": [
+        "T027"
+      ],
+      "acceptance_ids": [
+        "AT-053",
+        "AT-054"
+      ],
+      "spec": "docs/08_ASSETS_EXPORT_SPEC.md"
+    },
+    {
+      "id": "REQ-028",
+      "statement": "ArticleIR 렌더러: 모든공개 block과 출처가 보존됨",
+      "priority": "P0",
+      "task_ids": [
+        "T028"
+      ],
+      "acceptance_ids": [
+        "AT-055",
+        "AT-056"
+      ],
+      "spec": "docs/08_ASSETS_EXPORT_SPEC.md"
+    },
+    {
+      "id": "REQ-029",
+      "statement": "네이버 수동 전송·복사: 클립보드실패도 TXT로 이어서 사용",
+      "priority": "P0",
+      "task_ids": [
+        "T029"
+      ],
+      "acceptance_ids": [
+        "AT-057",
+        "AT-058"
+      ],
+      "spec": "docs/02_UX_AND_SCREEN_SPEC.md"
+    },
+    {
+      "id": "REQ-030",
+      "statement": "티스토리·자체블로그 media-map: 모든필수이미지URL과 캡션이 일치",
+      "priority": "P0",
+      "task_ids": [
+        "T030"
+      ],
+      "acceptance_ids": [
+        "AT-059",
+        "AT-060"
+      ],
+      "spec": "docs/08_ASSETS_EXPORT_SPEC.md"
+    },
+    {
+      "id": "REQ-031",
+      "statement": "Export manifest·다운로드: manifest와 실제파일·scope가 일치",
+      "priority": "P0",
+      "task_ids": [
+        "T031"
+      ],
+      "acceptance_ids": [
+        "AT-061",
+        "AT-062"
+      ],
+      "spec": "docs/08_ASSETS_EXPORT_SPEC.md"
+    },
+    {
+      "id": "REQ-032",
+      "statement": "대기원고 신선도·정정: 만료시 READY해제와 재검토",
+      "priority": "P0",
+      "task_ids": [
+        "T032"
+      ],
+      "acceptance_ids": [
+        "AT-063",
+        "AT-064"
+      ],
+      "spec": "docs/13_WORKFLOW_AND_RECOVERY.md"
+    },
+    {
+      "id": "REQ-033",
+      "statement": "영속 큐·lease·fencing: 재시작해도 같은단계 중복commit 없음",
+      "priority": "P0",
+      "task_ids": [
+        "T033"
+      ],
+      "acceptance_ids": [
+        "AT-065",
+        "AT-066"
+      ],
+      "spec": "docs/13_WORKFLOW_AND_RECOVERY.md"
+    },
+    {
+      "id": "REQ-034",
+      "statement": "예산 예약·유료호출 intent: 동시요청도 spent+reserved≤cap",
+      "priority": "P0",
+      "task_ids": [
+        "T034"
+      ],
+      "acceptance_ids": [
+        "AT-067",
+        "AT-068"
+      ],
+      "spec": "docs/13_WORKFLOW_AND_RECOVERY.md"
+    },
+    {
+      "id": "REQ-035",
+      "statement": "예외함·제한재시도: 한원고예외여도 다른적격원고 계속",
+      "priority": "P0",
+      "task_ids": [
+        "T035"
+      ],
+      "acceptance_ids": [
+        "AT-069",
+        "AT-070"
+      ],
+      "spec": "docs/13_WORKFLOW_AND_RECOVERY.md"
+    },
+    {
+      "id": "REQ-036",
+      "statement": "일정·대기열 자동운영: 키워드수동입력없이 정상 파이프라인 시작",
+      "priority": "P0",
+      "task_ids": [
+        "T036"
+      ],
+      "acceptance_ids": [
+        "AT-071",
+        "AT-072"
+      ],
+      "spec": "docs/13_WORKFLOW_AND_RECOVERY.md"
+    },
+    {
+      "id": "REQ-037",
+      "statement": "원고 편집·검수 UI: 수정 후 새revision·검수대기 표시",
+      "priority": "P0",
+      "task_ids": [
+        "T037"
+      ],
+      "acceptance_ids": [
+        "AT-073",
+        "AT-074"
+      ],
+      "spec": "docs/02_UX_AND_SCREEN_SPEC.md"
+    },
+    {
+      "id": "REQ-038",
+      "statement": "기회·자료 연구 UI: 검색·홈판·SNS 증거 유형이 구분됨",
+      "priority": "P0",
+      "task_ids": [
+        "T038"
+      ],
+      "acceptance_ids": [
+        "AT-075",
+        "AT-076"
+      ],
+      "spec": "docs/02_UX_AND_SCREEN_SPEC.md"
+    },
+    {
+      "id": "REQ-039",
+      "statement": "오늘·온보딩 UI: 오늘완성원고와 다음행동이 명확함",
+      "priority": "P0",
+      "task_ids": [
+        "T039"
+      ],
+      "acceptance_ids": [
+        "AT-077",
+        "AT-078"
+      ],
+      "spec": "docs/02_UX_AND_SCREEN_SPEC.md"
+    },
+    {
+      "id": "REQ-040",
+      "statement": "수동 게시 기록: 원고와 게시기록이 별도 연결됨",
+      "priority": "P0",
+      "task_ids": [
+        "T040"
+      ],
+      "acceptance_ids": [
+        "AT-079",
+        "AT-080"
+      ],
+      "spec": "docs/12_API_SPEC.md"
+    },
+    {
+      "id": "REQ-041",
+      "statement": "성과 import·매핑·revision: 재업로드중복없고 미갱신이 구분됨",
+      "priority": "P0",
+      "task_ids": [
+        "T041"
+      ],
+      "acceptance_ids": [
+        "AT-081",
+        "AT-082"
+      ],
+      "spec": "docs/14_METRICS_AND_GROWTH_PLAN.md"
+    },
+    {
+      "id": "REQ-042",
+      "statement": "조회목표·품질·비용 보고서: 주력100만과 다른채널합계 별도",
+      "priority": "P0",
+      "task_ids": [
+        "T042"
+      ],
+      "acceptance_ids": [
+        "AT-083",
+        "AT-084"
+      ],
+      "spec": "docs/14_METRICS_AND_GROWTH_PLAN.md"
+    },
+    {
+      "id": "REQ-043",
+      "statement": "실험·수정 학습: 문체수정과 사실수정이 다르게 반영",
+      "priority": "P1",
+      "task_ids": [
+        "T043"
+      ],
+      "acceptance_ids": [
+        "AT-085",
+        "AT-086"
+      ],
+      "spec": "docs/14_METRICS_AND_GROWTH_PLAN.md"
+    },
+    {
+      "id": "REQ-044",
+      "statement": "공격·격리·공개패키지 검증: 공격입력 차단과 감사가 확인됨",
+      "priority": "P0",
+      "task_ids": [
+        "T044"
+      ],
+      "acceptance_ids": [
+        "AT-087",
+        "AT-088"
+      ],
+      "spec": "docs/15_SECURITY_PERMISSIONS.md"
+    },
+    {
+      "id": "REQ-045",
+      "statement": "두 블로그 replay E2E: 각블로그 완성원고와 scope가 맞음",
+      "priority": "P0",
+      "task_ids": [
+        "T045"
+      ],
+      "acceptance_ids": [
+        "AT-089",
+        "AT-090"
+      ],
+      "spec": "docs/18_ACCEPTANCE_TESTS.md"
+    },
+    {
+      "id": "REQ-046",
+      "statement": "실제 소스·모델 E2E: source→HANDOFF_READY실경로 증거",
+      "priority": "P0",
+      "task_ids": [
+        "T046"
+      ],
+      "acceptance_ids": [
+        "AT-091",
+        "AT-092"
+      ],
+      "spec": "docs/18_ACCEPTANCE_TESTS.md"
+    },
+    {
+      "id": "REQ-047",
+      "statement": "실제 에디터 수동 호환성: 복사·삽입후 누락없이 보임",
+      "priority": "P0",
+      "task_ids": [
+        "T047"
+      ],
+      "acceptance_ids": [
+        "AT-093",
+        "AT-094"
+      ],
+      "spec": "docs/08_ASSETS_EXPORT_SPEC.md"
+    },
+    {
+      "id": "REQ-048",
+      "statement": "30편 블라인드 품질 평가: 중대오류0·목표점수 충족",
+      "priority": "P0",
+      "task_ids": [
+        "T048"
+      ],
+      "acceptance_ids": [
+        "AT-095",
+        "AT-096"
+      ],
+      "spec": "docs/09_QA_EVALUATION_SPEC.md"
+    },
+    {
+      "id": "REQ-049",
+      "statement": "부하·복구·관측·운영복귀: 실제복구·hash·예약대사 확인",
+      "priority": "P0",
+      "task_ids": [
+        "T049"
+      ],
+      "acceptance_ids": [
+        "AT-097",
+        "AT-098"
+      ],
+      "spec": "docs/19_OPERATIONS_RUNBOOK.md"
+    },
+    {
+      "id": "REQ-050",
+      "statement": "릴리스 인수·실행문서: 실행증거가있는범위만 완료기재",
+      "priority": "P0",
+      "task_ids": [
+        "T050"
+      ],
+      "acceptance_ids": [
+        "AT-099",
+        "AT-100"
+      ],
+      "spec": "docs/16_WORK_PLAN.md"
+    },
+    {
+      "id": "REQ-051",
+      "statement": "정규화·해시 계약과 Python/Node 동등성: 허용된 값에서 두 구현의 UTF-8 bytes와 SHA256이 일치한다.",
+      "priority": "P0",
+      "task_ids": [
+        "T051"
+      ],
+      "acceptance_ids": [
+        "AT-101",
+        "AT-102",
+        "AT-103",
+        "AT-104"
+      ],
+      "spec": "docs/28_DETERMINISTIC_CONTRACTS_R1.md"
+    },
+    {
+      "id": "REQ-052",
+      "statement": "JSON Schema 조건·의미 검증·API 계약 일치: 정상 null 통계와 정상 원고가 통과하고 원본/API 제약이 같다.",
+      "priority": "P0",
+      "task_ids": [
+        "T052"
+      ],
+      "acceptance_ids": [
+        "AT-105",
+        "AT-106",
+        "AT-107",
+        "AT-108"
+      ],
+      "spec": "docs/28_DETERMINISTIC_CONTRACTS_R1.md"
+    },
+    {
+      "id": "REQ-053",
+      "statement": "PostgreSQL 연결 무결성과 실제 RLS·동시성: 정상 연결과 허용된 공유 자료만 읽고 쓸 수 있다.",
+      "priority": "P0",
+      "task_ids": [
+        "T053"
+      ],
+      "acceptance_ids": [
+        "AT-109",
+        "AT-110",
+        "AT-111",
+        "AT-112"
+      ],
+      "spec": "docs/29_MIGRATION_AND_CODEX_R1.md"
+    },
+    {
+      "id": "REQ-054",
+      "statement": "기획 전 원고 생성·상태 전이·API 멱등성: 조사→기획→집필 순서가 미확정 brief 때문에 막히지 않는다.",
+      "priority": "P0",
+      "task_ids": [
+        "T054"
+      ],
+      "acceptance_ids": [
+        "AT-113",
+        "AT-114",
+        "AT-115",
+        "AT-116"
+      ],
+      "spec": "docs/28_DETERMINISTIC_CONTRACTS_R1.md"
+    },
+    {
+      "id": "REQ-055",
+      "statement": "서버 검수본 결속·만료·다운로드 직전 재검증: 일치하는 최신 검수·근거·권한의 원고만 파일 검증으로 넘어간다.",
+      "priority": "P0",
+      "task_ids": [
+        "T055"
+      ],
+      "acceptance_ids": [
+        "AT-117",
+        "AT-118",
+        "AT-119",
+        "AT-120"
+      ],
+      "spec": "docs/28_DETERMINISTIC_CONTRACTS_R1.md"
+    },
+    {
+      "id": "REQ-056",
+      "statement": "기획 후보 비교·발행 준비시간·관측 편향 처리: 근거와 새 답이 준비된 후보가 실제 비용·대기열 제약 안에서 선택된다.",
+      "priority": "P1",
+      "task_ids": [
+        "T056"
+      ],
+      "acceptance_ids": [
+        "AT-121",
+        "AT-122",
+        "AT-123",
+        "AT-124"
+      ],
+      "spec": "docs/26_EDITORIAL_DECISION_ENGINE_R1.md"
+    },
+    {
+      "id": "REQ-057",
+      "statement": "기획·원고 분리 블라인드 벤치마크: 첫 화면·새 정보·문체·완결성·정확성이 독립적으로 보고된다.",
+      "priority": "P1",
+      "task_ids": [
+        "T057"
+      ],
+      "acceptance_ids": [
+        "AT-125",
+        "AT-126",
+        "AT-127",
+        "AT-128"
+      ],
+      "spec": "docs/27_WRITING_BENCHMARK_R1.md"
+    },
+    {
+      "id": "REQ-058",
+      "statement": "렌더 의미 보존·자산 파일·전송 완성도: 필수 답과 출처, 필요한 이미지가 실제 산출물에 남아 있다.",
+      "priority": "P0",
+      "task_ids": [
+        "T058"
+      ],
+      "acceptance_ids": [
+        "AT-129",
+        "AT-130",
+        "AT-131",
+        "AT-132"
+      ],
+      "spec": "docs/28_DETERMINISTIC_CONTRACTS_R1.md"
+    },
+    {
+      "id": "REQ-059",
+      "statement": "미갱신 통계·정정 이력·미래정보 누출 없는 학습: 달력 월 실적과 발행후 코호트 성과를 독립 집계한다.",
+      "priority": "P0",
+      "task_ids": [
+        "T059"
+      ],
+      "acceptance_ids": [
+        "AT-133",
+        "AT-134",
+        "AT-135",
+        "AT-136"
+      ],
+      "spec": "docs/14_METRICS_AND_GROWTH_PLAN.md"
+    },
+    {
+      "id": "REQ-060",
+      "statement": "R1 회귀시험·실제 운영 단계별 출시 판정: 실제 실행한 범위와 미실행 영역을 구분한 보고서가 재현된다.",
+      "priority": "P0",
+      "task_ids": [
+        "T060"
+      ],
+      "acceptance_ids": [
+        "AT-137",
+        "AT-138",
+        "AT-139",
+        "AT-140"
+      ],
+      "spec": "docs/30_RELEASE_GATES_AND_STOP_RULES_R1.md"
+    }
+  ]
+}

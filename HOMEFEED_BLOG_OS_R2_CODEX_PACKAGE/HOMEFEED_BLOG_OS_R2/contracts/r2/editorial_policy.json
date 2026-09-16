@@ -1,0 +1,22 @@
+{
+  "version": "r2.editorial.1",
+  "public_posting_enabled": false,
+  "reader_calibration_status": "NOT_RUN",
+  "ai_detector_gate": false,
+  "default_no_review_action": "EDITORIAL_REVIEW",
+  "fact_state_required_before_quality": "VERIFIED",
+  "max_content_reframe": 1,
+  "max_local_edit": 2,
+  "inherits_r1_total_budget_and_repair_caps": true,
+  "full_research_rewrite_is_not_style_edit": true,
+  "no_simulated_audience_as_human_result": true,
+  "no_new_fact_quota": true,
+  "no_uniform_article_length_or_image_count": true,
+  "dimensions": [
+    "payoff",
+    "promise",
+    "coherence",
+    "voice",
+    "specificity"
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "release": "4.2.0-r2",
+  "checked_date": "2026-09-16",
+  "base_document_checks": 73,
+  "base_regression_checks": 112,
+  "new_offline_reference_tests": 48,
+  "new_offline_reference_failed": 0,
+  "manually_authored_examples": 3,
+  "human_blind_evaluation": "NOT_RUN",
+  "actual_model_pipeline": "NOT_RUN",
+  "actual_naver_editor": "NOT_RUN",
+  "actual_tistory_editor": "NOT_RUN",
+  "actual_trends": "NOT_RUN",
+  "viral_measurement": "NOT_MEASURED",
+  "notes": "Code tests prove only their listed assertions, not quality or viral efficacy. R1 inherited tests partially overlap R2.",
+  "docx_visual_pages": 7,
+  "html_reader_visual_samples": 3,
+  "html_reader_viewports": [
+    390,
+    1280
+  ]
+}

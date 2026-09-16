@@ -1,0 +1,417 @@
+{
+  "version": "4.2.0-r2",
+  "tasks": [
+    {
+      "id": "R2-01",
+      "title": "독자용 출력 분리",
+      "depends_on": [],
+      "base_dependencies": [
+        "T030"
+      ],
+      "input": "ArticleIR·실제 자산",
+      "output": "HTML/TXT·비공개 sidecar",
+      "acceptance_ids": [
+        "R2-AT-01-01",
+        "R2-AT-01-02",
+        "R2-AT-01-03"
+      ],
+      "spec": "docs/36_R2_ENGINEERING_WORKSPEC.md",
+      "implementation_status": "NOT_STARTED",
+      "reference_code_is_not_product_completion": true
+    },
+    {
+      "id": "R2-02",
+      "title": "기획 재료와 독자 판단 변화",
+      "depends_on": [
+        "R2-01"
+      ],
+      "base_dependencies": [
+        "T015"
+      ],
+      "input": "확정 Brief·ResearchPack",
+      "output": "reader_before/after·필요 재료",
+      "acceptance_ids": [
+        "R2-AT-02-01",
+        "R2-AT-02-02",
+        "R2-AT-02-03"
+      ],
+      "spec": "docs/36_R2_ENGINEERING_WORKSPEC.md",
+      "implementation_status": "NOT_STARTED",
+      "reference_code_is_not_product_completion": true
+    },
+    {
+      "id": "R2-03",
+      "title": "최종 payoff 검토 sidecar",
+      "depends_on": [
+        "R2-02"
+      ],
+      "base_dependencies": [
+        "T022"
+      ],
+      "input": "최종 ArticleIR·원문",
+      "output": "편집 review",
+      "acceptance_ids": [
+        "R2-AT-03-01",
+        "R2-AT-03-02",
+        "R2-AT-03-03"
+      ],
+      "spec": "docs/36_R2_ENGINEERING_WORKSPEC.md",
+      "implementation_status": "NOT_STARTED",
+      "reference_code_is_not_product_completion": true
+    },
+    {
+      "id": "R2-04",
+      "title": "원인별 수리",
+      "depends_on": [
+        "R2-03"
+      ],
+      "base_dependencies": [
+        "T023"
+      ],
+      "input": "review·예산·수리이력",
+      "output": "다음 작업 결정",
+      "acceptance_ids": [
+        "R2-AT-04-01",
+        "R2-AT-04-02",
+        "R2-AT-04-03"
+      ],
+      "spec": "docs/36_R2_ENGINEERING_WORKSPEC.md",
+      "implementation_status": "NOT_STARTED",
+      "reference_code_is_not_product_completion": true
+    },
+    {
+      "id": "R2-05",
+      "title": "문체와 문단 역할",
+      "depends_on": [
+        "R2-04"
+      ],
+      "base_dependencies": [
+        "T020"
+      ],
+      "input": "profile·본문·최근 글",
+      "output": "부분 수정본",
+      "acceptance_ids": [
+        "R2-AT-05-01",
+        "R2-AT-05-02",
+        "R2-AT-05-03"
+      ],
+      "spec": "docs/36_R2_ENGINEERING_WORKSPEC.md",
+      "implementation_status": "NOT_STARTED",
+      "reference_code_is_not_product_completion": true
+    },
+    {
+      "id": "R2-06",
+      "title": "의미 보존 재검수",
+      "depends_on": [
+        "R2-05"
+      ],
+      "base_dependencies": [
+        "T022"
+      ],
+      "input": "원문·수정 전후",
+      "output": "의미 변화 finding",
+      "acceptance_ids": [
+        "R2-AT-06-01",
+        "R2-AT-06-02",
+        "R2-AT-06-03"
+      ],
+      "spec": "docs/36_R2_ENGINEERING_WORKSPEC.md",
+      "implementation_status": "NOT_STARTED",
+      "reference_code_is_not_product_completion": true
+    },
+    {
+      "id": "R2-07",
+      "title": "실제 공정 비교 평가",
+      "depends_on": [
+        "R2-06"
+      ],
+      "base_dependencies": [
+        "T057"
+      ],
+      "input": "고정 사건·브리프·실제 평가자",
+      "output": "익명 평가와 편집시간",
+      "acceptance_ids": [
+        "R2-AT-07-01",
+        "R2-AT-07-02",
+        "R2-AT-07-03"
+      ],
+      "spec": "docs/36_R2_ENGINEERING_WORKSPEC.md",
+      "implementation_status": "NOT_STARTED",
+      "reference_code_is_not_product_completion": true
+    },
+    {
+      "id": "R2-08",
+      "title": "편집기와 출력 확인",
+      "depends_on": [
+        "R2-01"
+      ],
+      "base_dependencies": [
+        "T038"
+      ],
+      "input": "완성 패키지·수동 입력",
+      "output": "확인 기록",
+      "acceptance_ids": [
+        "R2-AT-08-01",
+        "R2-AT-08-02",
+        "R2-AT-08-03"
+      ],
+      "spec": "docs/36_R2_ENGINEERING_WORKSPEC.md",
+      "implementation_status": "NOT_STARTED",
+      "reference_code_is_not_product_completion": true
+    },
+    {
+      "id": "R2-09",
+      "title": "기회와 품질 상태 분리",
+      "depends_on": [
+        "R2-02"
+      ],
+      "base_dependencies": [
+        "T058"
+      ],
+      "input": "품질 review·수요 관측",
+      "output": "두 축의 준비상태",
+      "acceptance_ids": [
+        "R2-AT-09-01",
+        "R2-AT-09-02",
+        "R2-AT-09-03"
+      ],
+      "spec": "docs/36_R2_ENGINEERING_WORKSPEC.md",
+      "implementation_status": "NOT_STARTED",
+      "reference_code_is_not_product_completion": true
+    },
+    {
+      "id": "R2-10",
+      "title": "출고 gate 통합",
+      "depends_on": [
+        "R2-07",
+        "R2-08",
+        "R2-09"
+      ],
+      "base_dependencies": [
+        "T060"
+      ],
+      "input": "R1 gate·R2 review·실제 파일",
+      "output": "다운로드 판단",
+      "acceptance_ids": [
+        "R2-AT-10-01",
+        "R2-AT-10-02",
+        "R2-AT-10-03"
+      ],
+      "spec": "docs/36_R2_ENGINEERING_WORKSPEC.md",
+      "implementation_status": "NOT_STARTED",
+      "reference_code_is_not_product_completion": true
+    }
+  ],
+  "acceptance_tests": [
+    {
+      "id": "R2-AT-01-01",
+      "task_id": "R2-01",
+      "assertion": "기관명과 원문 링크가 보존되고 내부 출처 ID가 독자 표시에 없음",
+      "execution_status": "NOT_RUN",
+      "classification": "PRODUCT_ACCEPTANCE_NOT_REFERENCE_TEST"
+    },
+    {
+      "id": "R2-AT-01-02",
+      "task_id": "R2-01",
+      "assertion": "악성 시험 문자열이 공개 예제/큐에 섞이지 않음",
+      "execution_status": "NOT_RUN",
+      "classification": "PRODUCT_ACCEPTANCE_NOT_REFERENCE_TEST"
+    },
+    {
+      "id": "R2-AT-01-03",
+      "task_id": "R2-01",
+      "assertion": "표·목록·캡션·인용을 모두 보존하고 누락 자산은 보류",
+      "execution_status": "NOT_RUN",
+      "classification": "PRODUCT_ACCEPTANCE_NOT_REFERENCE_TEST"
+    },
+    {
+      "id": "R2-AT-02-01",
+      "task_id": "R2-02",
+      "assertion": "현재 질문과 새 답의 연결이 실제 근거로 설명됨",
+      "execution_status": "NOT_RUN",
+      "classification": "PRODUCT_ACCEPTANCE_NOT_REFERENCE_TEST"
+    },
+    {
+      "id": "R2-AT-02-02",
+      "task_id": "R2-02",
+      "assertion": "새 사실이 없어도 유용한 비교·정리의 기여를 인정함",
+      "execution_status": "NOT_RUN",
+      "classification": "PRODUCT_ACCEPTANCE_NOT_REFERENCE_TEST"
+    },
+    {
+      "id": "R2-AT-02-03",
+      "task_id": "R2-02",
+      "assertion": "빈 근거를 추상적인 글로 채우지 않고 RESEARCH",
+      "execution_status": "NOT_RUN",
+      "classification": "PRODUCT_ACCEPTANCE_NOT_REFERENCE_TEST"
+    },
+    {
+      "id": "R2-AT-03-01",
+      "task_id": "R2-03",
+      "assertion": "최종 block과 실제 문구를 연결함",
+      "execution_status": "NOT_RUN",
+      "classification": "PRODUCT_ACCEPTANCE_NOT_REFERENCE_TEST"
+    },
+    {
+      "id": "R2-AT-03-02",
+      "task_id": "R2-03",
+      "assertion": "다른 블로그/버전/없는 구절은 거절",
+      "execution_status": "NOT_RUN",
+      "classification": "PRODUCT_ACCEPTANCE_NOT_REFERENCE_TEST"
+    },
+    {
+      "id": "R2-AT-03-03",
+      "task_id": "R2-03",
+      "assertion": "writer 자가승인과 무인가 검토자를 서버에서 거절",
+      "execution_status": "NOT_RUN",
+      "classification": "PRODUCT_ACCEPTANCE_NOT_REFERENCE_TEST"
+    },
+    {
+      "id": "R2-AT-04-01",
+      "task_id": "R2-04",
+      "assertion": "근거 부족은 조사로 반환",
+      "execution_status": "NOT_RUN",
+      "classification": "PRODUCT_ACCEPTANCE_NOT_REFERENCE_TEST"
+    },
+    {
+      "id": "R2-AT-04-02",
+      "task_id": "R2-04",
+      "assertion": "표현 중복만 부분 편집",
+      "execution_status": "NOT_RUN",
+      "classification": "PRODUCT_ACCEPTANCE_NOT_REFERENCE_TEST"
+    },
+    {
+      "id": "R2-AT-04-03",
+      "task_id": "R2-04",
+      "assertion": "전역 수리상한을 넘지 않고 같은 결함 반복 보류",
+      "execution_status": "NOT_RUN",
+      "classification": "PRODUCT_ACCEPTANCE_NOT_REFERENCE_TEST"
+    },
+    {
+      "id": "R2-AT-05-01",
+      "task_id": "R2-05",
+      "assertion": "안전조건·예외·전문용어를 지우지 않음",
+      "execution_status": "NOT_RUN",
+      "classification": "PRODUCT_ACCEPTANCE_NOT_REFERENCE_TEST"
+    },
+    {
+      "id": "R2-AT-05-02",
+      "task_id": "R2-05",
+      "assertion": "가짜 체험·임의 오타·인기 주장으로 자연스러움을 꾸미지 않음",
+      "execution_status": "NOT_RUN",
+      "classification": "PRODUCT_ACCEPTANCE_NOT_REFERENCE_TEST"
+    },
+    {
+      "id": "R2-AT-05-03",
+      "task_id": "R2-05",
+      "assertion": "불필요한 반복을 고치되 전환 문장 자체를 자동 삭제하지 않음",
+      "execution_status": "NOT_RUN",
+      "classification": "PRODUCT_ACCEPTANCE_NOT_REFERENCE_TEST"
+    },
+    {
+      "id": "R2-AT-06-01",
+      "task_id": "R2-06",
+      "assertion": "일부에서 전체로 변경되는 경우 검출",
+      "execution_status": "NOT_RUN",
+      "classification": "PRODUCT_ACCEPTANCE_NOT_REFERENCE_TEST"
+    },
+    {
+      "id": "R2-AT-06-02",
+      "task_id": "R2-06",
+      "assertion": "가상 계산을 실제 통계처럼 바꾸면 거절",
+      "execution_status": "NOT_RUN",
+      "classification": "PRODUCT_ACCEPTANCE_NOT_REFERENCE_TEST"
+    },
+    {
+      "id": "R2-AT-06-03",
+      "task_id": "R2-06",
+      "assertion": "타인의 경험을 작성자의 경험으로 바꾸면 거절",
+      "execution_status": "NOT_RUN",
+      "classification": "PRODUCT_ACCEPTANCE_NOT_REFERENCE_TEST"
+    },
+    {
+      "id": "R2-AT-07-01",
+      "task_id": "R2-07",
+      "assertion": "두 실제 독자 원점수와 편집시간 기록",
+      "execution_status": "NOT_RUN",
+      "classification": "PRODUCT_ACCEPTANCE_NOT_REFERENCE_TEST"
+    },
+    {
+      "id": "R2-AT-07-02",
+      "task_id": "R2-07",
+      "assertion": "실패·보류·동률 포함한 분모와 사건단위 분할",
+      "execution_status": "NOT_RUN",
+      "classification": "PRODUCT_ACCEPTANCE_NOT_REFERENCE_TEST"
+    },
+    {
+      "id": "R2-AT-07-03",
+      "task_id": "R2-07",
+      "assertion": "직접 작성 예제를 자동집필 결과·인간평가 통과로 위장하지 않음",
+      "execution_status": "NOT_RUN",
+      "classification": "PRODUCT_ACCEPTANCE_NOT_REFERENCE_TEST"
+    },
+    {
+      "id": "R2-AT-08-01",
+      "task_id": "R2-08",
+      "assertion": "네이버 비공개 에디터에 사용자가 실제 입력해 서식 확인",
+      "execution_status": "NOT_RUN",
+      "classification": "PRODUCT_ACCEPTANCE_NOT_REFERENCE_TEST"
+    },
+    {
+      "id": "R2-AT-08-02",
+      "task_id": "R2-08",
+      "assertion": "티스토리 또는 대상 CMS에서 동일한 실제 입력 확인",
+      "execution_status": "NOT_RUN",
+      "classification": "PRODUCT_ACCEPTANCE_NOT_REFERENCE_TEST"
+    },
+    {
+      "id": "R2-AT-08-03",
+      "task_id": "R2-08",
+      "assertion": "로컬 미리보기 결과를 실제 에디터 호환성으로 표시하지 않음",
+      "execution_status": "NOT_RUN",
+      "classification": "PRODUCT_ACCEPTANCE_NOT_REFERENCE_TEST"
+    },
+    {
+      "id": "R2-AT-09-01",
+      "task_id": "R2-09",
+      "assertion": "품질 샘플이 자동으로 급상승 후보가 되지 않음",
+      "execution_status": "NOT_RUN",
+      "classification": "PRODUCT_ACCEPTANCE_NOT_REFERENCE_TEST"
+    },
+    {
+      "id": "R2-AT-09-02",
+      "task_id": "R2-09",
+      "assertion": "수요 미관측 상태를 성공 확률 0/100으로 채우지 않음",
+      "execution_status": "NOT_RUN",
+      "classification": "PRODUCT_ACCEPTANCE_NOT_REFERENCE_TEST"
+    },
+    {
+      "id": "R2-AT-09-03",
+      "task_id": "R2-09",
+      "assertion": "원고 작성 후 사건 변경 시 재검토",
+      "execution_status": "NOT_RUN",
+      "classification": "PRODUCT_ACCEPTANCE_NOT_REFERENCE_TEST"
+    },
+    {
+      "id": "R2-AT-10-01",
+      "task_id": "R2-10",
+      "assertion": "내용·권리·최신성·최종 원고 해시가 모두 일치",
+      "execution_status": "NOT_RUN",
+      "classification": "PRODUCT_ACCEPTANCE_NOT_REFERENCE_TEST"
+    },
+    {
+      "id": "R2-AT-10-02",
+      "task_id": "R2-10",
+      "assertion": "독자 보정 미실행 시 OWNER_REVIEW로 표시",
+      "execution_status": "NOT_RUN",
+      "classification": "PRODUCT_ACCEPTANCE_NOT_REFERENCE_TEST"
+    },
+    {
+      "id": "R2-AT-10-03",
+      "task_id": "R2-10",
+      "assertion": "자동 공개 게시 없이 사용자가 최종 게시",
+      "execution_status": "NOT_RUN",
+      "classification": "PRODUCT_ACCEPTANCE_NOT_REFERENCE_TEST"
+    }
+  ]
+}

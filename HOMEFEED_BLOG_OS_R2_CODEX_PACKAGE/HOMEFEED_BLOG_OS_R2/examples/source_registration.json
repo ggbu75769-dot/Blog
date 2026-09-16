@@ -1,0 +1,24 @@
+{
+  "id": "7659929f-8122-5fe0-aef3-6f274d1295fc",
+  "tenant_id": "dbfb664f-c890-5171-914a-23b67f3e0767",
+  "name": "NAVER Datalab 공식 문서",
+  "kind": "official_web",
+  "base_url": "https://developers.naver.com/docs/serviceapi/datalab/search/search.md",
+  "permissions": {
+    "fetch": true,
+    "store": false,
+    "send_to_model": true,
+    "republish": false,
+    "basis": "문서 확인에 필요한 최소 범위의 읽기와 요약 예시. 전체 문서 재게시를 허용한다는 의미가 아니다.",
+    "expires_at": null
+  },
+  "allowed_hosts": [
+    "developers.naver.com"
+  ],
+  "credential_ref": null,
+  "status": "AVAILABLE",
+  "checked_at": "2026-09-15T00:00:00Z",
+  "allowed_blog_ids": [
+    "4662b729-4a37-5271-8147-9fe8e02e260b"
+  ]
+}

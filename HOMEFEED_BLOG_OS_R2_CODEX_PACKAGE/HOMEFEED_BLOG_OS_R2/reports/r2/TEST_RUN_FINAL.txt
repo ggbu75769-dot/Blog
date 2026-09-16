@@ -1,0 +1,53 @@
+test_anchor_missing_block (test_editorial.EditorialTests.test_anchor_missing_block) ... ok
+test_anchor_not_real (test_editorial.EditorialTests.test_anchor_not_real) ... ok
+test_control_character_does_not_hide_marker (test_editorial.EditorialTests.test_control_character_does_not_hide_marker) ... ok
+test_duplicate_sources_share_public_number (test_editorial.EditorialTests.test_duplicate_sources_share_public_number) ... ok
+test_duplicate_warning (test_editorial.EditorialTests.test_duplicate_warning) ... ok
+test_empty_answer_dimension (test_editorial.EditorialTests.test_empty_answer_dimension) ... ok
+test_empty_value_does_not_pass (test_editorial.EditorialTests.test_empty_value_does_not_pass) ... ok
+test_every_text_is_preserved (test_editorial.EditorialTests.test_every_text_is_preserved) ... ok
+test_export_does_not_create_approval (test_editorial.EditorialTests.test_export_does_not_create_approval) ... ok
+test_fake_human_review_kind (test_editorial.EditorialTests.test_fake_human_review_kind) ... ok
+test_fake_popularity_requires_review (test_editorial.EditorialTests.test_fake_popularity_requires_review) ... ok
+test_final_critical_exception_preserved (test_editorial.EditorialTests.test_final_critical_exception_preserved) ... ok
+test_formula_example_not_fake_measurement (test_editorial.EditorialTests.test_formula_example_not_fake_measurement) ... ok
+test_generic_warning_not_block (test_editorial.EditorialTests.test_generic_warning_not_block) ... ok
+test_human_calibration_not_invented (test_editorial.EditorialTests.test_human_calibration_not_invented) ... ok
+test_internal_work_note_block (test_editorial.EditorialTests.test_internal_work_note_block) ... ok
+test_lint_not_universal_first_person_ban (test_editorial.EditorialTests.test_lint_not_universal_first_person_ban) ... ok
+test_major_finding_cannot_pass (test_editorial.EditorialTests.test_major_finding_cannot_pass) ... ok
+test_missing_content_goes_research (test_editorial.EditorialTests.test_missing_content_goes_research) ... ok
+test_missing_image_marker_block (test_editorial.EditorialTests.test_missing_image_marker_block) ... ok
+test_missing_source (test_editorial.EditorialTests.test_missing_source) ... ok
+test_needed_terms_not_duplicate_paragraph (test_editorial.EditorialTests.test_needed_terms_not_duplicate_paragraph) ... ok
+test_new_api_has_no_publishing (test_editorial.EditorialTests.test_new_api_has_no_publishing) ... ok
+test_no_review_stops (test_editorial.EditorialTests.test_no_review_stops) ... ok
+test_no_warnings_means_no_ai_verdict (test_editorial.EditorialTests.test_no_warnings_means_no_ai_verdict) ... ok
+test_other_article (test_editorial.EditorialTests.test_other_article) ... ok
+test_other_blog (test_editorial.EditorialTests.test_other_blog) ... ok
+test_other_revision (test_editorial.EditorialTests.test_other_revision) ... ok
+test_r1_gate_still_needed (test_editorial.EditorialTests.test_r1_gate_still_needed) ... ok
+test_reader_html_no_public_id (test_editorial.EditorialTests.test_reader_html_no_public_id) ... ok
+test_reader_text_no_id (test_editorial.EditorialTests.test_reader_text_no_id) ... ok
+test_real_blind_label_requires_actual_authorized_role (test_editorial.EditorialTests.test_real_blind_label_requires_actual_authorized_role) ... ok
+test_reference_annotation_cannot_be_promoted (test_editorial.EditorialTests.test_reference_annotation_cannot_be_promoted) ... ok
+test_reference_not_production (test_editorial.EditorialTests.test_reference_not_production) ... ok
+test_sample_labels_honest (test_editorial.EditorialTests.test_sample_labels_honest) ... ok
+test_schema_syntax (test_editorial.EditorialTests.test_schema_syntax) ... ok
+test_self_review (test_editorial.EditorialTests.test_self_review) ... ok
+test_stale_hash (test_editorial.EditorialTests.test_stale_hash) ... ok
+test_table_preserved (test_editorial.EditorialTests.test_table_preserved) ... ok
+test_unauthorized_reviewer (test_editorial.EditorialTests.test_unauthorized_reviewer) ... ok
+test_unknown_dimension_not_passed (test_editorial.EditorialTests.test_unknown_dimension_not_passed) ... ok
+test_unknown_fact_stops (test_editorial.EditorialTests.test_unknown_fact_stops) ... ok
+test_unknown_property (test_editorial.EditorialTests.test_unknown_property) ... ok
+test_unknown_source (test_editorial.EditorialTests.test_unknown_source) ... ok
+test_valid_references (test_editorial.EditorialTests.test_valid_references) ... ok
+test_wording_only_local_edit (test_editorial.EditorialTests.test_wording_only_local_edit) ... ok
+test_work_trace_and_unrun (test_editorial.EditorialTests.test_work_trace_and_unrun) ... ok
+test_xss_escaped (test_editorial.EditorialTests.test_xss_escaped) ... ok
+
+----------------------------------------------------------------------
+Ran 48 tests in 0.097s
+
+OK

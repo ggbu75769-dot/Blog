@@ -1,0 +1,65 @@
+[
+  {
+    "sample_id": "01_DATALAB",
+    "title": "검색 추세가 둘 다 100인데, 어느 쪽이 더 인기일까?",
+    "authorship": "ASSISTANT_AUTHORED_EDITING_EXAMPLE",
+    "source_verified_on": "2026-09-16",
+    "live_pipeline_generated": false,
+    "human_blind_review": "NOT_RUN",
+    "target_platform_transfer": "NOT_RUN",
+    "actual_device_test": "NOT_RUN",
+    "trend_validation": "NOT_RUN",
+    "viral_outcome": "NOT_MEASURED",
+    "production_release": "NOT_APPROVED",
+    "body_reference_format": "TEXT_ONLY_BY_DESIGN",
+    "cover_asset_status": "NOT_INCLUDED_NOT_READY_FOR_HOMEFEED_RELEASE",
+    "purpose": "내용·문체·출처표시 비교용. 현재 급상승 소재나 최종 운영출고 인증 아님.",
+    "limitations": [
+      "자료 확인은 공개 도움말 범위이며 직접 제품·기기 시험 아님",
+      "샘플 자체를 자동 집필 엔진 성능 증거로 사용하지 않음",
+      "이 세 샘플로 OTT·실사용 후기·모든 장르 품질을 입증하지 않음"
+    ]
+  },
+  {
+    "sample_id": "02_GOOGLE_PHOTOS",
+    "title": "구글 포토에 보이는 사진, 휴대폰에서 지워도 될까?",
+    "authorship": "ASSISTANT_AUTHORED_EDITING_EXAMPLE",
+    "source_verified_on": "2026-09-16",
+    "live_pipeline_generated": false,
+    "human_blind_review": "NOT_RUN",
+    "target_platform_transfer": "NOT_RUN",
+    "actual_device_test": "NOT_RUN",
+    "trend_validation": "NOT_RUN",
+    "viral_outcome": "NOT_MEASURED",
+    "production_release": "NOT_APPROVED",
+    "body_reference_format": "TEXT_ONLY_BY_DESIGN",
+    "cover_asset_status": "NOT_INCLUDED_NOT_READY_FOR_HOMEFEED_RELEASE",
+    "purpose": "내용·문체·출처표시 비교용. 현재 급상승 소재나 최종 운영출고 인증 아님.",
+    "limitations": [
+      "자료 확인은 공개 도움말 범위이며 직접 제품·기기 시험 아님",
+      "샘플 자체를 자동 집필 엔진 성능 증거로 사용하지 않음",
+      "이 세 샘플로 OTT·실사용 후기·모든 장르 품질을 입증하지 않음"
+    ]
+  },
+  {
+    "sample_id": "03_USBC",
+    "title": "충전은 되는데 모니터는 안 뜨는 USB-C, 케이블 문제일까?",
+    "authorship": "ASSISTANT_AUTHORED_EDITING_EXAMPLE",
+    "source_verified_on": "2026-09-16",
+    "live_pipeline_generated": false,
+    "human_blind_review": "NOT_RUN",
+    "target_platform_transfer": "NOT_RUN",
+    "actual_device_test": "NOT_RUN",
+    "trend_validation": "NOT_RUN",
+    "viral_outcome": "NOT_MEASURED",
+    "production_release": "NOT_APPROVED",
+    "body_reference_format": "TEXT_ONLY_BY_DESIGN",
+    "cover_asset_status": "NOT_INCLUDED_NOT_READY_FOR_HOMEFEED_RELEASE",
+    "purpose": "내용·문체·출처표시 비교용. 현재 급상승 소재나 최종 운영출고 인증 아님.",
+    "limitations": [
+      "자료 확인은 공개 도움말 범위이며 직접 제품·기기 시험 아님",
+      "샘플 자체를 자동 집필 엔진 성능 증거로 사용하지 않음",
+      "이 세 샘플로 OTT·실사용 후기·모든 장르 품질을 입증하지 않음"
+    ]
+  }
+]

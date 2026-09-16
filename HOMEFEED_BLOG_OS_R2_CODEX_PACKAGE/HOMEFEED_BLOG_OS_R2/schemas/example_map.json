@@ -1,0 +1,20 @@
+{
+  "examples": {
+    "blog_profile.json": "BlogProfile",
+    "blog_profile_living.json": "BlogProfile",
+    "source_registration.json": "SourceRegistration",
+    "source_snapshot.json": "SourceSnapshot",
+    "observation.json": "Observation",
+    "opportunity.json": "Opportunity",
+    "evidence_item.json": "EvidenceItem",
+    "content_brief.json": "ContentBrief",
+    "article_ir.json": "ArticleIR",
+    "review_findings.json": "ReviewFindings",
+    "publication_receipt.json": "PublicationReceipt",
+    "metric_row.json": "MetricRow",
+    "export/manifest.json": "ExportManifest"
+  },
+  "array_examples": {
+    "claims.json": "Claim"
+  }
+}

@@ -1,0 +1,123 @@
+{
+  "schema_version": "4.1.0",
+  "id": "ebf70151-f639-59a2-8971-374ac7858fd7",
+  "tenant_id": "dbfb664f-c890-5171-914a-23b67f3e0767",
+  "blog_id": "4662b729-4a37-5271-8147-9fe8e02e260b",
+  "revision_id": "8c93aaf6-a614-5056-bc66-e7920ee08b58",
+  "brief_id": "63c48573-99d4-51ec-8110-5039e077e6f3",
+  "profile_version": 1,
+  "title": "충전은 되는데 모니터는 안 뜨는 USB-C, 케이블 문제일까?",
+  "article_type": "how_to",
+  "is_reference_example": true,
+  "blocks": [
+    {
+      "block_id": "U01",
+      "type": "paragraph",
+      "text": "USB-C 케이블을 꽂자 노트북 충전 표시는 뜨는데 모니터는 조용합니다. 케이블이 불량인가 싶지만, 충전이 된다는 사실만으로 영상 출력까지 확인된 것은 아닙니다.",
+      "claim_ids": [],
+      "citation_ids": [
+        "MS-USBC",
+        "VESA-FAQ"
+      ]
+    },
+    {
+      "block_id": "U02",
+      "type": "paragraph",
+      "text": "USB-C는 단자의 모양을 말합니다. 전력 전달과 영상 출력의 지원 조건은 따로 봐야 합니다. 충전 성능을 설명하는 숫자만 보고 화면 연결도 될 거라고 판단할 수는 없습니다.",
+      "claim_ids": [],
+      "citation_ids": [
+        "USB-PD",
+        "VESA-FAQ"
+      ]
+    },
+    {
+      "block_id": "U03",
+      "type": "heading",
+      "text": "케이블보다 노트북의 포트 설명부터",
+      "claim_ids": [],
+      "citation_ids": []
+    },
+    {
+      "block_id": "U04",
+      "type": "paragraph",
+      "text": "일반적인 DisplayPort 대체 모드 방식의 USB-C 영상 연결이라면, 노트북의 해당 포트가 그 기능을 지원해야 합니다. 제조사 사양표에서 DisplayPort Alt Mode 또는 USB-C 영상 출력 지원 여부를 찾아보세요. 같은 모양의 포트라도 연결할 위치를 확인해야 합니다.",
+      "claim_ids": [],
+      "citation_ids": [
+        "MS-USBC"
+      ]
+    },
+    {
+      "block_id": "U05",
+      "type": "paragraph",
+      "text": "포트가 지원한다면 다음은 연결에 쓰는 디스플레이·어댑터·케이블입니다. Microsoft도 PC와 연결 장치, 케이블의 호환성을 함께 확인하고, 문제가 있으면 허브나 도크를 거치지 않는 직접 연결로 점검하도록 안내합니다.",
+      "claim_ids": [],
+      "citation_ids": [
+        "MS-USBC"
+      ]
+    },
+    {
+      "block_id": "U06",
+      "type": "paragraph",
+      "text": "확인 순서를 짧게 적으면 이렇습니다. 노트북의 정확한 모델과 포트 위치 → 그 포트의 영상 출력 지원 → 어댑터와 케이블의 지원 조건. 원인을 확인하기 전에 케이블부터 여러 개 바꾸는 대신, 어느 지점의 조건이 빠졌는지 좁혀보는 방식입니다.",
+      "claim_ids": [],
+      "citation_ids": []
+    },
+    {
+      "block_id": "U07",
+      "type": "heading",
+      "text": "설정 하나로 지원 기능이 생기지는 않습니다",
+      "claim_ids": [],
+      "citation_ids": []
+    },
+    {
+      "block_id": "U08",
+      "type": "paragraph",
+      "text": "DisplayPort 대체 모드는 해당 기능을 지원하는 장치에서 사용하는 방식입니다. 이를 지원하지 않는 포트에 케이블만 연결했다고 영상이 나오는 것은 아닙니다. 다만 이것은 그 연결 방식에 대한 설명이지, 모든 USB 그래픽 장치와 화면 출력 방법을 다룬 결론은 아닙니다.",
+      "claim_ids": [],
+      "citation_ids": [
+        "MS-USBC",
+        "VESA-FAQ"
+      ]
+    },
+    {
+      "block_id": "U09",
+      "type": "paragraph",
+      "text": "장비가 모두 지원하는데도 화면이 안 나오면 케이블 불량이나 다른 설정 문제까지 이어서 점검해야 합니다. 이 글만으로 고장 위치를 확정할 수는 없습니다.",
+      "claim_ids": [],
+      "citation_ids": []
+    },
+    {
+      "block_id": "U10",
+      "type": "paragraph",
+      "text": "지금 필요한 질문은 “USB-C가 있나요?”보다 구체적입니다. “이 노트북의 이 포트가, 지금 쓰는 방식으로 화면을 보낼 수 있나요?” 여기서부터 확인하면 다음에 점검할 대상을 고르기 쉬워집니다.",
+      "claim_ids": [],
+      "citation_ids": []
+    }
+  ],
+  "public_citations": [
+    {
+      "id": "MS-USBC",
+      "publisher": "Microsoft Support",
+      "title": "Windows에서 USB-C 문제 해결",
+      "url": "https://support.microsoft.com/ko-kr/windows/hardware/fix-usb-c-problems-in-windows",
+      "checked_on": "2026-09-16"
+    },
+    {
+      "id": "VESA-FAQ",
+      "publisher": "VESA / DisplayPort",
+      "title": "DisplayPort FAQ",
+      "url": "https://www.displayport.org/faq/",
+      "checked_on": "2026-09-16"
+    },
+    {
+      "id": "USB-PD",
+      "publisher": "USB-IF",
+      "title": "USB Charger (USB Power Delivery)",
+      "url": "https://www.usb.org/usb-charger-pd",
+      "checked_on": "2026-09-16"
+    }
+  ],
+  "category_suggestion": "디지털 생활",
+  "tag_suggestions": [],
+  "created_at": "2026-09-16T00:00:00Z"
+}

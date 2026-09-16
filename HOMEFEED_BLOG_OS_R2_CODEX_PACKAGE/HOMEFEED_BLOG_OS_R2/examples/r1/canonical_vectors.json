@@ -1,0 +1,59 @@
+[
+  {
+    "name": "korean_nfc",
+    "value": {
+      "가": "한글",
+      "a": "가"
+    },
+    "expected_hash": "585dd9df9133e901a8ddf85263dbe3ec8f89d18d0243caa26ca9c4475f2f8e2c"
+  },
+  {
+    "name": "integer_number",
+    "value": {
+      "x": 1.0,
+      "z": -0.0
+    },
+    "expected_hash": "1bcb227971bb71d12290c66996f6e3098c5af47f868d01ced1e09714bbbe965b"
+  },
+  {
+    "name": "unicode_codepoint_keys",
+    "value": {
+      "𐀀": "a",
+      "": "b",
+      "a": "c"
+    },
+    "expected_hash": "245bb2fccd0620e9ae90ae77dc076029242092ddaede693485e457fb4776d1b4"
+  },
+  {
+    "name": "escapes",
+    "value": {
+      "quote": "\"\\\n\t",
+      "line": "  ",
+      "emoji": "🕊️"
+    },
+    "expected_hash": "94fbc6d9e26a60c0e08e4a350a526fbf44d6062ec0113538a476a51afd605062"
+  },
+  {
+    "name": "nested",
+    "value": [
+      true,
+      null,
+      {
+        "b": 2,
+        "a": [
+          1,
+          0,
+          -3
+        ]
+      }
+    ],
+    "expected_hash": "00d1122c3884ded6f7e8202481a70a1d1a2928c37ba30ebcd14d2f3aff264392"
+  },
+  {
+    "name": "max_integer",
+    "value": {
+      "n": 9007199254740991
+    },
+    "expected_hash": "e1da48c6a6089f06ecb4e0a2259e658e3786b2420f52baccdf929ec6460d7b41"
+  }
+]

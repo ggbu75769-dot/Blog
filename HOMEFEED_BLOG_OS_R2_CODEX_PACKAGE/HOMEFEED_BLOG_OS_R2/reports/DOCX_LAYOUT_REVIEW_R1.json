@@ -1,0 +1,16 @@
+{
+  "document": "HOMEFEED_BLOG_OS_R1_DESIGN_REVIEW_KO.docx",
+  "page_count": 7,
+  "renderer": "/home/oai/skills/docx/render_docx.py",
+  "visual_review": "ALL_7_PAGES_VIEWED",
+  "checks": [
+    "한글 glyph 정상",
+    "본문·표·머리말·꼬리말 잘림 없음",
+    "표 행 겹침 없음",
+    "별도 미실행 표기 유지"
+  ],
+  "notes": "전체 상세 설계는 별도 Markdown. 이 문서는 7페이지 감사·실행 요약.",
+  "document_sha256": "0d54c7bda78284afa9a1da99a43457a34146e6904d4224b8441bab4bd04bd032",
+  "render_note": "Final render: pages1–6 bit-identical to viewed pages; revised page7 separately viewed; all7 passed visual QA.",
+  "executed_at": "2026-09-15T13:29:36.793298+00:00"
+}

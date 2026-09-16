@@ -1,0 +1,58 @@
+{
+  "id": "63c48573-99d4-51ec-8110-5039e077e6f3",
+  "tenant_id": "dbfb664f-c890-5171-914a-23b67f3e0767",
+  "blog_id": "4662b729-4a37-5271-8147-9fe8e02e260b",
+  "opportunity_id": "2a618bbe-6aab-58e0-82dd-9843e7aa3be2",
+  "version": 1,
+  "reader_question": "검색 추세의 100을 검색한 사람 수로 읽어도 되는가?",
+  "one_sentence_answer": "아니다. 상대 관심의 크기를 보여주는 값이므로 절대 횟수와 구분해야 한다.",
+  "why_now": "출력·문체·근거 연결을 확인하는 참고 원고. 현재 급상승이라는 자료는 없다.",
+  "existing_answers": [
+    "공식 API는 응답의 단위를 정의한다."
+  ],
+  "new_contribution": {
+    "kind": "interpretation",
+    "description": "실제 숫자처럼 보이는 상대값을 어떻게 잘못 읽을 수 있는지 일반 독자의 질문으로 설명한다.",
+    "evidence_ids": [
+      "7487474d-c6de-5b10-9790-dc68a71f4e4e"
+    ]
+  },
+  "article_type": "decision_guide",
+  "sections": [
+    {
+      "section_id": "s1",
+      "purpose": "숫자의 의미",
+      "reader_value": "사람 수로 오해하지 않기",
+      "claim_ids": [
+        "50d6ce94-07f0-544d-80b6-7a0de1413069"
+      ]
+    },
+    {
+      "section_id": "s2",
+      "purpose": "비교 범위",
+      "reader_value": "다른 조건의 숫자 섞지 않기",
+      "claim_ids": [
+        "c6e17213-13b7-5507-9197-73b2e6f2e3cd"
+      ]
+    }
+  ],
+  "claim_ids": [
+    "50d6ce94-07f0-544d-80b6-7a0de1413069",
+    "424f9a96-deb7-526f-9bfb-302856b8670d",
+    "c6e17213-13b7-5507-9197-73b2e6f2e3cd"
+  ],
+  "visual_required": false,
+  "text_only_allowed": true,
+  "required_asset_ids": [],
+  "title_promises": [
+    "100이 무엇을 뜻하는지 설명",
+    "비교 전 확인할 기준 제시"
+  ],
+  "counterarguments": [
+    "실시간 인기소재 검증과 문체예제는 다른 목적이다."
+  ],
+  "stop_conditions": [
+    "공식 단위 정의가 변경됨"
+  ],
+  "review_at": "2026-09-16T00:00:00Z"
+}

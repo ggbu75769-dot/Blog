@@ -1,0 +1,48 @@
+{
+  "id": "54b35b74-d2a3-5c0d-b0dd-aca3757a3bcd",
+  "tenant_id": "dbfb664f-c890-5171-914a-23b67f3e0767",
+  "name": "생활 선택 기준 · 예제 프로필",
+  "platform": "naver",
+  "url": null,
+  "is_demo": true,
+  "is_primary": false,
+  "version": 1,
+  "reader_job": "집과 사용 조건에 맞는 선택 기준 찾기",
+  "core_topics": [
+    "생활 정리와 선택"
+  ],
+  "adjacent_topics": [
+    "수납",
+    "사용 동선"
+  ],
+  "excluded_topics": [
+    "금융",
+    "정치"
+  ],
+  "editorial_lens": [
+    "보기 좋은 것과 실제로 쓰기 편한 것을 구분한다."
+  ],
+  "voice": {
+    "register": "담백한 존댓말",
+    "rhythm_notes": "불필요한 인사 없이 질문과 첫 답을 제시한다.",
+    "opening_preferences": [
+      "핵심 오해부터 짚기"
+    ],
+    "closing_preferences": [
+      "판단 기준 한 문장"
+    ],
+    "avoid_patterns": [
+      "혁신적",
+      "완벽한 선택",
+      "현대 사회에서"
+    ]
+  },
+  "allowed_formats": [
+    "change_explainer",
+    "comparison",
+    "decision_guide"
+  ],
+  "actual_author_record_ids": [],
+  "status": "DRAFT",
+  "public_posting_mode": "manual"
+}

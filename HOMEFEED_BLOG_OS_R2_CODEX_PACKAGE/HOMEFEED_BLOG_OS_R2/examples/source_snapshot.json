@@ -1,0 +1,20 @@
+{
+  "id": "c9bb5784-c7cc-5cf3-9e00-e93aa304ab5c",
+  "tenant_id": "dbfb664f-c890-5171-914a-23b67f3e0767",
+  "source_id": "7659929f-8122-5fe0-aef3-6f274d1295fc",
+  "url": "https://developers.naver.com/docs/serviceapi/datalab/search/search.md",
+  "title": "통합 검색어 트렌드 API",
+  "published_at": null,
+  "date_precision": "unknown",
+  "observed_at": "2026-09-15T00:00:00Z",
+  "content_hash": "6f4c1c859d994d774b9bd9f11472ef780edf23ce85b04bf86a0df59e79c36703",
+  "read_scope": "excerpt",
+  "locator": "응답 정의 results.data.ratio / 요청 timeUnit",
+  "evidence_summary": "구간별 상대 비율과 date/week/month 정의를 확인한 예제용 요약. 원문 전체 저장물은 포함하지 않는다.",
+  "independence_group": "naver_datalab_official",
+  "permission_version": "reference-20260915",
+  "allowed_blog_ids": [
+    "4662b729-4a37-5271-8147-9fe8e02e260b"
+  ],
+  "execution_mode": "REPLAY"
+}

@@ -1,0 +1,14 @@
+{
+  "id": "7487474d-c6de-5b10-9790-dc68a71f4e4e",
+  "tenant_id": "dbfb664f-c890-5171-914a-23b67f3e0767",
+  "snapshot_id": "c9bb5784-c7cc-5cf3-9e00-e93aa304ab5c",
+  "allowed_blog_ids": [
+    "4662b729-4a37-5271-8147-9fe8e02e260b"
+  ],
+  "locator": "응답 정의 results.data.ratio / 요청 timeUnit",
+  "summary": "구간별 상대 비율과 date/week/month 정의를 확인한 예제용 요약. 원문 전체 저장물은 포함하지 않는다.",
+  "verified_at": "2026-09-15T00:00:00Z",
+  "valid_until": "2026-09-16T00:00:00Z",
+  "kind": "official_fact",
+  "independence_group": "naver_datalab_official"
+}

@@ -1,0 +1,19 @@
+{
+  "id": "b190bfe8-d616-54e5-84a6-56bf86bc095d",
+  "tenant_id": "dbfb664f-c890-5171-914a-23b67f3e0767",
+  "source_id": "7659929f-8122-5fe0-aef3-6f274d1295fc",
+  "surface": "DATALAB",
+  "external_id": "contract_fixture_only",
+  "url": "https://developers.naver.com/docs/serviceapi/datalab/search/search.md",
+  "observed_at": "2026-09-15T00:00:00Z",
+  "source_updated_at": null,
+  "filter_hash": "0000000000000000000000000000000000000000000000000000000000000000",
+  "observer_session": null,
+  "logged_in": null,
+  "metric_name": "ratio",
+  "metric_value": null,
+  "metric_status": "NOT_AVAILABLE",
+  "unit": "relative_ratio",
+  "display_precision": "unknown",
+  "value_interval": null
+}

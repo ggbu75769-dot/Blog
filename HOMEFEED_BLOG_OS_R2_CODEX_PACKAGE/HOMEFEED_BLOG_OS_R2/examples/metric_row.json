@@ -1,0 +1,17 @@
+{
+  "id": "73961643-1f86-5cb5-8496-21bd7f60afe5",
+  "tenant_id": "dbfb664f-c890-5171-914a-23b67f3e0767",
+  "blog_id": "4662b729-4a37-5271-8147-9fe8e02e260b",
+  "platform": "naver",
+  "entity_key": "blog",
+  "metric": "pv",
+  "value": null,
+  "status": "NOT_AVAILABLE",
+  "unit": "views",
+  "period_start": "2026-09-01T00:00:00+09:00",
+  "period_end": "2026-10-01T00:00:00+09:00",
+  "dimension_hash": "0000000000000000000000000000000000000000000000000000000000000000",
+  "denominator_metric": null,
+  "source_revision": "fixture_v1",
+  "source_updated_at": null
+}

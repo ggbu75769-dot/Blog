@@ -1,0 +1,6155 @@
+openapi: 3.1.0
+info:
+  title: HOMEFEED BLOG OS internal API
+  version: 4.1.0-r1
+  description: 우리 서비스 내부 계약. 외부 블로그 게시 기능 없음. REPLAY fixture와 LIVE 실행을 UI/응답에서 구분.
+servers:
+- url: http://localhost:8000/v1
+  description: 로컬 개발용; 외부 운영 TLS 필요
+security:
+- BearerAuth: []
+paths:
+  /health:
+    get:
+      operationId: health
+      summary: 최소 상태; 비밀/원문 미노출
+      tags:
+      - health
+      responses:
+        '200':
+          description: 정상 응답
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Health'
+        '401':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '422':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '429':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '503':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /blogs:
+    get:
+      operationId: listBlogs
+      summary: listBlogs
+      tags:
+      - blogs
+      responses:
+        '200':
+          description: 정상 응답
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BlogProfilePage'
+        '401':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '422':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '429':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '503':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+      - name: cursor
+        in: query
+        required: false
+        schema: &id001
+          type: string
+          minLength: 1
+      - name: limit
+        in: query
+        required: false
+        schema: &id003
+          type: integer
+          minimum: 1
+          maximum: 100
+    post:
+      operationId: createBlog
+      summary: createBlog
+      tags:
+      - blogs
+      responses:
+        '201':
+          description: 정상 응답
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BlogProfile'
+        '401':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '422':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '429':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '503':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+      - name: Idempotency-Key
+        in: header
+        required: true
+        schema: *id001
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BlogCreate'
+  /blogs/{blog_id}:
+    get:
+      operationId: getBlog
+      summary: getBlog
+      tags:
+      - blogs
+      responses:
+        '200':
+          description: 정상 응답
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BlogProfile'
+          headers:
+            ETag:
+              description: Strong server revision token; use verbatim in If-Match.
+                Body expected_version, if present, must agree.
+              schema:
+                type: string
+        '401':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '422':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '429':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '503':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+      - name: blog_id
+        in: path
+        required: true
+        schema: &id002
+          type: string
+          format: uuid
+  /blogs/{blog_id}/status:
+    patch:
+      operationId: setBlogStatus
+      summary: setBlogStatus
+      tags:
+      - blogs
+      responses:
+        '200':
+          description: 정상 응답
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BlogProfile'
+          headers:
+            ETag:
+              description: Strong server revision token; use verbatim in If-Match.
+                Body expected_version, if present, must agree.
+              schema:
+                type: string
+        '401':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '422':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '429':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '503':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+      - name: blog_id
+        in: path
+        required: true
+        schema: *id002
+      - name: Idempotency-Key
+        in: header
+        required: true
+        schema: *id001
+      - name: If-Match
+        in: header
+        required: true
+        schema: *id001
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BlogStatusRequest'
+  /blogs/{blog_id}/profile-versions:
+    post:
+      operationId: createProfileVersion
+      summary: tenant/id는 서버 scope와 검증; 새 버전 생성
+      tags:
+      - blogs
+      responses:
+        '201':
+          description: 정상 응답
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BlogProfile'
+        '401':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '422':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '429':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '503':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+      - name: blog_id
+        in: path
+        required: true
+        schema: *id002
+      - name: Idempotency-Key
+        in: header
+        required: true
+        schema: *id001
+      - name: If-Match
+        in: header
+        required: true
+        schema: *id001
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BlogProfile'
+  /sources:
+    get:
+      operationId: listSources
+      summary: listSources
+      tags:
+      - sources
+      responses:
+        '200':
+          description: 정상 응답
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SourceRegistrationPage'
+        '401':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '422':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '429':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '503':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+      - name: cursor
+        in: query
+        required: false
+        schema: *id001
+      - name: limit
+        in: query
+        required: false
+        schema: *id003
+    post:
+      operationId: createSource
+      summary: createSource
+      tags:
+      - sources
+      responses:
+        '201':
+          description: 정상 응답
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SourceRegistration'
+        '401':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '422':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '429':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '503':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+      - name: Idempotency-Key
+        in: header
+        required: true
+        schema: *id001
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SourceCreate'
+  /sources/{source_id}/probe:
+    post:
+      operationId: probeSource
+      summary: probeSource
+      tags:
+      - sources
+      responses:
+        '200':
+          description: 정상 응답
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProbeResult'
+        '401':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '422':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '429':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '503':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+      - name: source_id
+        in: path
+        required: true
+        schema: *id002
+      - name: Idempotency-Key
+        in: header
+        required: true
+        schema: *id001
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EmptyRequest'
+  /sources/{source_id}/collect:
+    post:
+      operationId: collectSource
+      summary: collectSource
+      tags:
+      - sources
+      responses:
+        '202':
+          description: 정상 응답
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Job'
+        '401':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '422':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '429':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '503':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+      - name: source_id
+        in: path
+        required: true
+        schema: *id002
+      - name: Idempotency-Key
+        in: header
+        required: true
+        schema: *id001
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CollectRequest'
+  /observations/imports:
+    post:
+      operationId: importObservations
+      summary: importObservations
+      tags:
+      - observations
+      responses:
+        '200':
+          description: 정상 응답
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ImportResult'
+        '401':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '422':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '429':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '503':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+      - name: Idempotency-Key
+        in: header
+        required: true
+        schema: *id001
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ObservationsImport'
+  /opportunities:
+    get:
+      operationId: listOpportunities
+      summary: listOpportunities
+      tags:
+      - opportunities
+      responses:
+        '200':
+          description: 정상 응답
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OpportunityPage'
+        '401':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '422':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '429':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '503':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+      - name: cursor
+        in: query
+        required: false
+        schema: *id001
+      - name: limit
+        in: query
+        required: false
+        schema: *id003
+      - name: blog_id
+        in: query
+        required: false
+        schema: *id002
+  /opportunities/{opportunity_id}:
+    get:
+      operationId: getOpportunity
+      summary: getOpportunity
+      tags:
+      - opportunities
+      responses:
+        '200':
+          description: 정상 응답
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Opportunity'
+          headers:
+            ETag:
+              description: Strong server revision token; use verbatim in If-Match.
+                Body expected_version, if present, must agree.
+              schema:
+                type: string
+        '401':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '422':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '429':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '503':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+      - name: opportunity_id
+        in: path
+        required: true
+        schema: *id002
+  /opportunities/{opportunity_id}/assign:
+    post:
+      operationId: assignOpportunity
+      summary: assignOpportunity
+      tags:
+      - opportunities
+      responses:
+        '200':
+          description: 정상 응답
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Opportunity'
+        '401':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '422':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '429':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '503':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+      - name: opportunity_id
+        in: path
+        required: true
+        schema: *id002
+      - name: Idempotency-Key
+        in: header
+        required: true
+        schema: *id001
+      - name: If-Match
+        in: header
+        required: true
+        schema: *id001
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AssignRequest'
+  /opportunities/{opportunity_id}/plan:
+    post:
+      operationId: planOpportunity
+      summary: planOpportunity
+      tags:
+      - opportunities
+      responses:
+        '202':
+          description: 정상 응답
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Job'
+        '401':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '422':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '429':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '503':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+      - name: opportunity_id
+        in: path
+        required: true
+        schema: *id002
+      - name: Idempotency-Key
+        in: header
+        required: true
+        schema: *id001
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EmptyRequest'
+  /articles:
+    get:
+      operationId: listArticles
+      summary: listArticles
+      tags:
+      - articles
+      responses:
+        '200':
+          description: 정상 응답
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ArticleSummaryPage'
+        '401':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '422':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '429':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '503':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+      - name: cursor
+        in: query
+        required: false
+        schema: *id001
+      - name: limit
+        in: query
+        required: false
+        schema: *id003
+      - name: blog_id
+        in: query
+        required: false
+        schema: *id002
+    post:
+      operationId: createArticleJob
+      summary: createArticleJob
+      tags:
+      - articles
+      responses:
+        '202':
+          description: 정상 응답
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Job'
+        '401':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '422':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '429':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '503':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+      - name: Idempotency-Key
+        in: header
+        required: true
+        schema: *id001
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ArticleCreate'
+  /articles/{article_id}:
+    get:
+      operationId: getArticle
+      summary: getArticle
+      tags:
+      - articles
+      responses:
+        '200':
+          description: 정상 응답
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ArticleSummary'
+          headers:
+            ETag:
+              description: Strong server revision token; use verbatim in If-Match.
+                Body expected_version, if present, must agree.
+              schema:
+                type: string
+        '401':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '422':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '429':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '503':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+      - name: article_id
+        in: path
+        required: true
+        schema: *id002
+  /articles/{article_id}/revisions/{revision_id}:
+    get:
+      operationId: getArticleRevision
+      summary: getArticleRevision
+      tags:
+      - articles
+      responses:
+        '200':
+          description: 정상 응답
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ArticleIR'
+          headers:
+            ETag:
+              description: Strong server revision token; use verbatim in If-Match.
+                Body expected_version, if present, must agree.
+              schema:
+                type: string
+        '401':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '422':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '429':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '503':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+      - name: article_id
+        in: path
+        required: true
+        schema: *id002
+      - name: revision_id
+        in: path
+        required: true
+        schema: *id002
+  /articles/{article_id}/revisions:
+    post:
+      operationId: createArticleRevision
+      summary: createArticleRevision
+      tags:
+      - articles
+      responses:
+        '201':
+          description: 정상 응답
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ArticleIR'
+        '401':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '422':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '429':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '503':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+      - name: article_id
+        in: path
+        required: true
+        schema: *id002
+      - name: Idempotency-Key
+        in: header
+        required: true
+        schema: *id001
+      - name: If-Match
+        in: header
+        required: true
+        schema: *id001
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RevisionCreate'
+  /articles/{article_id}/review:
+    post:
+      operationId: reviewArticle
+      summary: reviewArticle
+      tags:
+      - articles
+      responses:
+        '202':
+          description: 정상 응답
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Job'
+        '401':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '422':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '429':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '503':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+      - name: article_id
+        in: path
+        required: true
+        schema: *id002
+      - name: Idempotency-Key
+        in: header
+        required: true
+        schema: *id001
+      - name: If-Match
+        in: header
+        required: true
+        schema: *id001
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EmptyRequest'
+  /articles/{article_id}/exports:
+    post:
+      operationId: createExport
+      summary: 제출·게시하지 않고 파일 렌더만 수행
+      tags:
+      - articles
+      responses:
+        '202':
+          description: 정상 응답
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Job'
+        '401':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '422':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '429':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '503':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+      - name: article_id
+        in: path
+        required: true
+        schema: *id002
+      - name: Idempotency-Key
+        in: header
+        required: true
+        schema: *id001
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ExportRequest'
+  /assets/staging:
+    post:
+      operationId: stageAsset
+      summary: stageAsset
+      tags:
+      - assets
+      responses:
+        '201':
+          description: 정상 응답
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AssetStageResult'
+        '401':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '422':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '429':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '503':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+      - name: Idempotency-Key
+        in: header
+        required: true
+        schema: *id001
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AssetStageRequest'
+  /assets/{asset_id}/finalize:
+    post:
+      operationId: finalizeAsset
+      summary: finalizeAsset
+      tags:
+      - assets
+      responses:
+        '202':
+          description: 정상 응답
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Job'
+        '401':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '422':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '429':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '503':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+      - name: asset_id
+        in: path
+        required: true
+        schema: *id002
+      - name: Idempotency-Key
+        in: header
+        required: true
+        schema: *id001
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AssetFinalizeRequest'
+  /assets/{asset_id}:
+    get:
+      operationId: getAsset
+      summary: getAsset
+      tags:
+      - assets
+      responses:
+        '200':
+          description: 정상 응답
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Asset'
+          headers:
+            ETag:
+              description: Strong server revision token; use verbatim in If-Match.
+                Body expected_version, if present, must agree.
+              schema:
+                type: string
+        '401':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '422':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '429':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '503':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+      - name: asset_id
+        in: path
+        required: true
+        schema: *id002
+  /assets/{asset_id}/rights:
+    patch:
+      operationId: updateAssetRights
+      summary: updateAssetRights
+      tags:
+      - assets
+      responses:
+        '200':
+          description: 정상 응답
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Asset'
+          headers:
+            ETag:
+              description: Strong server revision token; use verbatim in If-Match.
+                Body expected_version, if present, must agree.
+              schema:
+                type: string
+        '401':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '422':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '429':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '503':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+      - name: asset_id
+        in: path
+        required: true
+        schema: *id002
+      - name: Idempotency-Key
+        in: header
+        required: true
+        schema: *id001
+      - name: If-Match
+        in: header
+        required: true
+        schema: *id001
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AssetRightsRequest'
+  /jobs:
+    get:
+      operationId: listJobs
+      summary: listJobs
+      tags:
+      - jobs
+      responses:
+        '200':
+          description: 정상 응답
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JobPage'
+        '401':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '422':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '429':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '503':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+      - name: cursor
+        in: query
+        required: false
+        schema: *id001
+      - name: limit
+        in: query
+        required: false
+        schema: *id003
+      - name: blog_id
+        in: query
+        required: false
+        schema: *id002
+  /jobs/{job_id}:
+    get:
+      operationId: getJob
+      summary: getJob
+      tags:
+      - jobs
+      responses:
+        '200':
+          description: 정상 응답
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Job'
+          headers:
+            ETag:
+              description: Strong server revision token; use verbatim in If-Match.
+                Body expected_version, if present, must agree.
+              schema:
+                type: string
+        '401':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '422':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '429':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '503':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+      - name: job_id
+        in: path
+        required: true
+        schema: *id002
+  /jobs/{job_id}/retry:
+    post:
+      operationId: retryJob
+      summary: 오류코드에 허용된 재시도만; 결과 불명 유료호출은 재조회
+      tags:
+      - jobs
+      responses:
+        '202':
+          description: 정상 응답
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Job'
+        '401':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '422':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '429':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '503':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+      - name: job_id
+        in: path
+        required: true
+        schema: *id002
+      - name: Idempotency-Key
+        in: header
+        required: true
+        schema: *id001
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EmptyRequest'
+  /jobs/{job_id}/cancel:
+    post:
+      operationId: cancelJob
+      summary: cancelJob
+      tags:
+      - jobs
+      responses:
+        '202':
+          description: 정상 응답
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Job'
+        '401':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '422':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '429':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '503':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+      - name: job_id
+        in: path
+        required: true
+        schema: *id002
+      - name: Idempotency-Key
+        in: header
+        required: true
+        schema: *id001
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EmptyRequest'
+  /jobs/{job_id}/events:
+    get:
+      operationId: streamJobEvents
+      summary: SSE id/event/data; 재개 가능
+      tags:
+      - jobs
+      responses:
+        '200':
+          description: SSE stream, data는 JobEvent.data 형태 JSON
+          content:
+            text/event-stream:
+              schema:
+                type: string
+        '401':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '422':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '429':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '503':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+      - name: job_id
+        in: path
+        required: true
+        schema: *id002
+      - name: Last-Event-ID
+        in: header
+        required: false
+        schema: *id001
+  /exports/{export_id}:
+    get:
+      operationId: getExport
+      summary: getExport
+      tags:
+      - exports
+      responses:
+        '200':
+          description: 정상 응답
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ExportManifest'
+          headers:
+            ETag:
+              description: Strong server revision token; use verbatim in If-Match.
+                Body expected_version, if present, must agree.
+              schema:
+                type: string
+        '401':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '422':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '429':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '503':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+      - name: export_id
+        in: path
+        required: true
+        schema: *id002
+  /exports/{export_id}/download:
+    get:
+      operationId: getExportDownload
+      summary: 다운로드 시 신선도·scope 재검사; 만료면409
+      tags:
+      - exports
+      responses:
+        '200':
+          description: 정상 응답
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DownloadResult'
+        '401':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '422':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '429':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '503':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+      - name: export_id
+        in: path
+        required: true
+        schema: *id002
+      - name: package
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - public_only
+          - full
+  /exports/{export_id}/revalidate:
+    post:
+      operationId: revalidateExport
+      summary: revalidateExport
+      tags:
+      - exports
+      responses:
+        '202':
+          description: 정상 응답
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Job'
+        '401':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '422':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '429':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '503':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+      - name: export_id
+        in: path
+        required: true
+        schema: *id002
+      - name: Idempotency-Key
+        in: header
+        required: true
+        schema: *id001
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EmptyRequest'
+  /publication-receipts:
+    post:
+      operationId: recordManualPublication
+      summary: 이미 사용자가 올린 URL의 내부 기록; 외부 게시하지 않음
+      tags:
+      - publication-receipts
+      responses:
+        '201':
+          description: 정상 응답
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicationReceipt'
+        '401':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '422':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '429':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '503':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+      - name: Idempotency-Key
+        in: header
+        required: true
+        schema: *id001
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ReceiptCreate'
+  /publication-receipts/{receipt_id}:
+    patch:
+      operationId: correctManualPublication
+      summary: correctManualPublication
+      tags:
+      - publication-receipts
+      responses:
+        '200':
+          description: 정상 응답
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicationReceipt'
+          headers:
+            ETag:
+              description: Strong server revision token; use verbatim in If-Match.
+                Body expected_version, if present, must agree.
+              schema:
+                type: string
+        '401':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '422':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '429':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '503':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+      - name: receipt_id
+        in: path
+        required: true
+        schema: *id002
+      - name: Idempotency-Key
+        in: header
+        required: true
+        schema: *id001
+      - name: If-Match
+        in: header
+        required: true
+        schema: *id001
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ReceiptCorrection'
+  /metric-imports:
+    post:
+      operationId: previewMetricImport
+      summary: previewMetricImport
+      tags:
+      - metric-imports
+      responses:
+        '201':
+          description: 정상 응답
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MetricImportPreview'
+        '401':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '422':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '429':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '503':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+      - name: Idempotency-Key
+        in: header
+        required: true
+        schema: *id001
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MetricImportRequest'
+  /metric-imports/{import_id}/commit:
+    post:
+      operationId: commitMetricImport
+      summary: commitMetricImport
+      tags:
+      - metric-imports
+      responses:
+        '200':
+          description: 정상 응답
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ImportResult'
+        '401':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '422':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '429':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '503':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+      - name: import_id
+        in: path
+        required: true
+        schema: *id002
+      - name: Idempotency-Key
+        in: header
+        required: true
+        schema: *id001
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CommitRequest'
+  /reports/blogs/{blog_id}:
+    get:
+      operationId: getBlogReport
+      summary: getBlogReport
+      tags:
+      - reports
+      responses:
+        '200':
+          description: 정상 응답
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Report'
+          headers:
+            ETag:
+              description: Strong server revision token; use verbatim in If-Match.
+                Body expected_version, if present, must agree.
+              schema:
+                type: string
+        '401':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '422':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '429':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '503':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+      - name: blog_id
+        in: path
+        required: true
+        schema: *id002
+      - name: period_start
+        in: query
+        required: false
+        schema: &id004
+          type: string
+          format: date-time
+      - name: period_end
+        in: query
+        required: false
+        schema: *id004
+  /exceptions:
+    get:
+      operationId: listExceptions
+      summary: listExceptions
+      tags:
+      - exceptions
+      responses:
+        '200':
+          description: 정상 응답
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ExceptionRecordPage'
+        '401':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '422':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '429':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '503':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+      - name: cursor
+        in: query
+        required: false
+        schema: *id001
+      - name: limit
+        in: query
+        required: false
+        schema: *id003
+      - name: blog_id
+        in: query
+        required: false
+        schema: *id002
+  /exceptions/{exception_id}/resolve:
+    post:
+      operationId: resolveException
+      summary: resolveException
+      tags:
+      - exceptions
+      responses:
+        '202':
+          description: 정상 응답
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Job'
+        '401':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '422':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '429':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '503':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+      - name: exception_id
+        in: path
+        required: true
+        schema: *id002
+      - name: Idempotency-Key
+        in: header
+        required: true
+        schema: *id001
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ResolveRequest'
+  /runtime/config:
+    get:
+      operationId: getRuntimeConfig
+      summary: getRuntimeConfig
+      tags:
+      - runtime
+      responses:
+        '200':
+          description: 정상 응답
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RuntimeConfig'
+        '401':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '422':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '429':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '503':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    patch:
+      operationId: updateRuntimeConfig
+      summary: 관리자 전용; 유료 한도 증액은 명시 승인·감사 필수
+      tags:
+      - runtime
+      responses:
+        '200':
+          description: 정상 응답
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RuntimeConfig'
+          headers:
+            ETag:
+              description: Strong server revision token; use verbatim in If-Match.
+                Body expected_version, if present, must agree.
+              schema:
+                type: string
+        '401':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '422':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '429':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '503':
+          description: 인증/권한/충돌/검증/공급자 오류; scope 밖 객체는404
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+      - name: Idempotency-Key
+        in: header
+        required: true
+        schema: *id001
+      - name: If-Match
+        in: header
+        required: true
+        schema: *id001
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RuntimeUpdate'
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+  schemas:
+    Scope:
+      type: object
+      additionalProperties: false
+      properties:
+        tenant_id:
+          type: string
+          format: uuid
+        blog_id:
+          anyOf:
+          - type: string
+            format: uuid
+          - type: 'null'
+      required:
+      - tenant_id
+      - blog_id
+    BlogProfile:
+      type: object
+      additionalProperties: false
+      properties:
+        id:
+          type: string
+          format: uuid
+        tenant_id:
+          type: string
+          format: uuid
+        name:
+          type: string
+          minLength: 1
+        platform:
+          type: string
+          enum:
+          - naver
+          - tistory
+          - owned
+        url:
+          anyOf:
+          - type: string
+            format: uri
+          - type: 'null'
+        is_demo:
+          type: boolean
+        is_primary:
+          type: boolean
+        version:
+          type: integer
+          minimum: 1
+        reader_job:
+          type: string
+          minLength: 1
+        core_topics:
+          type: array
+          items:
+            type: string
+            minLength: 1
+          minItems: 1
+        adjacent_topics:
+          type: array
+          items:
+            type: string
+            minLength: 1
+          minItems: 0
+        excluded_topics:
+          type: array
+          items:
+            type: string
+            minLength: 1
+          minItems: 0
+        editorial_lens:
+          type: array
+          items:
+            type: string
+            minLength: 1
+          minItems: 1
+        voice:
+          type: object
+          additionalProperties: false
+          properties:
+            register:
+              type: string
+              minLength: 1
+            rhythm_notes:
+              type: string
+              minLength: 1
+            opening_preferences:
+              type: array
+              items:
+                type: string
+                minLength: 1
+              minItems: 0
+            closing_preferences:
+              type: array
+              items:
+                type: string
+                minLength: 1
+              minItems: 0
+            avoid_patterns:
+              type: array
+              items:
+                type: string
+                minLength: 1
+              minItems: 0
+          required:
+          - register
+          - rhythm_notes
+          - opening_preferences
+          - closing_preferences
+          - avoid_patterns
+        allowed_formats:
+          type: array
+          items:
+            type: string
+            enum:
+            - change_explainer
+            - comparison
+            - interpretation
+            - how_to
+            - experience
+            - decision_guide
+          minItems: 1
+        actual_author_record_ids:
+          type: array
+          items:
+            type: string
+            format: uuid
+          minItems: 0
+          uniqueItems: true
+        status:
+          type: string
+          enum:
+          - DRAFT
+          - ACTIVE
+          - PAUSED
+        public_posting_mode:
+          const: manual
+      required:
+      - id
+      - tenant_id
+      - name
+      - platform
+      - url
+      - is_demo
+      - is_primary
+      - version
+      - reader_job
+      - core_topics
+      - adjacent_topics
+      - excluded_topics
+      - editorial_lens
+      - voice
+      - allowed_formats
+      - actual_author_record_ids
+      - status
+      - public_posting_mode
+      description: 'R1: semantic checks and authenticated scope checks are required;
+        JSON Schema alone is not readiness.'
+    SourceRegistration:
+      type: object
+      additionalProperties: false
+      properties:
+        id:
+          type: string
+          format: uuid
+        tenant_id:
+          type: string
+          format: uuid
+        name:
+          type: string
+          minLength: 1
+        kind:
+          type: string
+          enum:
+          - official_web
+          - naver_search
+          - datalab
+          - social
+          - homefeed_import
+          - user_upload
+          - metrics_import
+        base_url:
+          anyOf:
+          - type: string
+            format: uri
+          - type: 'null'
+        permissions:
+          type: object
+          additionalProperties: false
+          properties:
+            fetch:
+              type: boolean
+            store:
+              type: boolean
+            send_to_model:
+              type: boolean
+            republish:
+              type: boolean
+            basis:
+              type: string
+              minLength: 1
+            expires_at:
+              anyOf:
+              - type: string
+                format: date-time
+              - type: 'null'
+          required:
+          - fetch
+          - store
+          - send_to_model
+          - republish
+          - basis
+          - expires_at
+        allowed_hosts:
+          type: array
+          items:
+            type: string
+            minLength: 1
+          minItems: 0
+        credential_ref:
+          anyOf:
+          - type: string
+            minLength: 1
+          - type: 'null'
+        status:
+          type: string
+          enum:
+          - NOT_CONFIGURED
+          - AVAILABLE
+          - PERMISSION_MISSING
+          - UNAVAILABLE
+        checked_at:
+          type: string
+          format: date-time
+        allowed_blog_ids:
+          type: array
+          items:
+            type: string
+            format: uuid
+          minItems: 1
+          uniqueItems: true
+      required:
+      - id
+      - tenant_id
+      - name
+      - kind
+      - base_url
+      - permissions
+      - allowed_hosts
+      - credential_ref
+      - status
+      - checked_at
+      - allowed_blog_ids
+      description: 'R1: semantic checks and authenticated scope checks are required;
+        JSON Schema alone is not readiness.'
+    SourceSnapshot:
+      type: object
+      additionalProperties: false
+      properties:
+        id:
+          type: string
+          format: uuid
+        tenant_id:
+          type: string
+          format: uuid
+        source_id:
+          type: string
+          format: uuid
+        url:
+          type: string
+          format: uri
+        title:
+          type: string
+          minLength: 1
+        published_at:
+          anyOf:
+          - type: string
+            format: date-time
+          - type: 'null'
+        date_precision:
+          type: string
+          enum:
+          - datetime
+          - date
+          - unknown
+        observed_at:
+          type: string
+          format: date-time
+        content_hash:
+          type: string
+          pattern: ^[0-9a-f]{64}$
+        read_scope:
+          type: string
+          enum:
+          - full_text
+          - excerpt
+          - metadata
+          - transcript
+          - visual_report
+          - incomplete
+        locator:
+          type: string
+          minLength: 1
+        evidence_summary:
+          type: string
+          minLength: 1
+        independence_group:
+          type: string
+          minLength: 1
+        permission_version:
+          type: string
+          minLength: 1
+        allowed_blog_ids:
+          type: array
+          items:
+            type: string
+            format: uuid
+          minItems: 1
+          uniqueItems: true
+        execution_mode:
+          type: string
+          enum:
+          - LIVE
+          - REPLAY
+          - USER_IMPORT
+      required:
+      - id
+      - tenant_id
+      - source_id
+      - url
+      - title
+      - published_at
+      - date_precision
+      - observed_at
+      - content_hash
+      - read_scope
+      - locator
+      - evidence_summary
+      - independence_group
+      - permission_version
+      - allowed_blog_ids
+      - execution_mode
+      description: 'R1: semantic checks and authenticated scope checks are required;
+        JSON Schema alone is not readiness.'
+    Observation:
+      type: object
+      additionalProperties: false
+      properties:
+        id:
+          type: string
+          format: uuid
+        tenant_id:
+          type: string
+          format: uuid
+        source_id:
+          type: string
+          format: uuid
+        surface:
+          type: string
+          enum:
+          - HOMEFEED
+          - NAVER_SEARCH
+          - BLOG_APP_FEED
+          - MOBILE_REFERRAL_UNKNOWN
+          - CREATOR_SEARCH_TREND
+          - DATALAB
+          - SOCIAL
+          - OTHER
+        external_id:
+          type: string
+          minLength: 1
+        url:
+          anyOf:
+          - type: string
+            format: uri
+          - type: 'null'
+        observed_at:
+          type: string
+          format: date-time
+        source_updated_at:
+          anyOf:
+          - type: string
+            format: date-time
+          - type: 'null'
+        filter_hash:
+          type: string
+          pattern: ^[0-9a-f]{64}$
+        observer_session:
+          anyOf:
+          - type: string
+            minLength: 1
+          - type: 'null'
+        logged_in:
+          anyOf:
+          - type: boolean
+          - type: 'null'
+        metric_name:
+          anyOf:
+          - type: string
+            minLength: 1
+          - type: 'null'
+        metric_value:
+          anyOf:
+          - type: number
+          - type: 'null'
+        metric_status:
+          type: string
+          enum:
+          - OBSERVED
+          - PARTIAL
+          - NOT_UPDATED
+          - NOT_AVAILABLE
+          - USER_ENTERED
+        unit:
+          anyOf:
+          - type: string
+            minLength: 1
+          - type: 'null'
+        display_precision:
+          type: string
+          enum:
+          - exact
+          - rounded
+          - unknown
+        value_interval:
+          anyOf:
+          - type: object
+            additionalProperties: false
+            properties:
+              lower:
+                type: number
+              upper:
+                type: number
+            required:
+            - lower
+            - upper
+          - type: 'null'
+      required:
+      - id
+      - tenant_id
+      - source_id
+      - surface
+      - external_id
+      - url
+      - observed_at
+      - source_updated_at
+      - filter_hash
+      - observer_session
+      - logged_in
+      - metric_name
+      - metric_value
+      - metric_status
+      - unit
+      - display_precision
+      - value_interval
+      description: 'R1: semantic checks and authenticated scope checks are required;
+        JSON Schema alone is not readiness.'
+      allOf:
+      - if:
+          properties:
+            metric_status:
+              enum:
+              - NOT_UPDATED
+              - NOT_AVAILABLE
+          required:
+          - metric_status
+        then:
+          properties:
+            metric_value:
+              type: 'null'
+    Opportunity:
+      type: object
+      additionalProperties: false
+      properties:
+        id:
+          type: string
+          format: uuid
+        tenant_id:
+          type: string
+          format: uuid
+        blog_id:
+          anyOf:
+          - type: string
+            format: uuid
+          - type: 'null'
+        event_id:
+          type: string
+          format: uuid
+        reader_question:
+          type: string
+          minLength: 1
+        proposed_answer:
+          type: string
+          minLength: 1
+        why_now:
+          type: string
+          minLength: 1
+        demand_observation_ids:
+          type: array
+          items:
+            type: string
+            format: uuid
+          minItems: 0
+          uniqueItems: true
+        answer_gap:
+          type: string
+          minLength: 1
+        rank:
+          type: number
+          minimum: 0
+          maximum: 100
+        signal_coverage:
+          type: number
+          minimum: 0
+          maximum: 1
+        missing_signals:
+          type: array
+          items:
+            type: string
+            minLength: 1
+          minItems: 0
+        decision:
+          type: string
+          enum:
+          - MAKE
+          - RESEARCH
+          - PREPARE
+          - DEFER
+          - REJECT
+        review_at:
+          type: string
+          format: date-time
+        not_a_probability:
+          const: true
+      required:
+      - id
+      - tenant_id
+      - blog_id
+      - event_id
+      - reader_question
+      - proposed_answer
+      - why_now
+      - demand_observation_ids
+      - answer_gap
+      - rank
+      - signal_coverage
+      - missing_signals
+      - decision
+      - review_at
+      - not_a_probability
+    EvidenceItem:
+      type: object
+      additionalProperties: false
+      properties:
+        id:
+          type: string
+          format: uuid
+        tenant_id:
+          type: string
+          format: uuid
+        snapshot_id:
+          type: string
+          format: uuid
+        allowed_blog_ids:
+          type: array
+          items:
+            type: string
+            format: uuid
+          minItems: 1
+          uniqueItems: true
+        locator:
+          type: string
+          minLength: 1
+        summary:
+          type: string
+          minLength: 1
+        verified_at:
+          type: string
+          format: date-time
+        valid_until:
+          type: string
+          format: date-time
+        kind:
+          type: string
+          enum:
+          - official_fact
+          - comparison
+          - calculation
+          - experience
+          - interpretation_basis
+        independence_group:
+          type: string
+          minLength: 1
+      required:
+      - id
+      - tenant_id
+      - snapshot_id
+      - allowed_blog_ids
+      - locator
+      - summary
+      - verified_at
+      - valid_until
+      - kind
+      - independence_group
+    Claim:
+      type: object
+      additionalProperties: false
+      properties:
+        id:
+          type: string
+          format: uuid
+        tenant_id:
+          type: string
+          format: uuid
+        blog_id:
+          type: string
+          format: uuid
+        statement:
+          type: string
+          minLength: 1
+        kind:
+          type: string
+          enum:
+          - fact
+          - analysis
+          - recommendation
+          - hypothetical
+          - author_experience
+          - common_reasoning
+        evidence_ids:
+          type: array
+          items:
+            type: string
+            format: uuid
+          minItems: 0
+          uniqueItems: true
+        author_record_id:
+          anyOf:
+          - type: string
+            format: uuid
+          - type: 'null'
+        support_status:
+          type: string
+          enum:
+          - SUPPORTED
+          - CONFLICTING
+          - UNVERIFIED
+          - NOT_APPLICABLE
+        scope_notes:
+          type: string
+          minLength: 1
+        verified_at:
+          anyOf:
+          - type: string
+            format: date-time
+          - type: 'null'
+        valid_until:
+          anyOf:
+          - type: string
+            format: date-time
+          - type: 'null'
+      required:
+      - id
+      - tenant_id
+      - blog_id
+      - statement
+      - kind
+      - evidence_ids
+      - author_record_id
+      - support_status
+      - scope_notes
+      - verified_at
+      - valid_until
+      allOf:
+      - if:
+          properties:
+            kind:
+              const: author_experience
+          required:
+          - kind
+        then:
+          properties:
+            author_record_id:
+              type: string
+              format: uuid
+            evidence_ids:
+              type: array
+              items:
+                type: string
+                format: uuid
+              minItems: 1
+              uniqueItems: true
+      - if:
+          properties:
+            kind:
+              enum:
+              - fact
+              - author_experience
+            support_status:
+              const: SUPPORTED
+          required:
+          - kind
+          - support_status
+        then:
+          properties:
+            evidence_ids:
+              type: array
+              items:
+                type: string
+                format: uuid
+              minItems: 1
+              uniqueItems: true
+            verified_at:
+              type: string
+              format: date-time
+            valid_until:
+              type: string
+              format: date-time
+    ExperienceRecord:
+      type: object
+      additionalProperties: false
+      properties:
+        id:
+          type: string
+          format: uuid
+        tenant_id:
+          type: string
+          format: uuid
+        blog_id:
+          type: string
+          format: uuid
+        owner_label:
+          type: string
+          minLength: 1
+        subject:
+          type: string
+          minLength: 1
+        action:
+          type: string
+          minLength: 1
+        started_on:
+          type: string
+          format: date
+        ended_on:
+          anyOf:
+          - type: string
+            format: date
+          - type: 'null'
+        record_asset_ids:
+          type: array
+          items:
+            type: string
+            format: uuid
+          minItems: 0
+          uniqueItems: true
+        user_approved_at:
+          type: string
+          format: date-time
+        allowed_statements:
+          type: array
+          items:
+            type: string
+            minLength: 1
+          minItems: 1
+        sharing_allowed:
+          type: boolean
+      required:
+      - id
+      - tenant_id
+      - blog_id
+      - owner_label
+      - subject
+      - action
+      - started_on
+      - ended_on
+      - record_asset_ids
+      - user_approved_at
+      - allowed_statements
+      - sharing_allowed
+    ContentBrief:
+      type: object
+      additionalProperties: false
+      properties:
+        id:
+          type: string
+          format: uuid
+        tenant_id:
+          type: string
+          format: uuid
+        blog_id:
+          type: string
+          format: uuid
+        opportunity_id:
+          type: string
+          format: uuid
+        version:
+          type: integer
+          minimum: 1
+        reader_question:
+          type: string
+          minLength: 1
+        one_sentence_answer:
+          type: string
+          minLength: 1
+        why_now:
+          type: string
+          minLength: 1
+        existing_answers:
+          type: array
+          items:
+            type: string
+            minLength: 1
+          minItems: 0
+        new_contribution:
+          type: object
+          additionalProperties: false
+          properties:
+            kind:
+              type: string
+              enum:
+              - comparison
+              - calculation
+              - interpretation
+              - procedure
+              - observation
+            description:
+              type: string
+              minLength: 1
+            evidence_ids:
+              type: array
+              items:
+                type: string
+                format: uuid
+              minItems: 1
+          required:
+          - kind
+          - description
+          - evidence_ids
+        article_type:
+          type: string
+          enum:
+          - change_explainer
+          - comparison
+          - interpretation
+          - how_to
+          - experience
+          - decision_guide
+        sections:
+          type: array
+          items:
+            type: object
+            additionalProperties: false
+            properties:
+              section_id:
+                type: string
+                minLength: 1
+              purpose:
+                type: string
+                minLength: 1
+              reader_value:
+                type: string
+                minLength: 1
+              claim_ids:
+                type: array
+                items:
+                  type: string
+                  format: uuid
+                minItems: 0
+            required:
+            - section_id
+            - purpose
+            - reader_value
+            - claim_ids
+          minItems: 1
+        claim_ids:
+          type: array
+          items:
+            type: string
+            format: uuid
+          minItems: 1
+          uniqueItems: true
+        visual_required:
+          type: boolean
+        text_only_allowed:
+          type: boolean
+        required_asset_ids:
+          type: array
+          items:
+            type: string
+            format: uuid
+          minItems: 0
+          uniqueItems: true
+        title_promises:
+          type: array
+          items:
+            type: string
+            minLength: 1
+          minItems: 1
+        counterarguments:
+          type: array
+          items:
+            type: string
+            minLength: 1
+          minItems: 0
+        stop_conditions:
+          type: array
+          items:
+            type: string
+            minLength: 1
+          minItems: 1
+        review_at:
+          type: string
+          format: date-time
+      required:
+      - id
+      - tenant_id
+      - blog_id
+      - opportunity_id
+      - version
+      - reader_question
+      - one_sentence_answer
+      - why_now
+      - existing_answers
+      - new_contribution
+      - article_type
+      - sections
+      - claim_ids
+      - visual_required
+      - text_only_allowed
+      - required_asset_ids
+      - title_promises
+      - counterarguments
+      - stop_conditions
+      - review_at
+    PublicCitation:
+      type: object
+      additionalProperties: false
+      properties:
+        id:
+          type: string
+          minLength: 1
+        publisher:
+          type: string
+          minLength: 1
+        title:
+          type: string
+          minLength: 1
+        url:
+          type: string
+          format: uri
+          pattern: ^https?://
+        checked_on:
+          type: string
+          format: date
+      required:
+      - id
+      - publisher
+      - title
+      - url
+      - checked_on
+      description: 'R1: semantic checks and authenticated scope checks are required;
+        JSON Schema alone is not readiness.'
+    TextBlock:
+      type: object
+      additionalProperties: false
+      properties:
+        block_id:
+          type: string
+          minLength: 1
+        type:
+          type: string
+          enum:
+          - paragraph
+          - heading
+          - quote
+          - callout
+        text:
+          type: string
+          minLength: 1
+          maxLength: 20000
+        claim_ids:
+          type: array
+          items:
+            type: string
+            format: uuid
+          minItems: 0
+          uniqueItems: true
+        citation_ids:
+          type: array
+          items:
+            type: string
+            minLength: 1
+          minItems: 0
+          uniqueItems: true
+      required:
+      - block_id
+      - type
+      - text
+      - claim_ids
+      - citation_ids
+    ListBlock:
+      type: object
+      additionalProperties: false
+      properties:
+        block_id:
+          type: string
+          minLength: 1
+        type:
+          const: list
+        ordered:
+          type: boolean
+        items:
+          type: array
+          items:
+            type: string
+            minLength: 1
+          minItems: 1
+        claim_ids:
+          type: array
+          items:
+            type: string
+            format: uuid
+          minItems: 0
+          uniqueItems: true
+        citation_ids:
+          type: array
+          items:
+            type: string
+            minLength: 1
+          minItems: 0
+          uniqueItems: true
+      required:
+      - block_id
+      - type
+      - ordered
+      - items
+      - claim_ids
+      - citation_ids
+    TableBlock:
+      type: object
+      additionalProperties: false
+      properties:
+        block_id:
+          type: string
+          minLength: 1
+        type:
+          const: table
+        headers:
+          type: array
+          items:
+            type: string
+            minLength: 1
+          minItems: 1
+        rows:
+          type: array
+          items:
+            type: array
+            items:
+              type: string
+            minItems: 1
+          minItems: 1
+        claim_ids:
+          type: array
+          items:
+            type: string
+            format: uuid
+          minItems: 0
+          uniqueItems: true
+        citation_ids:
+          type: array
+          items:
+            type: string
+            minLength: 1
+          minItems: 0
+          uniqueItems: true
+      required:
+      - block_id
+      - type
+      - headers
+      - rows
+      - claim_ids
+      - citation_ids
+    ImageBlock:
+      type: object
+      additionalProperties: false
+      properties:
+        block_id:
+          type: string
+          minLength: 1
+        type:
+          const: image
+        asset_id:
+          type: string
+          format: uuid
+        caption:
+          type: string
+          minLength: 1
+          maxLength: 2000
+        alt_text:
+          type: string
+          minLength: 1
+          maxLength: 2000
+        claim_ids:
+          type: array
+          items:
+            type: string
+            format: uuid
+          minItems: 0
+          uniqueItems: true
+        citation_ids:
+          type: array
+          items:
+            type: string
+            minLength: 1
+          minItems: 0
+          uniqueItems: true
+      required:
+      - block_id
+      - type
+      - asset_id
+      - caption
+      - alt_text
+      - claim_ids
+      - citation_ids
+    ArticleIR:
+      type: object
+      additionalProperties: false
+      properties:
+        schema_version:
+          const: 4.1.0
+        id:
+          type: string
+          format: uuid
+        tenant_id:
+          type: string
+          format: uuid
+        blog_id:
+          type: string
+          format: uuid
+        revision_id:
+          type: string
+          format: uuid
+        brief_id:
+          type: string
+          format: uuid
+        profile_version:
+          type: integer
+          minimum: 1
+        title:
+          type: string
+          minLength: 1
+          maxLength: 200
+        article_type:
+          type: string
+          enum:
+          - change_explainer
+          - comparison
+          - interpretation
+          - how_to
+          - experience
+          - decision_guide
+        is_reference_example:
+          type: boolean
+        blocks:
+          type: array
+          items:
+            oneOf:
+            - $ref: '#/components/schemas/TextBlock'
+            - $ref: '#/components/schemas/ListBlock'
+            - $ref: '#/components/schemas/TableBlock'
+            - $ref: '#/components/schemas/ImageBlock'
+          minItems: 1
+          maxItems: 120
+        public_citations:
+          type: array
+          items:
+            $ref: '#/components/schemas/PublicCitation'
+          minItems: 0
+          maxItems: 100
+        category_suggestion:
+          type: string
+          minLength: 1
+        tag_suggestions:
+          type: array
+          items:
+            type: string
+            minLength: 1
+          minItems: 0
+          maxItems: 30
+        created_at:
+          type: string
+          format: date-time
+      required:
+      - schema_version
+      - id
+      - tenant_id
+      - blog_id
+      - revision_id
+      - brief_id
+      - profile_version
+      - title
+      - article_type
+      - is_reference_example
+      - blocks
+      - public_citations
+      - category_suggestion
+      - tag_suggestions
+      - created_at
+      description: 'R1: semantic checks and authenticated scope checks are required;
+        JSON Schema alone is not readiness.'
+    Asset:
+      type: object
+      additionalProperties: false
+      properties:
+        id:
+          type: string
+          format: uuid
+        tenant_id:
+          type: string
+          format: uuid
+        blog_id:
+          type: string
+          format: uuid
+        object_key:
+          type: string
+          minLength: 1
+        sha256:
+          type: string
+          pattern: ^[0-9a-f]{64}$
+        mime:
+          type: string
+          enum:
+          - image/png
+          - image/jpeg
+          - image/webp
+        size_bytes:
+          type: integer
+          minimum: 1
+        width:
+          type: integer
+          minimum: 1
+        height:
+          type: integer
+          minimum: 1
+        origin:
+          type: string
+          enum:
+          - user_owned
+          - licensed
+          - generated_explanation
+        rights_basis:
+          type: string
+          minLength: 1
+        allowed_platforms:
+          type: array
+          items:
+            type: string
+            enum:
+            - naver
+            - tistory
+            - owned
+          minItems: 1
+          uniqueItems: true
+        attribution:
+          type: string
+        expires_at:
+          anyOf:
+          - type: string
+            format: date-time
+          - type: 'null'
+        status:
+          type: string
+          enum:
+          - QUARANTINED
+          - READY
+          - REJECTED
+      required:
+      - id
+      - tenant_id
+      - blog_id
+      - object_key
+      - sha256
+      - mime
+      - size_bytes
+      - width
+      - height
+      - origin
+      - rights_basis
+      - allowed_platforms
+      - attribution
+      - expires_at
+      - status
+    ReviewFinding:
+      type: object
+      additionalProperties: false
+      properties:
+        code:
+          type: string
+          minLength: 1
+        severity:
+          type: string
+          enum:
+          - critical
+          - major
+          - minor
+        block_ids:
+          type: array
+          items:
+            type: string
+            minLength: 1
+          minItems: 0
+          uniqueItems: true
+        claim_ids:
+          type: array
+          items:
+            type: string
+            format: uuid
+          minItems: 0
+          uniqueItems: true
+        reason:
+          type: string
+          minLength: 1
+        suggested_action:
+          type: string
+          minLength: 1
+      required:
+      - code
+      - severity
+      - block_ids
+      - claim_ids
+      - reason
+      - suggested_action
+    ReviewFindings:
+      type: object
+      additionalProperties: false
+      properties:
+        revision_id:
+          type: string
+          format: uuid
+        input_content_hash:
+          type: string
+          pattern: ^[0-9a-f]{64}$
+        findings:
+          type: array
+          items:
+            $ref: '#/components/schemas/ReviewFinding'
+          minItems: 0
+        verdict_recommendation:
+          type: string
+          enum:
+          - pass
+          - revise
+          - hold
+        unverified_scope:
+          type: array
+          items:
+            type: string
+            minLength: 1
+          minItems: 0
+      required:
+      - revision_id
+      - input_content_hash
+      - findings
+      - verdict_recommendation
+      - unverified_scope
+    GateReport:
+      type: object
+      additionalProperties: false
+      properties:
+        id:
+          type: string
+          format: uuid
+        tenant_id:
+          type: string
+          format: uuid
+        blog_id:
+          type: string
+          format: uuid
+        revision_id:
+          type: string
+          format: uuid
+        target_content_hash:
+          type: string
+          pattern: ^[0-9a-f]{64}$
+        evidence_bundle_hash:
+          type: string
+          pattern: ^[0-9a-f]{64}$
+        policy_version:
+          type: string
+          minLength: 1
+        issuer:
+          const: review_service
+        checked_at:
+          type: string
+          format: date-time
+        valid_until:
+          type: string
+          format: date-time
+        verdict:
+          type: string
+          enum:
+          - PASS
+          - FAIL
+          - HOLD
+        findings:
+          type: array
+          items:
+            $ref: '#/components/schemas/ReviewFinding'
+          minItems: 0
+        human_review_required:
+          type: boolean
+        human_reviewed_by:
+          anyOf:
+          - type: string
+            minLength: 1
+          - type: 'null'
+      required:
+      - id
+      - tenant_id
+      - blog_id
+      - revision_id
+      - target_content_hash
+      - evidence_bundle_hash
+      - policy_version
+      - issuer
+      - checked_at
+      - valid_until
+      - verdict
+      - findings
+      - human_review_required
+      - human_reviewed_by
+      allOf:
+      - if:
+          properties:
+            verdict:
+              const: PASS
+            human_review_required:
+              const: true
+          required:
+          - verdict
+          - human_review_required
+        then:
+          properties:
+            human_reviewed_by:
+              type: string
+              minLength: 1
+      - if:
+          properties:
+            verdict:
+              const: PASS
+          required:
+          - verdict
+        then:
+          properties:
+            findings:
+              type: array
+              items:
+                allOf:
+                - $ref: '#/components/schemas/ReviewFinding'
+                - properties:
+                    severity:
+                      const: minor
+    ExportManifest:
+      type: object
+      additionalProperties: false
+      properties:
+        id:
+          type: string
+          format: uuid
+        tenant_id:
+          type: string
+          format: uuid
+        blog_id:
+          type: string
+          format: uuid
+        article_id:
+          type: string
+          format: uuid
+        revision_id:
+          type: string
+          format: uuid
+        content_hash:
+          type: string
+          pattern: ^[0-9a-f]{64}$
+        review_bundle_hash:
+          type: string
+          pattern: ^[0-9a-f]{64}$
+        policy_version:
+          type: string
+          minLength: 1
+        generated_at:
+          type: string
+          format: date-time
+        valid_until:
+          type: string
+          format: date-time
+        status:
+          type: string
+          enum:
+          - REFERENCE_EXAMPLE
+          - HANDOFF_READY
+          - REVALIDATION_REQUIRED
+        target_platform:
+          type: string
+          enum:
+          - naver_manual
+          - tistory_manual
+          - owned_manual
+        public_posting_performed:
+          const: false
+        files:
+          type: array
+          items:
+            type: object
+            additionalProperties: false
+            properties:
+              path:
+                type: string
+                minLength: 1
+                pattern: ^(?!/)(?!.*\\)(?!.*:)(?!.*(?:^|/)\.\.?(?:/|$))(?!.*//)[^\u0000-\u001F]+$
+              sha256:
+                type: string
+                pattern: ^[0-9a-f]{64}$
+              mime:
+                type: string
+                minLength: 1
+              size_bytes:
+                type: integer
+                minimum: 1
+              visibility:
+                type: string
+                enum:
+                - public
+                - private
+                - guide
+            required:
+            - path
+            - sha256
+            - mime
+            - size_bytes
+            - visibility
+          minItems: 1
+      required:
+      - id
+      - tenant_id
+      - blog_id
+      - article_id
+      - revision_id
+      - content_hash
+      - review_bundle_hash
+      - policy_version
+      - generated_at
+      - valid_until
+      - status
+      - target_platform
+      - public_posting_performed
+      - files
+    PublicationReceipt:
+      type: object
+      additionalProperties: false
+      properties:
+        id:
+          type: string
+          format: uuid
+        tenant_id:
+          type: string
+          format: uuid
+        blog_id:
+          type: string
+          format: uuid
+        article_revision_id:
+          type: string
+          format: uuid
+        url:
+          type: string
+          format: uri
+        posted_at:
+          type: string
+          format: date-time
+        recorded_at:
+          type: string
+          format: date-time
+        status:
+          type: string
+          enum:
+          - USER_RECORDED
+          - USER_CORRECTED
+          - RETRACTED
+        final_content_hash:
+          anyOf:
+          - type: string
+            pattern: ^[0-9a-f]{64}$
+          - type: 'null'
+        user_note:
+          type: string
+      required:
+      - id
+      - tenant_id
+      - blog_id
+      - article_revision_id
+      - url
+      - posted_at
+      - recorded_at
+      - status
+      - final_content_hash
+      - user_note
+    MetricRow:
+      type: object
+      additionalProperties: false
+      properties:
+        id:
+          type: string
+          format: uuid
+        tenant_id:
+          type: string
+          format: uuid
+        blog_id:
+          type: string
+          format: uuid
+        platform:
+          type: string
+          enum:
+          - naver
+          - tistory
+          - owned
+        entity_key:
+          type: string
+          minLength: 1
+        metric:
+          type: string
+          enum:
+          - pv
+          - visits
+          - unique_visitors
+          - homefeed_referrals
+          - referral_ratio
+          - content_impressions
+          - content_clicks
+          - ad_impressions
+          - ad_clicks
+        value:
+          anyOf:
+          - type: number
+          - type: 'null'
+        status:
+          type: string
+          enum:
+          - OBSERVED
+          - PARTIAL
+          - NOT_UPDATED
+          - NOT_AVAILABLE
+          - USER_ENTERED
+        unit:
+          type: string
+          minLength: 1
+        period_start:
+          type: string
+          format: date-time
+        period_end:
+          type: string
+          format: date-time
+        dimension_hash:
+          type: string
+          pattern: ^[0-9a-f]{64}$
+        denominator_metric:
+          anyOf:
+          - type: string
+            minLength: 1
+          - type: 'null'
+        source_revision:
+          type: string
+          minLength: 1
+        source_updated_at:
+          anyOf:
+          - type: string
+            format: date-time
+          - type: 'null'
+      required:
+      - id
+      - tenant_id
+      - blog_id
+      - platform
+      - entity_key
+      - metric
+      - value
+      - status
+      - unit
+      - period_start
+      - period_end
+      - dimension_hash
+      - denominator_metric
+      - source_revision
+      - source_updated_at
+      description: 'R1: semantic checks and authenticated scope checks are required;
+        JSON Schema alone is not readiness.'
+      allOf:
+      - if:
+          properties:
+            status:
+              enum:
+              - NOT_UPDATED
+              - NOT_AVAILABLE
+          required:
+          - status
+        then:
+          properties:
+            value:
+              type: 'null'
+      - if:
+          properties:
+            metric:
+              enum:
+              - pv
+              - visits
+              - unique_visitors
+              - homefeed_referrals
+              - content_impressions
+              - content_clicks
+              - ad_impressions
+              - ad_clicks
+          required:
+          - metric
+        then:
+          properties:
+            value:
+              anyOf:
+              - type: integer
+                minimum: 0
+              - type: 'null'
+      - if:
+          properties:
+            metric:
+              const: referral_ratio
+          required:
+          - metric
+        then:
+          properties:
+            value:
+              anyOf:
+              - type: number
+                minimum: 0
+                maximum: 1
+              - type: 'null'
+            unit:
+              const: ratio
+    Job:
+      type: object
+      additionalProperties: false
+      properties:
+        id:
+          type: string
+          format: uuid
+        tenant_id:
+          type: string
+          format: uuid
+        blog_id:
+          anyOf:
+          - type: string
+            format: uuid
+          - type: 'null'
+        kind:
+          type: string
+          minLength: 1
+        status:
+          type: string
+          enum:
+          - QUEUED
+          - RUNNING
+          - WAITING
+          - COMPLETED
+          - FAILED
+          - CANCELLED
+        stage:
+          type: string
+          minLength: 1
+        attempt:
+          type: integer
+          minimum: 0
+        input_hash:
+          type: string
+          pattern: ^[0-9a-f]{64}$
+        output_ref:
+          anyOf:
+          - type: string
+            minLength: 1
+          - type: 'null'
+        error_code:
+          anyOf:
+          - type: string
+            minLength: 1
+          - type: 'null'
+        updated_at:
+          type: string
+          format: date-time
+      required:
+      - id
+      - tenant_id
+      - blog_id
+      - kind
+      - status
+      - stage
+      - attempt
+      - input_hash
+      - output_ref
+      - error_code
+      - updated_at
+    Error:
+      type: object
+      additionalProperties: false
+      properties:
+        code:
+          type: string
+          minLength: 1
+        message:
+          type: string
+          minLength: 1
+        request_id:
+          type: string
+          format: uuid
+        retryable:
+          type: boolean
+        details:
+          type: object
+          additionalProperties: false
+          properties:
+            field:
+              anyOf:
+              - type: string
+                minLength: 1
+              - type: 'null'
+            reason:
+              anyOf:
+              - type: string
+                minLength: 1
+              - type: 'null'
+          required: []
+      required:
+      - code
+      - message
+      - request_id
+      - retryable
+      - details
+    AgentEnvelope:
+      type: object
+      additionalProperties: false
+      properties:
+        outcome:
+          type: string
+          enum:
+          - produced
+          - needs_evidence
+          - blocked
+        payload_type:
+          type: string
+          enum:
+          - ContentBrief
+          - ArticleIR
+          - ReviewFindings
+          - ResearchPack
+          - RoutingDecision
+          - CardPlan
+          - AssetPlan
+        payload:
+          anyOf:
+          - oneOf:
+            - $ref: '#/components/schemas/ContentBrief'
+            - $ref: '#/components/schemas/ArticleIR'
+            - $ref: '#/components/schemas/ReviewFindings'
+            - $ref: '#/components/schemas/ResearchPack'
+            - $ref: '#/components/schemas/RoutingDecision'
+            - $ref: '#/components/schemas/CardPlan'
+            - $ref: '#/components/schemas/AssetPlan'
+          - type: 'null'
+        missing_items:
+          type: array
+          items:
+            type: string
+            minLength: 1
+          minItems: 0
+        public_claims_added:
+          type: array
+          items:
+            type: string
+            minLength: 1
+          minItems: 0
+      required:
+      - outcome
+      - payload_type
+      - payload
+      - missing_items
+      - public_claims_added
+      allOf:
+      - if:
+          properties:
+            outcome:
+              const: produced
+          required:
+          - outcome
+        then:
+          properties:
+            payload:
+              not:
+                type: 'null'
+        else:
+          properties:
+            payload:
+              type: 'null'
+      - if:
+          properties:
+            outcome:
+              const: produced
+            payload_type:
+              const: ContentBrief
+          required:
+          - outcome
+          - payload_type
+        then:
+          properties:
+            payload:
+              $ref: '#/components/schemas/ContentBrief'
+      - if:
+          properties:
+            outcome:
+              const: produced
+            payload_type:
+              const: ArticleIR
+          required:
+          - outcome
+          - payload_type
+        then:
+          properties:
+            payload:
+              $ref: '#/components/schemas/ArticleIR'
+      - if:
+          properties:
+            outcome:
+              const: produced
+            payload_type:
+              const: ReviewFindings
+          required:
+          - outcome
+          - payload_type
+        then:
+          properties:
+            payload:
+              $ref: '#/components/schemas/ReviewFindings'
+      - if:
+          properties:
+            outcome:
+              const: produced
+            payload_type:
+              const: ResearchPack
+          required:
+          - outcome
+          - payload_type
+        then:
+          properties:
+            payload:
+              $ref: '#/components/schemas/ResearchPack'
+      - if:
+          properties:
+            outcome:
+              const: produced
+            payload_type:
+              const: RoutingDecision
+          required:
+          - outcome
+          - payload_type
+        then:
+          properties:
+            payload:
+              $ref: '#/components/schemas/RoutingDecision'
+      - if:
+          properties:
+            outcome:
+              const: produced
+            payload_type:
+              const: CardPlan
+          required:
+          - outcome
+          - payload_type
+        then:
+          properties:
+            payload:
+              $ref: '#/components/schemas/CardPlan'
+      - if:
+          properties:
+            outcome:
+              const: produced
+            payload_type:
+              const: AssetPlan
+          required:
+          - outcome
+          - payload_type
+        then:
+          properties:
+            payload:
+              $ref: '#/components/schemas/AssetPlan'
+    ResearchPack:
+      type: object
+      additionalProperties: false
+      properties:
+        tenant_id:
+          type: string
+          format: uuid
+        blog_id:
+          type: string
+          format: uuid
+        opportunity_id:
+          type: string
+          format: uuid
+        snapshot_ids:
+          type: array
+          items:
+            type: string
+            format: uuid
+          minItems: 1
+          uniqueItems: true
+        evidence_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/EvidenceItem'
+          minItems: 1
+        claims:
+          type: array
+          items:
+            $ref: '#/components/schemas/Claim'
+          minItems: 1
+        conflicts:
+          type: array
+          items:
+            type: string
+            minLength: 1
+          minItems: 0
+        missing_items:
+          type: array
+          items:
+            type: string
+            minLength: 1
+          minItems: 0
+        research_decision:
+          type: string
+          enum:
+          - READY
+          - NEEDS_SOURCE
+          - NEEDS_EXPERIENCE
+          - DEFER
+        review_at:
+          type: string
+          format: date-time
+      required:
+      - tenant_id
+      - blog_id
+      - opportunity_id
+      - snapshot_ids
+      - evidence_items
+      - claims
+      - conflicts
+      - missing_items
+      - research_decision
+      - review_at
+    RoutingDecision:
+      type: object
+      additionalProperties: false
+      properties:
+        opportunity_id:
+          type: string
+          format: uuid
+        blog_id:
+          anyOf:
+          - type: string
+            format: uuid
+          - type: 'null'
+        decision:
+          type: string
+          enum:
+          - ASSIGN
+          - HOLD
+          - REJECT
+        audience_reason:
+          type: string
+          minLength: 1
+        overlap_article_ids:
+          type: array
+          items:
+            type: string
+            format: uuid
+          minItems: 0
+          uniqueItems: true
+        missing_items:
+          type: array
+          items:
+            type: string
+            minLength: 1
+          minItems: 0
+      required:
+      - opportunity_id
+      - blog_id
+      - decision
+      - audience_reason
+      - overlap_article_ids
+      - missing_items
+      allOf:
+      - if:
+          properties:
+            decision:
+              const: ASSIGN
+          required:
+          - decision
+        then:
+          properties:
+            blog_id:
+              type: string
+              format: uuid
+    CardPlan:
+      type: object
+      additionalProperties: false
+      properties:
+        brief_id:
+          type: string
+          format: uuid
+        options:
+          type: array
+          items:
+            type: object
+            additionalProperties: false
+            properties:
+              option_id:
+                type: string
+                minLength: 1
+              title:
+                type: string
+                minLength: 1
+              image_direction:
+                type: string
+                minLength: 1
+              lead:
+                type: string
+                minLength: 1
+              promises:
+                type: array
+                items:
+                  type: string
+                  minLength: 1
+                minItems: 1
+              required_claim_ids:
+                type: array
+                items:
+                  type: string
+                  format: uuid
+                minItems: 0
+              risk_notes:
+                type: array
+                items:
+                  type: string
+                  minLength: 1
+                minItems: 0
+            required:
+            - option_id
+            - title
+            - image_direction
+            - lead
+            - promises
+            - required_claim_ids
+            - risk_notes
+          minItems: 1
+        recommended_option_id:
+          type: string
+          minLength: 1
+        is_prediction:
+          const: false
+      required:
+      - brief_id
+      - options
+      - recommended_option_id
+      - is_prediction
+    AssetPlan:
+      type: object
+      additionalProperties: false
+      properties:
+        brief_id:
+          type: string
+          format: uuid
+        slots:
+          type: array
+          items:
+            type: object
+            additionalProperties: false
+            properties:
+              slot_id:
+                type: string
+                minLength: 1
+              purpose:
+                type: string
+                minLength: 1
+              required:
+                type: boolean
+              existing_asset_id:
+                anyOf:
+                - type: string
+                  format: uuid
+                - type: 'null'
+              allowed_origin:
+                type: string
+                enum:
+                - user_owned
+                - licensed
+                - generated_explanation
+              caption_proposal:
+                type: string
+                minLength: 1
+              evidence_claim_ids:
+                type: array
+                items:
+                  type: string
+                  format: uuid
+                minItems: 0
+              fallback:
+                type: string
+                minLength: 1
+            required:
+            - slot_id
+            - purpose
+            - required
+            - existing_asset_id
+            - allowed_origin
+            - caption_proposal
+            - evidence_claim_ids
+            - fallback
+          minItems: 0
+        text_only_acceptable:
+          type: boolean
+        missing_items:
+          type: array
+          items:
+            type: string
+            minLength: 1
+          minItems: 0
+      required:
+      - brief_id
+      - slots
+      - text_only_acceptable
+      - missing_items
+    EmptyRequest:
+      type: object
+      additionalProperties: false
+      properties: {}
+      required: []
+    BlogCreate:
+      type: object
+      additionalProperties: false
+      properties:
+        name:
+          type: string
+          minLength: 1
+        platform:
+          type: string
+          enum:
+          - naver
+          - tistory
+          - owned
+        url:
+          anyOf:
+          - type: string
+            format: uri
+          - type: 'null'
+        is_primary:
+          type: boolean
+      required:
+      - name
+      - platform
+      - url
+      - is_primary
+    BlogStatusRequest:
+      type: object
+      additionalProperties: false
+      properties:
+        status:
+          type: string
+          enum:
+          - ACTIVE
+          - PAUSED
+        expected_version:
+          type: integer
+          minimum: 1
+      required:
+      - status
+      - expected_version
+    SourceCreate:
+      type: object
+      additionalProperties: false
+      properties:
+        name:
+          type: string
+          minLength: 1
+        kind:
+          type: string
+          enum:
+          - official_web
+          - naver_search
+          - datalab
+          - social
+          - homefeed_import
+          - user_upload
+          - metrics_import
+        base_url:
+          anyOf:
+          - type: string
+            format: uri
+          - type: 'null'
+        permissions:
+          type: object
+          additionalProperties: false
+          properties:
+            fetch:
+              type: boolean
+            store:
+              type: boolean
+            send_to_model:
+              type: boolean
+            republish:
+              type: boolean
+            basis:
+              type: string
+              minLength: 1
+            expires_at:
+              anyOf:
+              - type: string
+                format: date-time
+              - type: 'null'
+          required:
+          - fetch
+          - store
+          - send_to_model
+          - republish
+          - basis
+          - expires_at
+        allowed_hosts:
+          type: array
+          items:
+            type: string
+            minLength: 1
+          minItems: 0
+        credential_ref:
+          anyOf:
+          - type: string
+            minLength: 1
+          - type: 'null'
+        allowed_blog_ids:
+          type: array
+          items:
+            type: string
+            format: uuid
+          minItems: 1
+          uniqueItems: true
+      required:
+      - name
+      - kind
+      - base_url
+      - permissions
+      - allowed_hosts
+      - credential_ref
+      - allowed_blog_ids
+    CollectRequest:
+      type: object
+      additionalProperties: false
+      properties:
+        query:
+          anyOf:
+          - type: string
+            minLength: 1
+          - type: 'null'
+        blog_id:
+          anyOf:
+          - type: string
+            format: uuid
+          - type: 'null'
+        limit:
+          type: integer
+          minimum: 1
+          maximum: 100
+      required:
+      - query
+      - blog_id
+      - limit
+    ObservationsImport:
+      type: object
+      additionalProperties: false
+      properties:
+        source_id:
+          type: string
+          format: uuid
+        rows:
+          type: array
+          items:
+            $ref: '#/components/schemas/Observation'
+          minItems: 1
+        dry_run:
+          type: boolean
+      required:
+      - source_id
+      - rows
+      - dry_run
+    ProbeResult:
+      type: object
+      additionalProperties: false
+      properties:
+        source_id:
+          type: string
+          format: uuid
+        configured:
+          type: boolean
+        status:
+          type: string
+          enum:
+          - AVAILABLE
+          - PERMISSION_MISSING
+          - NOT_CONFIGURED
+          - UNAVAILABLE
+        supported_formats:
+          type: array
+          items:
+            type: string
+            minLength: 1
+          minItems: 0
+        checked_at:
+          type: string
+          format: date-time
+        quota_remaining:
+          anyOf:
+          - type: integer
+            minimum: 0
+          - type: 'null'
+        pricing_version:
+          anyOf:
+          - type: string
+            minLength: 1
+          - type: 'null'
+      required:
+      - source_id
+      - configured
+      - status
+      - supported_formats
+      - checked_at
+      - quota_remaining
+      - pricing_version
+    ImportResult:
+      type: object
+      additionalProperties: false
+      properties:
+        accepted_rows:
+          type: integer
+          minimum: 0
+        rejected_rows:
+          type: integer
+          minimum: 0
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error'
+          minItems: 0
+        committed:
+          type: boolean
+      required:
+      - accepted_rows
+      - rejected_rows
+      - errors
+      - committed
+    AssignRequest:
+      type: object
+      additionalProperties: false
+      properties:
+        blog_id:
+          type: string
+          format: uuid
+        expected_opportunity_hash:
+          type: string
+          pattern: ^[0-9a-f]{64}$
+      required:
+      - blog_id
+      - expected_opportunity_hash
+    ArticleCreate:
+      type: object
+      additionalProperties: false
+      properties:
+        blog_id:
+          type: string
+          format: uuid
+        opportunity_id:
+          type: string
+          format: uuid
+        brief_id:
+          anyOf:
+          - type: string
+            format: uuid
+          - type: 'null'
+      required:
+      - blog_id
+      - opportunity_id
+      description: Create a server-assigned article from a scoped opportunity; brief_id
+        may be absent until BRIEF_READY. Supplied brief must belong to this opportunity
+        and blog.
+    ArticleSummary:
+      type: object
+      additionalProperties: false
+      properties:
+        id:
+          type: string
+          format: uuid
+        blog_id:
+          type: string
+          format: uuid
+        state:
+          type: string
+          enum:
+          - DISCOVERED
+          - ASSIGNED
+          - RESEARCHING
+          - BRIEF_READY
+          - DRAFTED
+          - EDITING
+          - VERIFYING
+          - ASSET_READY
+          - RENDERING
+          - HANDOFF_READY
+          - NEEDS_SOURCE
+          - NEEDS_ASSET
+          - NEEDS_EXPERIENCE
+          - NEEDS_REVIEW
+          - REVALIDATION_REQUIRED
+          - DEFERRED
+          - REJECTED
+        current_revision_id:
+          anyOf:
+          - type: string
+            format: uuid
+          - type: 'null'
+        title:
+          anyOf:
+          - type: string
+            minLength: 1
+          - type: 'null'
+        updated_at:
+          type: string
+          format: date-time
+      required:
+      - id
+      - blog_id
+      - state
+      - current_revision_id
+      - title
+      - updated_at
+    RevisionCreate:
+      type: object
+      additionalProperties: false
+      properties:
+        expected_revision_id:
+          type: string
+          format: uuid
+        article_ir:
+          $ref: '#/components/schemas/ArticleIR'
+        edit_note:
+          type: string
+          minLength: 1
+      required:
+      - expected_revision_id
+      - article_ir
+      - edit_note
+    ExportRequest:
+      type: object
+      additionalProperties: false
+      properties:
+        revision_id:
+          type: string
+          format: uuid
+        target_platform:
+          type: string
+          enum:
+          - naver_manual
+          - tistory_manual
+          - owned_manual
+      required:
+      - revision_id
+      - target_platform
+    AssetStageRequest:
+      type: object
+      additionalProperties: false
+      properties:
+        blog_id:
+          type: string
+          format: uuid
+        filename:
+          type: string
+          minLength: 1
+        mime:
+          type: string
+          enum:
+          - image/png
+          - image/jpeg
+          - image/webp
+        size_bytes:
+          type: integer
+          minimum: 1
+          maximum: 20971520
+      required:
+      - blog_id
+      - filename
+      - mime
+      - size_bytes
+    AssetStageResult:
+      type: object
+      additionalProperties: false
+      properties:
+        asset_id:
+          type: string
+          format: uuid
+        upload_url:
+          type: string
+          format: uri
+        expires_at:
+          type: string
+          format: date-time
+      required:
+      - asset_id
+      - upload_url
+      - expires_at
+    AssetFinalizeRequest:
+      type: object
+      additionalProperties: false
+      properties:
+        sha256:
+          type: string
+          pattern: ^[0-9a-f]{64}$
+        rights_basis:
+          type: string
+          minLength: 1
+        allowed_platforms:
+          type: array
+          items:
+            type: string
+            enum:
+            - naver
+            - tistory
+            - owned
+          minItems: 1
+        attribution:
+          type: string
+        expires_at:
+          anyOf:
+          - type: string
+            format: date-time
+          - type: 'null'
+      required:
+      - sha256
+      - rights_basis
+      - allowed_platforms
+      - attribution
+      - expires_at
+    AssetRightsRequest:
+      type: object
+      additionalProperties: false
+      properties:
+        expected_asset_hash:
+          type: string
+          pattern: ^[0-9a-f]{64}$
+        rights_basis:
+          type: string
+          minLength: 1
+        expires_at:
+          anyOf:
+          - type: string
+            format: date-time
+          - type: 'null'
+      required:
+      - expected_asset_hash
+      - rights_basis
+      - expires_at
+    DownloadResult:
+      type: object
+      additionalProperties: false
+      properties:
+        url:
+          type: string
+          format: uri
+        expires_at:
+          type: string
+          format: date-time
+        manifest:
+          $ref: '#/components/schemas/ExportManifest'
+      required:
+      - url
+      - expires_at
+      - manifest
+    ReceiptCreate:
+      type: object
+      additionalProperties: false
+      properties:
+        blog_id:
+          type: string
+          format: uuid
+        article_revision_id:
+          type: string
+          format: uuid
+        url:
+          type: string
+          format: uri
+        posted_at:
+          type: string
+          format: date-time
+        final_content_hash:
+          anyOf:
+          - type: string
+            pattern: ^[0-9a-f]{64}$
+          - type: 'null'
+        user_note:
+          type: string
+      required:
+      - blog_id
+      - article_revision_id
+      - url
+      - posted_at
+      - final_content_hash
+      - user_note
+    ReceiptCorrection:
+      type: object
+      additionalProperties: false
+      properties:
+        status:
+          type: string
+          enum:
+          - USER_CORRECTED
+          - RETRACTED
+        url:
+          anyOf:
+          - type: string
+            format: uri
+          - type: 'null'
+        posted_at:
+          anyOf:
+          - type: string
+            format: date-time
+          - type: 'null'
+        user_note:
+          type: string
+          minLength: 1
+      required:
+      - status
+      - url
+      - posted_at
+      - user_note
+    MetricImportRequest:
+      type: object
+      additionalProperties: false
+      properties:
+        blog_id:
+          type: string
+          format: uuid
+        uploaded_file_ref:
+          type: string
+          minLength: 1
+        sha256:
+          type: string
+          pattern: ^[0-9a-f]{64}$
+        mapping_version:
+          type: string
+          minLength: 1
+        period_start:
+          type: string
+          format: date-time
+        period_end:
+          type: string
+          format: date-time
+        timezone:
+          const: Asia/Seoul
+      required:
+      - blog_id
+      - uploaded_file_ref
+      - sha256
+      - mapping_version
+      - period_start
+      - period_end
+      - timezone
+    MetricImportPreview:
+      type: object
+      additionalProperties: false
+      properties:
+        import_id:
+          type: string
+          format: uuid
+        input_hash:
+          type: string
+          pattern: ^[0-9a-f]{64}$
+        mapping_version:
+          type: string
+          minLength: 1
+        rows:
+          type: array
+          items:
+            $ref: '#/components/schemas/MetricRow'
+          minItems: 0
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error'
+          minItems: 0
+        can_commit:
+          type: boolean
+      required:
+      - import_id
+      - input_hash
+      - mapping_version
+      - rows
+      - errors
+      - can_commit
+    CommitRequest:
+      type: object
+      additionalProperties: false
+      properties:
+        expected_preview_hash:
+          type: string
+          pattern: ^[0-9a-f]{64}$
+      required:
+      - expected_preview_hash
+    Report:
+      type: object
+      additionalProperties: false
+      properties:
+        blog_id:
+          type: string
+          format: uuid
+        period_start:
+          type: string
+          format: date-time
+        period_end:
+          type: string
+          format: date-time
+        metric_rows:
+          type: array
+          items:
+            $ref: '#/components/schemas/MetricRow'
+          minItems: 0
+        notes:
+          type: array
+          items:
+            type: string
+            minLength: 1
+          minItems: 0
+        missing_sources:
+          type: array
+          items:
+            type: string
+            minLength: 1
+          minItems: 0
+      required:
+      - blog_id
+      - period_start
+      - period_end
+      - metric_rows
+      - notes
+      - missing_sources
+    ExceptionRecord:
+      type: object
+      additionalProperties: false
+      properties:
+        id:
+          type: string
+          format: uuid
+        blog_id:
+          type: string
+          format: uuid
+        job_id:
+          type: string
+          format: uuid
+        code:
+          type: string
+          minLength: 1
+        description:
+          type: string
+          minLength: 1
+        allowed_resolutions:
+          type: array
+          items:
+            type: string
+            enum:
+            - PROVIDE_EVIDENCE
+            - PROVIDE_ASSET
+            - REFORMAT
+            - DEFER
+            - REJECT
+          minItems: 0
+      required:
+      - id
+      - blog_id
+      - job_id
+      - code
+      - description
+      - allowed_resolutions
+    ResolveRequest:
+      type: object
+      additionalProperties: false
+      properties:
+        action:
+          type: string
+          enum:
+          - PROVIDE_EVIDENCE
+          - PROVIDE_ASSET
+          - REFORMAT
+          - DEFER
+          - REJECT
+        evidence_ids:
+          type: array
+          items:
+            type: string
+            format: uuid
+          minItems: 0
+        asset_ids:
+          type: array
+          items:
+            type: string
+            format: uuid
+          minItems: 0
+        note:
+          type: string
+          minLength: 1
+      required:
+      - action
+      - evidence_ids
+      - asset_ids
+      - note
+    RuntimeConfig:
+      type: object
+      additionalProperties: false
+      properties:
+        version:
+          type: integer
+          minimum: 0
+        mode:
+          type: string
+          enum:
+          - REPLAY
+          - LIVE
+        public_posting_enabled:
+          const: false
+        daily_ready_limit_per_blog:
+          type: integer
+          minimum: 0
+        max_backlog_per_blog:
+          type: integer
+          minimum: 0
+        worker_concurrency:
+          type: integer
+          minimum: 1
+        budget_currency:
+          type: string
+          minLength: 1
+        monthly_limit_minor:
+          anyOf:
+          - type: integer
+            minimum: 0
+          - type: 'null'
+        schedule_enabled:
+          type: boolean
+        timezone:
+          const: Asia/Seoul
+      required:
+      - version
+      - mode
+      - public_posting_enabled
+      - daily_ready_limit_per_blog
+      - max_backlog_per_blog
+      - worker_concurrency
+      - budget_currency
+      - monthly_limit_minor
+      - schedule_enabled
+      - timezone
+    RuntimeUpdate:
+      type: object
+      additionalProperties: false
+      properties:
+        expected_version:
+          type: integer
+          minimum: 0
+        mode:
+          type: string
+          enum:
+          - REPLAY
+          - LIVE
+        daily_ready_limit_per_blog:
+          type: integer
+          minimum: 0
+        max_backlog_per_blog:
+          type: integer
+          minimum: 0
+        worker_concurrency:
+          type: integer
+          minimum: 1
+        monthly_limit_minor:
+          anyOf:
+          - type: integer
+            minimum: 0
+          - type: 'null'
+        schedule_enabled:
+          type: boolean
+      required:
+      - expected_version
+      - mode
+      - daily_ready_limit_per_blog
+      - max_backlog_per_blog
+      - worker_concurrency
+      - monthly_limit_minor
+      - schedule_enabled
+    Health:
+      type: object
+      additionalProperties: false
+      properties:
+        status:
+          type: string
+          enum:
+          - ok
+          - degraded
+        version:
+          type: string
+          minLength: 1
+        database:
+          type: string
+          enum:
+          - ready
+          - unavailable
+        queue:
+          type: string
+          enum:
+          - ready
+          - unavailable
+      required:
+      - status
+      - version
+      - database
+      - queue
+    BlogProfilePage:
+      type: object
+      additionalProperties: false
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/BlogProfile'
+          minItems: 0
+        next_cursor:
+          anyOf:
+          - type: string
+            minLength: 1
+          - type: 'null'
+      required:
+      - items
+      - next_cursor
+    SourceRegistrationPage:
+      type: object
+      additionalProperties: false
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/SourceRegistration'
+          minItems: 0
+        next_cursor:
+          anyOf:
+          - type: string
+            minLength: 1
+          - type: 'null'
+      required:
+      - items
+      - next_cursor
+    OpportunityPage:
+      type: object
+      additionalProperties: false
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/Opportunity'
+          minItems: 0
+        next_cursor:
+          anyOf:
+          - type: string
+            minLength: 1
+          - type: 'null'
+      required:
+      - items
+      - next_cursor
+    ArticleSummaryPage:
+      type: object
+      additionalProperties: false
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ArticleSummary'
+          minItems: 0
+        next_cursor:
+          anyOf:
+          - type: string
+            minLength: 1
+          - type: 'null'
+      required:
+      - items
+      - next_cursor
+    JobPage:
+      type: object
+      additionalProperties: false
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/Job'
+          minItems: 0
+        next_cursor:
+          anyOf:
+          - type: string
+            minLength: 1
+          - type: 'null'
+      required:
+      - items
+      - next_cursor
+    ExceptionRecordPage:
+      type: object
+      additionalProperties: false
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ExceptionRecord'
+          minItems: 0
+        next_cursor:
+          anyOf:
+          - type: string
+            minLength: 1
+          - type: 'null'
+      required:
+      - items
+      - next_cursor
+    JobEvent:
+      type: object
+      additionalProperties: false
+      properties:
+        id:
+          type: string
+          minLength: 1
+        event:
+          type: string
+          minLength: 1
+        data:
+          type: object
+          additionalProperties: false
+          properties:
+            job_id:
+              type: string
+              format: uuid
+            stage:
+              type: string
+              minLength: 1
+            status:
+              type: string
+              enum:
+              - QUEUED
+              - RUNNING
+              - WAITING
+              - COMPLETED
+              - FAILED
+              - CANCELLED
+            message:
+              type: string
+          required:
+          - job_id
+          - stage
+          - status
+          - message
+      required:
+      - id
+      - event
+      - data

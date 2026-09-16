@@ -1,0 +1,73 @@
+{
+  "checks": [
+    {
+      "sample": "01_DATALAB",
+      "viewport": "mobile",
+      "width": 390,
+      "document_width": 390,
+      "horizontal_overflow": false,
+      "title": "검색 추세가 둘 다 100인데, 어느 쪽이 더 인기일까?",
+      "screenshot": "01_DATALAB_mobile.png",
+      "forbidden_internal_codes": false
+    },
+    {
+      "sample": "01_DATALAB",
+      "viewport": "desktop",
+      "width": 1280,
+      "document_width": 1280,
+      "horizontal_overflow": false,
+      "title": "검색 추세가 둘 다 100인데, 어느 쪽이 더 인기일까?",
+      "screenshot": "01_DATALAB_desktop.png",
+      "forbidden_internal_codes": false
+    },
+    {
+      "sample": "02_GOOGLE_PHOTOS",
+      "viewport": "mobile",
+      "width": 390,
+      "document_width": 390,
+      "horizontal_overflow": false,
+      "title": "구글 포토에 보이는 사진, 휴대폰에서 지워도 될까?",
+      "screenshot": "02_GOOGLE_PHOTOS_mobile.png",
+      "forbidden_internal_codes": false
+    },
+    {
+      "sample": "02_GOOGLE_PHOTOS",
+      "viewport": "desktop",
+      "width": 1280,
+      "document_width": 1280,
+      "horizontal_overflow": false,
+      "title": "구글 포토에 보이는 사진, 휴대폰에서 지워도 될까?",
+      "screenshot": "02_GOOGLE_PHOTOS_desktop.png",
+      "forbidden_internal_codes": false
+    },
+    {
+      "sample": "03_USBC",
+      "viewport": "mobile",
+      "width": 390,
+      "document_width": 390,
+      "horizontal_overflow": false,
+      "title": "충전은 되는데 모니터는 안 뜨는 USB-C, 케이블 문제일까?",
+      "screenshot": "03_USBC_mobile.png",
+      "forbidden_internal_codes": false
+    },
+    {
+      "sample": "03_USBC",
+      "viewport": "desktop",
+      "width": 1280,
+      "document_width": 1280,
+      "horizontal_overflow": false,
+      "title": "충전은 되는데 모니터는 안 뜨는 USB-C, 케이블 문제일까?",
+      "screenshot": "03_USBC_desktop.png",
+      "forbidden_internal_codes": false
+    },
+    {
+      "sample": "gallery",
+      "viewport": "desktop",
+      "width": 1280,
+      "document_width": 1280,
+      "horizontal_overflow": false,
+      "screenshot": "GALLERY_desktop.png"
+    }
+  ],
+  "note": "Local Chromium rendering only; not actual Naver/Tistory editor testing. PNGs separately inspected visually."
+}

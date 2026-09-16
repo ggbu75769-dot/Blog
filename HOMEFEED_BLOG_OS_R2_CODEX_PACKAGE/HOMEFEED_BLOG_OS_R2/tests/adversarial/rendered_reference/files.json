@@ -1,0 +1,16 @@
+[
+  {
+    "path": "article.txt",
+    "sha256": "4bacdf0495fc0180c5247a62e9fcfea9f9878b3e7a0f296248c3527ee1f24d5a",
+    "mime": "text/plain",
+    "size_bytes": 2966,
+    "visibility": "public"
+  },
+  {
+    "path": "preview.html",
+    "sha256": "6684c5b7529913b0fd61087c71331d890ea3b29360f7456ffaa361d121dbbbb3",
+    "mime": "text/html",
+    "size_bytes": 4989,
+    "visibility": "public"
+  }
+]

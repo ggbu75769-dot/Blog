@@ -1,0 +1,26 @@
+{
+  "before": "100을 사람 수로 읽지 말라는 핵심을 반복",
+  "after": "서로 다른 두 묶음을 각각 정규화한 계산 예를 추가해 비교 오류를 보여줌",
+  "payoff_blocks": [
+    "D04",
+    "D05",
+    "D06"
+  ],
+  "kept": [
+    "상대값 정의",
+    "동일 요청 조건",
+    "시간 해상도"
+  ],
+  "risks": [
+    "가상 계산을 실제 검색량처럼 읽지 않게 표 앞에서 명시",
+    "명수 대신 상대 검색량이라는 원문의 단위 유지"
+  ],
+  "article_id": "6844af80-4d0b-5da6-86d0-b3d5d35223d3",
+  "revision_id": "1b0472ec-3244-5398-9425-ce29b514f733",
+  "content_hash": "fd0f115498663555ed0f2465ea89997eed9149c06bd3d47d2dd2d32c469c46ba",
+  "assessment_origin": "ASSISTANT_EDITORIAL_COMMENTARY_NOT_HUMAN_BLIND_REVIEW",
+  "numeric_quality_score": null,
+  "viral_probability": null,
+  "body_characters_excluding_references": 898,
+  "notes_not_a_production_gate": true
+}

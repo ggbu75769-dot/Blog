@@ -1,0 +1,27 @@
+{
+  "before": "별도의 동일 조건 기준선 없음",
+  "after": "앱에 보이는 사진/백업 상태/기기 사본 제거 후 접근 차이를 하나의 결정 문제로 연결",
+  "payoff_blocks": [
+    "G01",
+    "G04",
+    "G07",
+    "G08"
+  ],
+  "kept": [
+    "실제 계정 확인",
+    "백업 불확실 시 중지",
+    "오프라인 접근 제한"
+  ],
+  "risks": [
+    "실제 기기 실험 아님",
+    "삭제 도움말 전체 재확인 실패로 휴지통의 세부 동작은 원고에서 제외"
+  ],
+  "article_id": "c56af4b9-ea13-5099-b65a-c59c6f8161d7",
+  "revision_id": "defb1a39-ccaa-58a1-80cf-9745f7a4c365",
+  "content_hash": "907f09100fb7a3fe6b171960bdb66c45cca009b9d38395a2f9b6d925e973e2d2",
+  "assessment_origin": "ASSISTANT_EDITORIAL_COMMENTARY_NOT_HUMAN_BLIND_REVIEW",
+  "numeric_quality_score": null,
+  "viral_probability": null,
+  "body_characters_excluding_references": 911,
+  "notes_not_a_production_gate": true
+}

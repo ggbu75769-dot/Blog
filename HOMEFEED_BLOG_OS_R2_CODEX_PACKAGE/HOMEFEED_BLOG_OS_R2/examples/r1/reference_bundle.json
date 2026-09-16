@@ -1,0 +1,408 @@
+{
+  "provenance": "REPLAY",
+  "article": {
+    "schema_version": "4.1.0",
+    "id": "a4b0f758-8313-5d94-98e6-e3af7c8f85d7",
+    "tenant_id": "dbfb664f-c890-5171-914a-23b67f3e0767",
+    "blog_id": "4662b729-4a37-5271-8147-9fe8e02e260b",
+    "revision_id": "86dab9fa-30c8-57fe-8274-a62c3cdd51d5",
+    "brief_id": "63c48573-99d4-51ec-8110-5039e077e6f3",
+    "profile_version": 1,
+    "title": "검색 추세의 100, 검색한 사람이 100명이라는 뜻은 아닙니다",
+    "article_type": "decision_guide",
+    "is_reference_example": true,
+    "blocks": [
+      {
+        "block_id": "B001",
+        "type": "paragraph",
+        "text": "검색 추세에서 100을 보면 검색한 사람이 100명이라는 뜻으로 읽기 쉽습니다. 네이버 Datalab 통합 검색어 트렌드 API의 값은 그렇지 않습니다. 조회한 구간에서 가장 큰 값을 100으로 둔 상대 비율입니다.",
+        "claim_ids": [
+          "50d6ce94-07f0-544d-80b6-7a0de1413069"
+        ],
+        "citation_ids": [
+          "PUB01"
+        ]
+      },
+      {
+        "block_id": "B002",
+        "type": "paragraph",
+        "text": "숫자가 커 보인다는 이유만으로 글감을 고르기 전에, 그 숫자의 단위부터 확인해 보세요. 횟수를 보여주는지, 비교를 위해 바꾼 값인지에 따라 읽는 방법이 달라집니다.",
+        "claim_ids": [],
+        "citation_ids": []
+      },
+      {
+        "block_id": "B003",
+        "type": "heading",
+        "text": "100과 50을 어떻게 읽어야 할까요?",
+        "claim_ids": [],
+        "citation_ids": []
+      },
+      {
+        "block_id": "B004",
+        "type": "paragraph",
+        "text": "같은 요청과 비교 조건에서 100과 50이 나왔다고 가정해 보겠습니다. 100명과 50명이 검색했다는 뜻은 아닙니다. 같은 기준 안에서 관심의 상대적인 크기를 비교하는 값으로 읽어야 합니다.",
+        "claim_ids": [
+          "50d6ce94-07f0-544d-80b6-7a0de1413069",
+          "c6e17213-13b7-5507-9197-73b2e6f2e3cd"
+        ],
+        "citation_ids": [
+          "PUB01"
+        ]
+      },
+      {
+        "block_id": "B005",
+        "type": "paragraph",
+        "text": "이 차이는 글감을 고를 때도 중요합니다. 큰 숫자 하나만 보고 수요가 충분하다고 결론내리기보다, 어떤 기간과 조건으로 나온 값인지 함께 확인하는 편이 낫습니다.",
+        "claim_ids": [],
+        "citation_ids": []
+      },
+      {
+        "block_id": "B006",
+        "type": "heading",
+        "text": "서로 다른 조회 결과를 한 표에 넣기 전에",
+        "claim_ids": [],
+        "citation_ids": []
+      },
+      {
+        "block_id": "B007",
+        "type": "paragraph",
+        "text": "조회 기간이나 검색어 묶음을 바꾸면 비교 기준도 달라질 수 있습니다. 따로 조회한 결과의 80과 60을 단순히 나란히 놓고 어느 쪽의 검색 횟수가 더 많다고 단정하지 않는 것이 좋습니다.",
+        "claim_ids": [
+          "c6e17213-13b7-5507-9197-73b2e6f2e3cd"
+        ],
+        "citation_ids": [
+          "PUB01"
+        ]
+      },
+      {
+        "block_id": "B008",
+        "type": "paragraph",
+        "text": "비교하려는 검색어는 가능한 한 같은 기간과 같은 필터로 확인하고, 요청 조건도 함께 남겨두세요. 그래야 다음에 다시 봤을 때 무엇을 비교한 숫자인지 알 수 있습니다.",
+        "claim_ids": [],
+        "citation_ids": []
+      },
+      {
+        "block_id": "B009",
+        "type": "heading",
+        "text": "지금 막 뜨는 주제까지 알 수 있을까요?",
+        "claim_ids": [],
+        "citation_ids": []
+      },
+      {
+        "block_id": "B010",
+        "type": "paragraph",
+        "text": "이 API에서 선택하는 시간 구간은 일·주·월입니다. 일 단위 자료를 자주 확인한다고 최근 10분 동안의 검색 횟수를 얻는 것은 아닙니다.",
+        "claim_ids": [
+          "424f9a96-deb7-526f-9bfb-302856b8670d"
+        ],
+        "citation_ids": [
+          "PUB01"
+        ]
+      },
+      {
+        "block_id": "B011",
+        "type": "paragraph",
+        "text": "지금 막 공개된 소식은 공식 발표와 실제 공개 시각을 따로 살펴보고, 검색 추세는 제공되는 시간 단위에 맞춰 확인하는 편이 안전합니다. 오래된 사건이 오늘 다시 올라온 글인지도 구분해야 하고요.",
+        "claim_ids": [],
+        "citation_ids": []
+      },
+      {
+        "block_id": "B012",
+        "type": "heading",
+        "text": "글감을 고를 때 남겨둘 네 가지",
+        "claim_ids": [],
+        "citation_ids": []
+      },
+      {
+        "block_id": "B013",
+        "type": "paragraph",
+        "text": "검색어, 조회 기간, 필터, 실제 확인한 시각을 함께 적어두면 됩니다. 여기에 독자가 어떤 질문을 해결하려는지 한 줄을 더해보세요. 숫자를 모으는 것과 읽을 만한 글의 질문을 찾는 것은 다른 작업입니다.",
+        "claim_ids": [],
+        "citation_ids": []
+      },
+      {
+        "block_id": "B014",
+        "type": "paragraph",
+        "text": "정리하면 100은 그 자체로 검색한 사람 수가 아닙니다. 먼저 숫자의 뜻을 확인하고, 같은 조건에서 흐름을 비교한 다음, 그 관심에 어떤 답을 줄지 정하는 순서가 좋겠습니다.",
+        "claim_ids": [
+          "50d6ce94-07f0-544d-80b6-7a0de1413069"
+        ],
+        "citation_ids": [
+          "PUB01"
+        ]
+      }
+    ],
+    "public_citations": [
+      {
+        "id": "PUB01",
+        "publisher": "NAVER Developers",
+        "title": "통합 검색어 트렌드 API 문서",
+        "url": "https://developers.naver.com/docs/serviceapi/datalab/search/search.md",
+        "checked_on": "2026-09-15"
+      }
+    ],
+    "category_suggestion": "디지털 도구 이해",
+    "tag_suggestions": [
+      "검색추세",
+      "데이터랩",
+      "글감조사"
+    ],
+    "created_at": "2026-09-15T00:00:00Z"
+  },
+  "profile": {
+    "id": "4662b729-4a37-5271-8147-9fe8e02e260b",
+    "tenant_id": "dbfb664f-c890-5171-914a-23b67f3e0767",
+    "name": "디지털 생활 · 예제 프로필",
+    "platform": "naver",
+    "url": null,
+    "is_demo": true,
+    "is_primary": true,
+    "version": 1,
+    "reader_job": "변경된 정보와 숫자의 의미를 이해해 잘못 판단하지 않기",
+    "core_topics": [
+      "디지털 도구와 데이터 이해"
+    ],
+    "adjacent_topics": [
+      "서비스 변경",
+      "검색 추세 활용"
+    ],
+    "excluded_topics": [
+      "미확인 인물 의혹",
+      "개별 투자 권유"
+    ],
+    "editorial_lens": [
+      "숫자가 뜻하는 것과 뜻하지 않는 것을 먼저 구분한다."
+    ],
+    "voice": {
+      "register": "부드러운 존댓말",
+      "rhythm_notes": "불필요한 인사 없이 질문과 첫 답을 제시한다.",
+      "opening_preferences": [
+        "핵심 오해부터 짚기"
+      ],
+      "closing_preferences": [
+        "판단 기준 한 문장"
+      ],
+      "avoid_patterns": [
+        "혁신적",
+        "완벽한 선택",
+        "현대 사회에서"
+      ]
+    },
+    "allowed_formats": [
+      "change_explainer",
+      "comparison",
+      "decision_guide"
+    ],
+    "actual_author_record_ids": [],
+    "status": "ACTIVE",
+    "public_posting_mode": "manual"
+  },
+  "brief": {
+    "id": "63c48573-99d4-51ec-8110-5039e077e6f3",
+    "tenant_id": "dbfb664f-c890-5171-914a-23b67f3e0767",
+    "blog_id": "4662b729-4a37-5271-8147-9fe8e02e260b",
+    "opportunity_id": "2a618bbe-6aab-58e0-82dd-9843e7aa3be2",
+    "version": 1,
+    "reader_question": "검색 추세의 100을 검색한 사람 수로 읽어도 되는가?",
+    "one_sentence_answer": "아니다. 상대 관심의 크기를 보여주는 값이므로 절대 횟수와 구분해야 한다.",
+    "why_now": "출력·문체·근거 연결을 확인하는 참고 원고. 현재 급상승이라는 자료는 없다.",
+    "existing_answers": [
+      "공식 API는 응답의 단위를 정의한다."
+    ],
+    "new_contribution": {
+      "kind": "interpretation",
+      "description": "실제 숫자처럼 보이는 상대값을 어떻게 잘못 읽을 수 있는지 일반 독자의 질문으로 설명한다.",
+      "evidence_ids": [
+        "7487474d-c6de-5b10-9790-dc68a71f4e4e"
+      ]
+    },
+    "article_type": "decision_guide",
+    "sections": [
+      {
+        "section_id": "s1",
+        "purpose": "숫자의 의미",
+        "reader_value": "사람 수로 오해하지 않기",
+        "claim_ids": [
+          "50d6ce94-07f0-544d-80b6-7a0de1413069"
+        ]
+      },
+      {
+        "section_id": "s2",
+        "purpose": "비교 범위",
+        "reader_value": "다른 조건의 숫자 섞지 않기",
+        "claim_ids": [
+          "c6e17213-13b7-5507-9197-73b2e6f2e3cd"
+        ]
+      }
+    ],
+    "claim_ids": [
+      "50d6ce94-07f0-544d-80b6-7a0de1413069",
+      "424f9a96-deb7-526f-9bfb-302856b8670d",
+      "c6e17213-13b7-5507-9197-73b2e6f2e3cd"
+    ],
+    "visual_required": false,
+    "text_only_allowed": true,
+    "required_asset_ids": [],
+    "title_promises": [
+      "100이 무엇을 뜻하는지 설명",
+      "비교 전 확인할 기준 제시"
+    ],
+    "counterarguments": [
+      "실시간 인기소재 검증과 문체예제는 다른 목적이다."
+    ],
+    "stop_conditions": [
+      "공식 단위 정의가 변경됨"
+    ],
+    "review_at": "2026-09-15T13:00:00Z"
+  },
+  "opportunity": {
+    "id": "2a618bbe-6aab-58e0-82dd-9843e7aa3be2",
+    "tenant_id": "dbfb664f-c890-5171-914a-23b67f3e0767",
+    "blog_id": "4662b729-4a37-5271-8147-9fe8e02e260b",
+    "event_id": "faa825b0-9e64-5422-a803-5a3021a6efd9",
+    "reader_question": "검색 추세의 100을 검색한 사람 수로 읽어도 되는가?",
+    "proposed_answer": "아니다. 상대 관심의 크기를 보여주는 값이므로 절대 횟수와 구분해야 한다.",
+    "why_now": "출력·문체·근거 연결을 확인하는 참고 원고. 현재 급상승이라는 자료는 없다.",
+    "demand_observation_ids": [],
+    "answer_gap": "숫자의 단위를 오해하지 않도록 비교 예시를 제공한다.",
+    "rank": 0,
+    "signal_coverage": 0,
+    "missing_signals": [
+      "live_demand",
+      "homefeed_observation"
+    ],
+    "decision": "PREPARE",
+    "review_at": "2026-09-15T13:00:00Z",
+    "not_a_probability": true
+  },
+  "claims": [
+    {
+      "id": "50d6ce94-07f0-544d-80b6-7a0de1413069",
+      "tenant_id": "dbfb664f-c890-5171-914a-23b67f3e0767",
+      "blog_id": "4662b729-4a37-5271-8147-9fe8e02e260b",
+      "statement": "Datalab 통합 검색어 트렌드 API는 구간별 최대값을 100으로 둔 상대 비율을 제공한다.",
+      "kind": "fact",
+      "evidence_ids": [
+        "7487474d-c6de-5b10-9790-dc68a71f4e4e"
+      ],
+      "author_record_id": null,
+      "support_status": "SUPPORTED",
+      "scope_notes": "NAVER 공식 API 문서의 데이터 정의를 설명한다. UI 전반이나 분단위 검색량을 주장하지 않는다.",
+      "verified_at": "2026-09-15T10:00:00Z",
+      "valid_until": "2026-09-16T10:00:00Z"
+    },
+    {
+      "id": "424f9a96-deb7-526f-9bfb-302856b8670d",
+      "tenant_id": "dbfb664f-c890-5171-914a-23b67f3e0767",
+      "blog_id": "4662b729-4a37-5271-8147-9fe8e02e260b",
+      "statement": "API의 시간 구간 단위는 일·주·월이다.",
+      "kind": "fact",
+      "evidence_ids": [
+        "7487474d-c6de-5b10-9790-dc68a71f4e4e"
+      ],
+      "author_record_id": null,
+      "support_status": "SUPPORTED",
+      "scope_notes": "NAVER 공식 API 문서의 데이터 정의를 설명한다. UI 전반이나 분단위 검색량을 주장하지 않는다.",
+      "verified_at": "2026-09-15T10:00:00Z",
+      "valid_until": "2026-09-16T10:00:00Z"
+    },
+    {
+      "id": "c6e17213-13b7-5507-9197-73b2e6f2e3cd",
+      "tenant_id": "dbfb664f-c890-5171-914a-23b67f3e0767",
+      "blog_id": "4662b729-4a37-5271-8147-9fe8e02e260b",
+      "statement": "예시로 같은 요청 안에서 100과 50을 비교하더라도 100명과 50명이라는 뜻은 아니다.",
+      "kind": "analysis",
+      "evidence_ids": [
+        "7487474d-c6de-5b10-9790-dc68a71f4e4e"
+      ],
+      "author_record_id": null,
+      "support_status": "SUPPORTED",
+      "scope_notes": "NAVER 공식 API 문서의 데이터 정의를 설명한다. UI 전반이나 분단위 검색량을 주장하지 않는다.",
+      "verified_at": "2026-09-15T10:00:00Z",
+      "valid_until": "2026-09-16T10:00:00Z"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "7487474d-c6de-5b10-9790-dc68a71f4e4e",
+      "tenant_id": "dbfb664f-c890-5171-914a-23b67f3e0767",
+      "snapshot_id": "c9bb5784-c7cc-5cf3-9e00-e93aa304ab5c",
+      "allowed_blog_ids": [
+        "4662b729-4a37-5271-8147-9fe8e02e260b"
+      ],
+      "locator": "응답 정의 results.data.ratio / 요청 timeUnit",
+      "summary": "구간별 상대 비율과 date/week/month 정의를 확인한 예제용 요약. 원문 전체 저장물은 포함하지 않는다.",
+      "verified_at": "2026-09-15T10:00:00Z",
+      "valid_until": "2026-09-16T10:00:00Z",
+      "kind": "official_fact",
+      "independence_group": "naver_datalab_official"
+    }
+  ],
+  "snapshots": [
+    {
+      "id": "c9bb5784-c7cc-5cf3-9e00-e93aa304ab5c",
+      "tenant_id": "dbfb664f-c890-5171-914a-23b67f3e0767",
+      "source_id": "7659929f-8122-5fe0-aef3-6f274d1295fc",
+      "url": "https://developers.naver.com/docs/serviceapi/datalab/search/search.md",
+      "title": "통합 검색어 트렌드 API",
+      "published_at": null,
+      "date_precision": "unknown",
+      "observed_at": "2026-09-15T00:00:00Z",
+      "content_hash": "6f4c1c859d994d774b9bd9f11472ef780edf23ce85b04bf86a0df59e79c36703",
+      "read_scope": "excerpt",
+      "locator": "응답 정의 results.data.ratio / 요청 timeUnit",
+      "evidence_summary": "구간별 상대 비율과 date/week/month 정의를 확인한 예제용 요약. 원문 전체 저장물은 포함하지 않는다.",
+      "independence_group": "naver_datalab_official",
+      "permission_version": "reference-20260915",
+      "allowed_blog_ids": [
+        "4662b729-4a37-5271-8147-9fe8e02e260b"
+      ],
+      "execution_mode": "REPLAY"
+    }
+  ],
+  "sources": [
+    {
+      "id": "7659929f-8122-5fe0-aef3-6f274d1295fc",
+      "tenant_id": "dbfb664f-c890-5171-914a-23b67f3e0767",
+      "name": "NAVER Datalab 공식 문서",
+      "kind": "official_web",
+      "base_url": "https://developers.naver.com/docs/serviceapi/datalab/search/search.md",
+      "permissions": {
+        "fetch": true,
+        "store": false,
+        "send_to_model": true,
+        "republish": false,
+        "basis": "문서 확인에 필요한 최소 범위의 읽기와 요약 예시. 전체 문서 재게시를 허용한다는 의미가 아니다.",
+        "expires_at": null
+      },
+      "allowed_hosts": [
+        "developers.naver.com"
+      ],
+      "credential_ref": null,
+      "status": "AVAILABLE",
+      "checked_at": "2026-09-15T00:00:00Z",
+      "allowed_blog_ids": [
+        "4662b729-4a37-5271-8147-9fe8e02e260b"
+      ]
+    }
+  ],
+  "assets": [],
+  "experience_records": [],
+  "policy_version": "4.1.0-r1",
+  "gate": {
+    "id": "72419179-807d-5e12-8738-8de0923f3492",
+    "tenant_id": "dbfb664f-c890-5171-914a-23b67f3e0767",
+    "blog_id": "4662b729-4a37-5271-8147-9fe8e02e260b",
+    "revision_id": "86dab9fa-30c8-57fe-8274-a62c3cdd51d5",
+    "target_content_hash": "28bfbffc1487bf8bd399118bcf6b3bf006af25316f444e786ef1313bd8ec9a41",
+    "evidence_bundle_hash": "e5a4298305459e346602c9c9eba5231d11c81aa3e1f951aab17a96293ca212e8",
+    "policy_version": "4.1.0-r1",
+    "issuer": "review_service",
+    "checked_at": "2026-09-15T11:00:00Z",
+    "valid_until": "2026-09-15T14:00:00Z",
+    "verdict": "PASS",
+    "findings": [],
+    "human_review_required": false,
+    "human_reviewed_by": null
+  }
+}

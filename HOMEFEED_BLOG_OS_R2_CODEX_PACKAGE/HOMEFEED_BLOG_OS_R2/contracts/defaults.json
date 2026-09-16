@@ -1,0 +1,98 @@
+{
+  "schema_version": "4.1.0",
+  "status": "proposed_initial_defaults_not_naver_rules",
+  "mode": "REPLAY",
+  "timezone": "Asia/Seoul",
+  "public_posting_enabled": false,
+  "primary_goal": {
+    "platform": "naver",
+    "scope": "single_primary_blog",
+    "metric": "calendar_month_pv",
+    "target": 1000000
+  },
+  "capacity": {
+    "initial_active_profiles": 2,
+    "candidates_per_run": 50,
+    "deep_compare_per_run": 10,
+    "research_per_run": 3,
+    "articles_per_blog_per_day": 2,
+    "ready_queue_per_blog": 2,
+    "ready_queue_total": 6,
+    "worker_concurrency": 2
+  },
+  "budget": {
+    "monthly_budget_minor": null,
+    "currency": "KRW",
+    "require_approved_budget_for_paid_call": true,
+    "include_pending_reservations": true
+  },
+  "retries": {
+    "http_attempts": 3,
+    "schema_repair": 1,
+    "voice_edit": 2,
+    "research_repair": 2,
+    "unknown_paid_outcome": "hold_and_reconcile",
+    "max_repairs_per_article_total": 6
+  },
+  "lease": {
+    "seconds": 120,
+    "heartbeat_seconds": 30
+  },
+  "ranking": {
+    "weights": {
+      "demand": 0.25,
+      "momentum": 0.15,
+      "audience_fit": 0.2,
+      "answer_gap": 0.2,
+      "readiness": 0.1,
+      "visual_clarity": 0.1
+    },
+    "missing_value_policy": "zero_contribution_with_explicit_coverage",
+    "not_a_probability": true
+  },
+  "freshness": {
+    "volatile_claim_recheck_hours": 6,
+    "ordinary_claim_recheck_hours": 72,
+    "stable_claim_recheck_days": 30,
+    "event_opportunity_review_minutes": 120,
+    "new_source_event_overrides_ttl": true,
+    "handoff_deadline": "min(core_claims,assets,opportunity_review)"
+  },
+  "quality": {
+    "blind_articles": 30,
+    "human_reviewers": 2,
+    "naturalness_median_target": 4,
+    "naturalness_min_target": 3,
+    "scale_max": 5,
+    "critical_errors_allowed": 0,
+    "editing_minutes_median_target": 5,
+    "ai_detector_gate": false
+  },
+  "performance_windows_hours": [
+    24,
+    72,
+    168,
+    672
+  ],
+  "retention_proposal_days": {
+    "raw_sources": 30,
+    "operational_logs": 90,
+    "rights_override": true
+  },
+  "canonicalization": "HFBO-NFC-INT-1",
+  "editorial_policy": {
+    "fast_lane_requires_verified_event": true,
+    "no_signal_means_research_not_make": true,
+    "plan_comparison_candidates": 3,
+    "retain_all_rejected_candidates": true,
+    "human_evaluation_not_a_detector": true,
+    "thresholds_are_product_hypotheses": true
+  },
+  "handoff_policy": {
+    "recheck_at_download": true,
+    "live_rejects_replay_provenance": true,
+    "enforce_same_article_revision_review": true,
+    "server_report_only": true,
+    "public_only_default": true
+  }
+}

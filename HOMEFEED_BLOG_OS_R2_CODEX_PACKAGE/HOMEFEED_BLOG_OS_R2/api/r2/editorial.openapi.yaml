@@ -1,0 +1,109 @@
+openapi: 3.1.0
+info:
+  title: HOMEFEED R2 internal editorial extension
+  version: 4.2.0-r2
+  description: Proposed internal endpoints; NOT implemented, not NAVER API. Manual
+    public posting only.
+paths:
+  /internal/v2/blogs/{blog_id}/articles/{article_id}/revisions/{revision_id}/reader-preview:
+    parameters:
+    - name: blog_id
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+    - name: article_id
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+    - name: revision_id
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+    post:
+      operationId: buildReaderPreview
+      description: 기사의 공개 본문과 비공개 상태를 분리해 파일 생성; 게시 없음
+      security:
+      - serverSession: []
+      responses:
+        '202':
+          description: Job queued; not an editorial PASS
+        '403':
+          description: Scope or action not allowed
+        '409':
+          description: Stale revision or incompatible state
+  /internal/v2/blogs/{blog_id}/articles/{article_id}/revisions/{revision_id}/editorial-reviews:
+    parameters:
+    - name: blog_id
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+    - name: article_id
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+    - name: revision_id
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+    post:
+      operationId: requestEditorialReview
+      description: 인증된 검토 서비스가 최종 revision의 실제 구절 검토
+      security:
+      - serverSession: []
+      responses:
+        '202':
+          description: Job queued; not an editorial PASS
+        '403':
+          description: Scope or action not allowed
+        '409':
+          description: Stale revision or incompatible state
+  /internal/v2/blogs/{blog_id}/articles/{article_id}/revisions/{revision_id}/editorial-actions:
+    parameters:
+    - name: blog_id
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+    - name: article_id
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+    - name: revision_id
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+    post:
+      operationId: planEditorialRepair
+      description: 내용부족/표현/사실오류를 분리해 다음 작업 계획
+      security:
+      - serverSession: []
+      responses:
+        '202':
+          description: Job queued; not an editorial PASS
+        '403':
+          description: Scope or action not allowed
+        '409':
+          description: Stale revision or incompatible state
+components:
+  securitySchemes:
+    serverSession:
+      type: apiKey
+      in: cookie
+      name: session

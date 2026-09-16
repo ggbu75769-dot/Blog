@@ -1,0 +1,20 @@
+{
+  "id": "2a618bbe-6aab-58e0-82dd-9843e7aa3be2",
+  "tenant_id": "dbfb664f-c890-5171-914a-23b67f3e0767",
+  "blog_id": "4662b729-4a37-5271-8147-9fe8e02e260b",
+  "event_id": "faa825b0-9e64-5422-a803-5a3021a6efd9",
+  "reader_question": "검색 추세의 100을 검색한 사람 수로 읽어도 되는가?",
+  "proposed_answer": "아니다. 상대 관심의 크기를 보여주는 값이므로 절대 횟수와 구분해야 한다.",
+  "why_now": "출력·문체·근거 연결을 확인하는 참고 원고. 현재 급상승이라는 자료는 없다.",
+  "demand_observation_ids": [],
+  "answer_gap": "숫자의 단위를 오해하지 않도록 비교 예시를 제공한다.",
+  "rank": 0,
+  "signal_coverage": 0,
+  "missing_signals": [
+    "live_demand",
+    "homefeed_observation"
+  ],
+  "decision": "PREPARE",
+  "review_at": "2026-09-16T00:00:00Z",
+  "not_a_probability": true
+}

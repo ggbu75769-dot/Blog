@@ -1,0 +1,15 @@
+{
+  "checked_date": "2026-09-16",
+  "docx_pages_rendered_and_visually_inspected": 7,
+  "reader_samples_mobile_and_desktop_inspected": 3,
+  "mobile_css_viewport_width": 390,
+  "desktop_css_viewport_width": 1280,
+  "gallery_desktop_inspected": true,
+  "horizontal_page_overflow": false,
+  "korean_heading_wrap_fix": "keep-all applied after initial render inspection",
+  "notes": [
+    "Local DOCX/Chromium screenshots only.",
+    "No actual Naver/Tistory editor transfer verified.",
+    "Playwright bundled Chromium unavailable and local file navigation restricted; used installed /usr/bin/chromium and set_content for standalone self-contained HTML."
+  ]
+}
